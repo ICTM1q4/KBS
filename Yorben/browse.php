@@ -1,8 +1,3 @@
-<?php
-session_start();
-include "connect.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,46 +13,14 @@ include "connect.php";
         </div>
         <div id="categorie">
             <a href="index.php" class="button">Home</a>
-            <!-- <a href="browse.php?category_id=" class="button">Novelty Items</a>
+            <a href="browse.php?category_id=" class="button">Novelty Items</a>
             <a href="browse.php?category_id=" class="button">Clothing</a>
             <a href="browse.php?category_id=" class="button">T-Shirts</a>
             <a href="browse.php?category_id=" class="button">Computing Novelties</a>
             <a href="browse.php?category_id=" class="button">USB Novelties</a>
             <a href="browse.php?category_id=" class="button">Toys</a>
-            <a href="categories.php" class="button">Alle categorieen</a> -->
+            <a href="categories.php" class="button">Alle categorieen</a>
             
-
-            <?php
-                $Query = "
-                SELECT StockGroupID, StockGroupName, ImagePath
-                FROM stockgroups 
-                WHERE StockGroupID IN (
-                                        SELECT StockGroupID 
-                                        FROM stockitemstockgroups
-                                        ) AND ImagePath IS NOT NULL
-                ORDER BY StockGroupID ASC";
-                $Statement = mysqli_prepare($Connection, $Query);
-                mysqli_stmt_execute($Statement);
-                $HeaderStockGroups = mysqli_stmt_get_result($Statement);
-
-                foreach ($HeaderStockGroups as $HeaderStockGroup) {
-                    ?>
-                    
-                        <a href="browse.php?category_id=<?php 
-                        print $HeaderStockGroup['StockGroupID'];
-                        ?>"
-                           class="button"><?php print $HeaderStockGroup['StockGroupName']; ?></a>
-                    
-                    <?php
-                }
-                
-                
-
-
-
-
-                ?>
-
 
         </div>
         

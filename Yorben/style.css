@@ -25,10 +25,11 @@ body{
     border: 15px black solid
 }
 #categorie{
-
-    max-width: 800px;
-    word-wrap: break-word;
+    margin-right: 400px ;
+   
+    
 }
+
 img{
     float: left;
     margin: auto;
@@ -71,9 +72,7 @@ h3{
     background: white;
 
 }
-#personal{
-    width: 100px;
-}
+
 a{
     color: white;
     border-left: 18px solid black;
@@ -83,7 +82,7 @@ a{
     margin: auto;
     font-size: 140%;
 
-    position: static;
+    
 }
 a:hover{
     opacity: 0.5;
