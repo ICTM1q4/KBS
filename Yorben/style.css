@@ -1,0 +1,98 @@
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: white;
+    font-family: Calibri;
+}
+body{
+    background-color: #221c4c;
+}
+
+
+#totaal{
+    background: black;
+    overflow: hidden;
+    border: 10px black solid;
+    border-radius: 10px;
+    height: 100px;
+
+}
+
+#titel{
+    border: 15px black solid
+}
+#categorie{
+
+    max-width: 800px;
+    word-wrap: break-word;
+}
+img{
+    float: left;
+    margin: auto;
+    width: 65px;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+h3{
+    color: white;
+    font-family: Calibri;
+    border: 15px solid black;
+    float: left;
+    width: 180px;
+    margin: auto;
+    font-size: 160%;
+
+
+}
+#login{
+    position: fixed;
+    margin: auto;
+    text-align: left;
+    right: 100px;
+    border-radius: 10px;
+    font-family: Calibri;
+}
+#search{
+    position: fixed;
+    margin: auto;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    text-align: left;
+    right: 250px;
+    border-radius: 10px;
+    font-family: Calibri;
+    background: white;
+
+}
+#personal{
+    width: 100px;
+}
+a{
+    color: white;
+    border-left: 18px solid black;
+    border-right: 18px solid black;
+    border-top: 2px solid black;
+    float: left;
+    margin: auto;
+    font-size: 140%;
+
+    position: static;
+}
+a:hover{
+    opacity: 0.5;
+}
+input{
+    font-family: Calibri;
+}
+.background{
+    position: absolute;
+    background: black;
+}
