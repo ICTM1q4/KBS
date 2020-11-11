@@ -15,7 +15,7 @@
             <a href="index.html" class="button">Home</a>
             <a href="" class="button">Categorie</a>
             <a href="" class="button">Categorie</a>
-            <a href="" class="button">Categorie</a>
+            <a href="" class="button">Over Ons</a>
 
         </div>
         <div class="background">
