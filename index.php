@@ -82,20 +82,20 @@ function showSlides(n) {
 <!-- Full-width images with number and caption text -->
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
-  <img src="dab.gif" style="width:100%;  position: absolute;">
-  <div class="text">Dab alsof je leven er vanaf hangt.</div>
+  <img src="img_lights_wide.jpg" style="width:100%;  position: absolute;">
+  <div class="text">Slide 1/3</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 3</div>
-  <img src="joch.gif" style="width:100%; position: absolute;">
-  <div class="text">Humping like there is no tomorrow.</div>
+  <img src="img_nature_wide.jpg" style="width:100%; position: absolute;">
+  <div class="text">Slide 2/3</div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 3</div>
-  <img src="wasbeer.gif" style="width:100%;  position: absolute;">
-  <div class="text">Rollin rollin roll</div>
+  <img src="img_snow_wide.jpg" style="width:100%;  position: absolute;">
+  <div class="text">Slide 3/3</div>
 </div>
 
 <!-- Next and previous buttons -->
