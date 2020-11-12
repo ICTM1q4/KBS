@@ -9,6 +9,12 @@ include "connect.php";
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel='stylesheet' href='style.css'>
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    
+    
+    <script src="jquery-3.4.1.js"></script>
+    
 </head>
 <header>
     <div id="totaal">
@@ -23,8 +29,8 @@ include "connect.php";
             <a href="browse.php?category_id=" class="button">T-Shirts</a>
             <a href="browse.php?category_id=" class="button">Computing Novelties</a>
             <a href="browse.php?category_id=" class="button">USB Novelties</a>
-            <a href="browse.php?category_id=" class="button">Toys</a>
-            <a href="categories.php" class="button">Alle categorieen</a> -->
+            <a href="browse.php?category_id=" class="button">Toys</a>-->
+            
             
 
             <?php
@@ -57,7 +63,7 @@ include "connect.php";
 
 
                 ?>
-
+                <a href="categories.php" class="button">Alle categorieen</a>
 
         </div>
         

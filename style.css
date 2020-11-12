@@ -19,7 +19,9 @@ body{
     overflow: hidden;
     border: 10px black solid;
     border-radius: 10px;
+    padding-bottom: 20px black solid;
     height: 100px;
+    
 }
 
 #titel{
@@ -30,6 +32,7 @@ body{
    
     
 }
+
 
 img{
     float: left;
@@ -100,6 +103,87 @@ input{
 
 /*Body index*/
 
+#Wrap {
+  width: 100%;
+  height: 600px;
+  margin-top: 3%;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.StockGroups {
+  position: relative;
+  border: 1px solid slategrey;
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: left;
+  margin-left: 1.5%;
+  font-family: vortice-concept, sans-serif;
+  color: white;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+#StockGroup1 {
+  width: 18%;
+  height: 600px;
+  margin-left: 5%;
+}
+#StockGroup2 {
+  width: 18%;
+  height: 600px;
+  background-size: cover;
+}
+#StockGroup3 {
+  width: 15%;
+  height: 41.5%;
+}
+#StockGroup4 {
+  width: 30%;
+  height: 250px;
+}
+#StockGroup5 {
+  width: 25%;
+  height: 53.5%;
+  margin-top: 1.5%;
+}
+#StockGroup6 {
+  width: 20%;
+  height: 53.5%;
+  margin-left: 1.5%;
+  margin-top: 1.5%;
+}
+.StockGroups h1 {
+  position: absolute;
+  left:0;
+  right: 0;
+  font-size: 25px;
+}
+#StockGroup2 h1 {
+  bottom: 0;
+}
+#StockGroup1 h1 {
+  bottom: 0;
+}
+#StockGroup5 h1 {
+  bottom: 0;
+}
+#StockGroup6 h1 {
+  bottom: 0;
+}
+#Wrap a {
+  text-decoration: none;
+  color: white;
+}
+#Wrap a:hover {
+  color: #ccc;
+  opacity: 0.9;}
 #index{
     background: black;
     border: 10px black solid;
