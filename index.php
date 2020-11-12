@@ -43,7 +43,7 @@ include __DIR__ . "/Header.php";
 </header>
 <body >
     <div id="index">
-        <h1 > Goede Middag</h1>
+        <h1></h1> <br>
 
 
             <!-- Slideshow container -->
