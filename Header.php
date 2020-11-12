@@ -13,7 +13,7 @@ include "connect.php";
     
     <script src="jquery.min.js"></script>
     <script src="bootstrap.min.js"></script>
-    
+    <script src="fontawesome.js"></script>
     
     <script src="jquery-3.4.1.js"></script>
     
@@ -25,7 +25,7 @@ include "connect.php";
             <h3> NerdyGadgets </h3>
         </div>
         <div id="categorie">
-            <a href="index.php" class="button">Home</a>
+            <a href="index.php" class="button" id="categories">Home</a>
             <!-- <a href="browse.php?category_id=" class="button">Novelty Items</a>
             <a href="browse.php?category_id=" class="button">Clothing</a>
             <a href="browse.php?category_id=" class="button">T-Shirts</a>
@@ -51,7 +51,7 @@ include "connect.php";
                 foreach ($HeaderStockGroups as $HeaderStockGroup) {
                     ?>
                     
-                        <a href="browse.php?category_id=<?php 
+                        <a id="categories" href="browse.php?category_id=<?php 
                         print $HeaderStockGroup['StockGroupID'];
                         ?>"
                            class="button"><?php print $HeaderStockGroup['StockGroupName']; ?></a>
@@ -65,7 +65,7 @@ include "connect.php";
 
 
                 ?>
-                <a href="categories.php" class="button">Alle categorieen</a>
+                <a href="categories.php" class="button" id="categories">Alle categorieen</a>
 
         </div>
         
