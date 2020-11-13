@@ -93,7 +93,7 @@ include "connect.php";
 
             $login = false;
             if ($login == false){
-                print("<a id='login' href='Login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%;'>login</a>");
+                print("<a id='login' href='https://www.youtube.com/watch?v=lavOQrZbUC4' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%;'>login</a>");
             }
             else {
                 print("<a id='login' href='Account.php' id='categories' class='button' style='color: white;'>Account</a>");
