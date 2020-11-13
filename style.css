@@ -250,10 +250,11 @@ input{
   position: sticky;
 }
 #ProductFrame {
-  width: 100%;
+  width: 80%;
   height: 250px;
   margin-top: 15px;
   position: relative;
+  margin-left: 10%;
   padding: 1px;
   border-bottom: 1px solid #fff;
   display: block;
@@ -262,7 +263,7 @@ input{
 .ImgFrame {
   width: 230px;
   height: 230px;
-  background-color: rgb(36, 41, 143);
+  background-color:rgba(128,128,128,0.3);
   float: left;
   margin-left: 10px;
   margin-top: 10px;
@@ -312,7 +313,7 @@ input{
 #ImageFrame {
   width: 300px;
   height: 300px;
-  background-color: rgb(36, 41, 143);
+  background-color: black;
   float: left;
   margin-right: 10px;
 }
@@ -426,7 +427,7 @@ ul#ul-class-price li {
   margin-left: 10%;
 }
 .HomePagePrice {
-  color: #676EFF;
+  color: white;
   font-family: vortice-concept, sans-serif;
   font-size: 50px;
   text-transform: uppercase;
@@ -526,7 +527,7 @@ ul#ul-class-price li {
 }
 .StockItemPriceText {
   font-family: vortice-concept, sans-serif;
-  color: #676EFF;
+  color:white;
   font-size: 22px;
   text-transform: uppercase;
   font-weight: bold;
@@ -537,7 +538,7 @@ ul#ul-class-price li {
 }
 .StockItemID {
   font-family: vortice-concept, sans-serif;
-  color: #676EFF;
+  color: white;
   font-size: 10px;
   text-transform: uppercase;
   font-weight: bold;
@@ -579,6 +580,7 @@ ul#ul-class-price li {
 }
 .ListItem {
   margin-right: 400px;
+  text-decoration: none;
 }
 #NoSearchResults {
   text-align: center;
@@ -601,6 +603,7 @@ ul#ul-class-price li {
 #ProductFrame h6 {
   color: white;
 }
+
 #CategoriesBar {
   position: absolute;
   left: 280px;
