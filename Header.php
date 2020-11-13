@@ -25,13 +25,14 @@ include "connect.php";
             <h3> NerdyGadgets </h3>
         </div>
         
-        <div id="categorie">
-        <div id= "categorie"class="dropdown" style="position: relative; font-family: Calibri; ">
-    <button class="dropbtn" href="categories.php">Alle categorieen
+        <div id="categorie" style="">
+        <a href="index.php" class="button" id="categories" >Home</a>
+        <div id= "categorie"class="dropdown" style="position: relative; font-family: Calibri; float: left; ">
+    <button class="dropbtn" onclick="window.location.href='categories.php'">Alle categorieen
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content" style="position: absolute;" >
-
+    
             <?php
                 $Query = "
                 SELECT StockGroupID, StockGroupName, ImagePath
@@ -62,11 +63,13 @@ include "connect.php";
 
 
                 ?>
+                
                   </div>
+                  
 </div>
+<a href="contact.php" class="button" id="categories" style="margin-left: -27%;">Over Ons</a>
 
-
-            <a href="index.php" class="button" id="categories">Home</a>
+            
             <!-- <a href="browse.php?category_id=" class="button">Novelty Items</a>
             <a href="browse.php?category_id=" class="button">Clothing</a>
             <a href="browse.php?category_id=" class="button">T-Shirts</a>
@@ -75,13 +78,13 @@ include "connect.php";
             <a href="browse.php?category_id=" class="button">Toys</a>-->
             
            
-                <a href="categories.php" class="button" id="categories">Alle categorieen</a>
-                <a href="contact.php" class="button" id="categories">Over Ons</a>
+                
+                
         </div>
         
         <div class="background">
             <form>
-        <input type="text" name="search_string" id="search" id="search_string"
+        <input type="text" name="search_string" id="search" id="search_string" placeholder="search"
                    value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>"
                    class="form-submit">
             </form>
