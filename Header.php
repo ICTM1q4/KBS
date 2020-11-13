@@ -70,7 +70,11 @@ include "connect.php";
         </div>
         
         <div class="background">
-        <input id="search" type="text" placeholder="search" style="right: ">
+            <form>
+        <input type="text" name="search_string" id="search" id="search_string"
+                   value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>"
+                   class="form-submit">
+            </form>
             <?php
             
 
