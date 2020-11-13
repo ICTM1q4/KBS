@@ -21,7 +21,7 @@ include "connect.php";
 <header>
     <div id="totaal">
         <div id="titel">
-            <picture id="picture"><img src="wauw%20(1).png"></picture>
+            <a href="index.php"><picture id="picture"><img href src="wauw%20(1).png"></picture>
             <h3> NerdyGadgets </h3>
         </div>
         <div id="categorie">
