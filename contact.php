@@ -10,9 +10,11 @@
 include __DIR__ . "/Header.php";
 ?>
 
-<h1>Contact</h1>
-Telefoonnummer: 06123456<br>
-E-mail: nerdygadgets@gmail.com
-<h2>Sociale media</h2>
-Twitter: <a href='twitter.com'>Nerdygadgets</a><br>
-Facebook: <a href='facebook.com'>Nerdygadgets</a>
+<dif class="contactinfo">
+    <h1>Contact</h1>
+    Telefoonnummer: 06123456<br>
+    E-mail: nerdygadgets@gmail.com
+    <h2>Sociale media</h2>
+    Twitter: <a href='twitter.com'>Nerdygadgets</a><br>
+    Facebook: <a href='facebook.com'>Nerdygadgets</a>
+</dif>
