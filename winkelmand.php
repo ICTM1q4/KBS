@@ -21,11 +21,13 @@ include __DIR__ . "/Header.php";
         <td>Voorbeeldproduct 1</td>
         <td>1</td>
         <td>5,99</td>
+        <td><button>Verwijderen</button></td>
     </tr>
     <tr>
         <td>Voorbeeldproduct 2</td>
         <td>2</td>
         <td>18,99</td>
+        <td><button>Verwijderen</button></td>
     </tr>
 </table>
 Totaalprijs:    25,98 Euro<br>
