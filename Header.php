@@ -21,19 +21,14 @@ include "connect.php";
 
             function sendToPage(){
                 var input = document.getElementById("search").value;
+                var inputkey = document.getElementById("myInput");
                  //alert(input);
-                if (input == "happy"){
+                if (input != "" && event.keyCode == 13 ){
                     location.href = "browse.php";
-                    return false;
                 }
-                else if (input == "sad"){
-                    location.href = "browse.php";
-                    return false;
-                }
-                else {
-                    alert('Invalid Input.');
-                }
+                
                     }
+
         </script>
 </head>
 <header>
