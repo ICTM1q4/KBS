@@ -58,13 +58,22 @@ h3{
 
 }
 #login{
-    position: absolute;
+    position: static;
     
     text-align: left;
-    right: 100px;
+    float: right;
     border-radius: 10px;
     font-family: Calibri;
     z-index: 50;
+}
+#winkelmand{
+  position: static;
+  
+  text-align: left;
+  float: right;
+  border-radius: 10px;
+  font-family: Calibri;
+  z-index: 50;
 }
 #search{
     position: absolute;
@@ -75,7 +84,7 @@ h3{
     padding-bottom: 5px;
     padding-right: 15px;
     text-align: left;
-    right: 250px;
+    right: 350px;
     
     border-radius: 10px;
     font-family: Calibri;
