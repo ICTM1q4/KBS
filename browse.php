@@ -227,16 +227,18 @@ if (isset($amount)) {
         foreach ($ReturnableResult as $row) {
             ?>
             <a class="ListItem"  >
-                <div id="ProductFrame" >
+                <div id="ProductFrame"  >
+                <a href='view.php?id=<?php print $row['StockItemID']; ?>' style="text-decoration: none;">
                     <?php
                     if (isset($row['ImagePath'])) { ?>
-                        <div class="ImgFrame"
-                             style="background-image: url('<?php print "Public/StockItemIMG/" . $row['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: center;"></div>
+                        <div class="ImgFrame" href='view.php?id=<?php print $row['StockItemID']; ?>' 
+                             style="background-image: url('<?php print "Public/StockItemIMG/" . $row['ImagePath']; ?>'); text-decoration: none; background-size: 230px; background-repeat: no-repeat; background-position: center;"></div>
                     <?php } else if (isset($row['BackupImagePath'])) { ?>
-                        <div class="ImgFrame"
-                             style="background-image: url('<?php print "Public/StockGroupIMG/" . $row['BackupImagePath'] ?>'); background-size: cover;"></div>
+                        <div class="ImgFrame" href='view.php?id=<?php print $row['StockItemID']; ?>'
+                             style="background-image: url('<?php print "Public/StockGroupIMG/" . $row['BackupImagePath'] ?>'); text-decoration: none; background-size: cover;"></div>
                     <?php }
                     ?>
+                    </a>
 
                     <div id="StockItemFrameRight">
                         <div class="CenterPriceLeftChild">
@@ -245,7 +247,7 @@ if (isset($amount)) {
                             <input type="button" class="toevoegen">Toevoegen aan winkelmand</input>
                         </div>
                     </div>
-                    <a href='view.php?id=<?php print $row['StockItemID']; ?>'>
+                    <a href='view.php?id=<?php print $row['StockItemID']; ?>' style="text-decoration: none;">
                     <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>
                     <p class="StockItemName"><?php print $row["StockItemName"]; ?></p>
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
