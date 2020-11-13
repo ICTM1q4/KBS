@@ -21,19 +21,16 @@ include "connect.php";
 <header>
     <div id="totaal">
         <div id="titel">
-            <a href="index.php"><picture id="picture"><img href src="wauw%20(1).png"></picture>
+            <a href="index.php"><picture id="picture"><img src="wauw%20(1).png"></picture>
             <h3> NerdyGadgets </h3>
         </div>
+        
         <div id="categorie">
-            <a href="index.php" class="button" id="categories">Home</a>
-            <!-- <a href="browse.php?category_id=" class="button">Novelty Items</a>
-            <a href="browse.php?category_id=" class="button">Clothing</a>
-            <a href="browse.php?category_id=" class="button">T-Shirts</a>
-            <a href="browse.php?category_id=" class="button">Computing Novelties</a>
-            <a href="browse.php?category_id=" class="button">USB Novelties</a>
-            <a href="browse.php?category_id=" class="button">Toys</a>-->
-            
-            
+        <div id= "categorie"class="dropdown" style="position: relative; font-family: Calibri; ">
+    <button class="dropbtn" href="categories.php">Alle categorieen
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content" style="position: absolute;" >
 
             <?php
                 $Query = "
@@ -65,6 +62,19 @@ include "connect.php";
 
 
                 ?>
+                  </div>
+</div>
+
+
+            <a href="index.php" class="button" id="categories">Home</a>
+            <!-- <a href="browse.php?category_id=" class="button">Novelty Items</a>
+            <a href="browse.php?category_id=" class="button">Clothing</a>
+            <a href="browse.php?category_id=" class="button">T-Shirts</a>
+            <a href="browse.php?category_id=" class="button">Computing Novelties</a>
+            <a href="browse.php?category_id=" class="button">USB Novelties</a>
+            <a href="browse.php?category_id=" class="button">Toys</a>-->
+            
+           
                 <a href="categories.php" class="button" id="categories">Alle categorieen</a>
                 <a href="contact.php" class="button" id="categories">Over Ons</a>
         </div>
