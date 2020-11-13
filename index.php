@@ -23,22 +23,31 @@ include __DIR__ . "/Header.php";
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="img_lights_wide.jpg" alt="First slide">
+  <div class="carousel-inner" style="height: 350px; width: 950px; margin-left: auto; margin-right: auto;">
+    <div class="carousel-item active " style="width: auto; height: auto; background-color: gray;">
+      <img class="d-block" src="Public\ProductIMGHighRes\580b57fbd9996e24bc43bf55.png" alt="First slide" style="width: 30%; height: 30%;">
+      <div>
+
+      </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="img_nature_wide.jpg" alt="Second slide">
+    <div class="carousel-item " style="width: auto; height: auto; background-color: gray;">
+      <img class="d-block" src="Public\ProductIMGHighRes\580b57fbd9996e24bc43bf55.png" alt="First slide" style="width: 30%; height: 30%;">
+      <div>
+
+      </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="img_snow_wide.jpg" alt="Third slide">
+    <div class="carousel-item " style="width: auto; height: auto; background-color: gray;">
+      <img class="d-block" src="Public\ProductIMGHighRes\580b57fbd9996e24bc43bf55.png" alt="First slide" style="width: 30%; height: 30%;">
+      <div>
+
+      </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="margin-bottom: 50px; margin-left: 150px;">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="margin-bottom: 50px; margin-right: 150px;">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
