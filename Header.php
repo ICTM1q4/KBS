@@ -16,6 +16,7 @@ include "connect.php";
     <script src="fontawesome.js"></script>
     <script src="jquery-3.4.1.js"></script>
     <script type="text/javascript">
+<<<<<<< HEAD
         function sendToPage() {
             var input = document.getElementById("search").value;
             //alert(input);
@@ -30,6 +31,21 @@ include "connect.php";
             }
         }
     </script>
+=======
+
+
+            function sendToPage(){
+                var input = document.getElementById("search").value;
+                var inputkey = document.getElementById("myInput");
+                 //alert(input);
+                if (input != "" && event.keyCode == 13 ){
+                    location.href = "browse.php";
+                }
+                
+                    }
+
+        </script>
+>>>>>>> 5f35a4a48179437bf004dffb13c354ddea3c5be4
 </head>
 <header>
     <div id="totaal">

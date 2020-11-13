@@ -696,5 +696,7 @@ ul#ul-class-navigation li {
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color:  #221c4c;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+
+.contactinfo {color: #ffffff; display: block; margin-left: 10%;}
