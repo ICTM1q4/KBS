@@ -16,7 +16,25 @@ include "connect.php";
     <script src="fontawesome.js"></script>
     
     <script src="jquery-3.4.1.js"></script>
-    
+    <script type="text/javascript">
+
+
+            function sendToPage(){
+                var input = document.getElementById("search").value;
+                 //alert(input);
+                if (input == "happy"){
+                    location.href = "browse.php";
+                    return false;
+                }
+                else if (input == "sad"){
+                    location.href = "browse.php";
+                    return false;
+                }
+                else {
+                    alert('Invalid Input.');
+                }
+                    }
+        </script>
 </head>
 <header>
     <div id="totaal">
@@ -83,17 +101,17 @@ include "connect.php";
         </div>
         
         <div class="background">
-            <form>
+            <form >
         <input type="text" name="search_string" id="search" id="search_string" placeholder="search"
                    value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>"
-                   class="form-submit">
+                   class="form-submit" onclick="sendToPage();">
             </form>
             <?php
             
 
             $login = false;
             if ($login == false){
-                print("<a id='login' href='Login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%;'>login</a>");
+                print("<a id='login' href='https://www.youtube.com/watch?v=lavOQrZbUC4' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%;'>login</a>");
             }
             else {
                 print("<a id='login' href='Account.php' id='categories' class='button' style='color: white;'>Account</a>");
