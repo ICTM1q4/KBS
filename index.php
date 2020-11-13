@@ -25,19 +25,19 @@ include __DIR__ . "/Header.php";
   </ol>
   <div class="carousel-inner" style="height: 350px; width: 950px; margin-left: auto; margin-right: auto;">
     <div class="carousel-item active " style="width: auto; height: auto; background-color: gray;">
-      <img class="d-block" src="Public\ProductIMGHighRes\580b57fbd9996e24bc43bf55.png" alt="First slide" style="width: 30%; height: 30%;">
+      <img class="d-block" src="Public\ProductIMGHighRes\580b57fbd9996e24bc43bf55.png" alt="First slide" style="width: 30%; height: 300px;">
+      <div>
+
+      </div>
+    </div>
+    <div class="carousel-item " style="width: 100%; height: auto; background-color: gray;">
+      <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: -20px">
       <div>
 
       </div>
     </div>
     <div class="carousel-item " style="width: auto; height: auto; background-color: gray;">
-      <img class="d-block" src="Public\ProductIMGHighRes\580b57fbd9996e24bc43bf55.png" alt="First slide" style="width: 30%; height: 30%;">
-      <div>
-
-      </div>
-    </div>
-    <div class="carousel-item " style="width: auto; height: auto; background-color: gray;">
-      <img class="d-block" src="Public\ProductIMGHighRes\580b57fbd9996e24bc43bf55.png" alt="First slide" style="width: 30%; height: 30%;">
+      <img class="d-block" src="Public\ProductIMGHighRes\Hoodie.png" alt="First slide" style="width: 30%; height: 300px;">
       <div>
 
       </div>
