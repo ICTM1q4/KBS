@@ -75,6 +75,12 @@ h3{
   font-family: Calibri;
   z-index: 50;
 }
+#login:hover{
+  opacity: 0.5;
+}
+#winkelmand:hover{
+  opacity: 0.5;
+}
 #search{
     position: absolute;
     
