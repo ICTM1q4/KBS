@@ -66,7 +66,7 @@ include "connect.php";
 
                 ?>
                 <a href="categories.php" class="button" id="categories">Alle categorieen</a>
-
+                <a href="contact.php" class="button" id="categories">Over Ons</a>
         </div>
         
         <div class="background">
