@@ -16,19 +16,19 @@ include "connect.php";
     <script src="fontawesome.js"></script>
     <script src="jquery-3.4.1.js"></script>
     <script type="text/javascript">
-        function sendToPage() {
-            var input = document.getElementById("search").value;
-            //alert(input);
-            if (input == "happy") {
-                location.href = "browse.php";
-                return false;
-            } else if (input == "sad") {
-                location.href = "browse.php";
-                return false;
-            } else {
-                alert('Invalid Input.');
-            }
-        }
+        function sendToPage(){
+                var input = document.getElementById("search").value;
+                var inputkey = document.getElementById("myInput");
+                 //alert(input);
+                 
+                if (input != "" && event.keyCode != 13){
+                    
+                        window.location.href = "browse.php";
+                    
+                    
+                }}
+
+                    
     </script>
 </head>
 <header>
@@ -79,8 +79,8 @@ include "connect.php";
         </div>
 
         <div class="background">
-            <form>
-                <input type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onclick="sendToPage();">
+            <form href="browse.php">
+                <input type="text"  name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onclick="sendToPage(event);">
             </form>
             
             
