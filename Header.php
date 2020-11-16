@@ -82,15 +82,20 @@ include "connect.php";
             <form>
                 <input type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onclick="sendToPage();">
             </form>
+            
+            
+            
 
             <?php
             $login = false;
-            if ($login == false) {
-                print("<a id='login' href='https://www.youtube.com/watch?v=lavOQrZbUC4' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%;'>Inloggen</a>");
-            } else {
-                print("<a id='login' href='Account.php' id='categories' class='button' style='color: white;'>Mijn Account</a>");
+            if ($login == false){
+                print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
+            }
+            else {
+                print("<a id='login' href='Account.php' id='categories' class='button' style='color: white;'>Account</a>");
             }
             ?>
+            <a id='winkelmand' href='winkelmand.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float: right; padding-right: 50px; '>Winkelmand</a>
         </div>
 
     </div>
