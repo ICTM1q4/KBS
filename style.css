@@ -106,10 +106,9 @@ input{
 
 /*Body index*/
 
-
 #index{
-    background: rgba(0,0,0,0.5);
-    border: 10px rgba(0,0,0,0.5) solid;
+    background: rgba(0, 0, 0, 0.5);
+    border: 10px rgba(0, 0, 0, 0.5) solid;
     border-radius: 10px;
     height: 1000px;
     margin-top: 10px;
@@ -161,7 +160,7 @@ input{
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Caption text */
@@ -226,7 +225,7 @@ input{
 #FilterFrame {
   position: absolute;
   width: 19%;
-  background-color: rgba(35, 40, 47, 0.8);
+  background-color:rgba(35, 40, 47, 0.8);
   float: left;
   top:216px;
   border: 1px solid #fff;

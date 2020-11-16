@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Contact</title>
     <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='contact.css'>
 </head>
 
 <?php
@@ -18,3 +19,6 @@ include __DIR__ . "/Header.php";
     Twitter: <a href='twitter.com'>Nerdygadgets</a><br>
     Facebook: <a href='facebook.com'>Nerdygadgets</a>
 </dif>
+
+
+
