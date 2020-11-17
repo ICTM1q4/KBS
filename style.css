@@ -730,9 +730,9 @@ ul#ul-class-navigation li {
   
   
   
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 32%;
+  margin-left: 7%;
+  
 }
 #SignUp{
   
@@ -743,7 +743,6 @@ ul#ul-class-navigation li {
     
     
     
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 20%;
+  margin-left: 7%;
 }

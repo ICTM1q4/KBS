@@ -2,11 +2,35 @@
 
 $gebruikersNaam = "";
 $gebruikersWachtwoord = "";
+$gebruikersFirstNaam = "";
+$gebruikersLastNaam = "";
+$gebruikersAddress = "";
+$gebruikersZipcode = "";
+$gebruikersPhone = "";
+$gebruikersEmail = "";
+
+
 
 $gebruikersNaam = $_POST["Username"];
 $gebruikersWachtwoord = $_POST["Password"];
 
-$Query = "
+if (isset($_POST["phonenumber"])){
+    $Query = "INSERT INTO webcustomers ('firstname','lastname','username','password','address','zipcode','phonenumber','emailaddress')
+    VALUES (?,?,?,?,?,?,?,?)"
+
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
+
+
+}
+else {
+    $Query = "INSERT INTO webcustomers ('firstname','lastname','username','password','address','zipcode','emailaddress')
+    VALUES (?,?,?,?,?,?,?)"
+
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail); 
+}
+
                 
 
 

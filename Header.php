@@ -20,10 +20,10 @@ include "connect.php";
             var input = document.getElementById("search").value;
             //alert(input);
             if (input == "happy") {
-                location.href = "browse.php";
+                location.href = "/browse.php";
                 return false;
             } else if (input == "sad") {
-                location.href = "browse.php";
+                location.href = "/browse.php";
                 return false;
             } else {
                 alert('Invalid Input.');
@@ -75,13 +75,13 @@ include "connect.php";
                 </div>
 
             </div>
-            <a href="contact.php" class="button" id="categories" style="margin-left: -37%;">Over Ons</a>
+            <a href="contact.php" class="button" id="categories" style="margin-left: -400px;">Over Ons</a>
 
         </div>
 
         <div class="background">
             <form>
-                <input type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onSubmit="sendToPage();">
+                <input formaction="browse.php" type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onSubmit="sendToPage();">
             </form>
             
             

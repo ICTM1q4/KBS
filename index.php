@@ -13,8 +13,8 @@ include __DIR__ . "/Header.php";
 ?>
 </header>
 <body >
-    <div id="index">
-        <h1></h1> <br>
+    <div id="index" >
+        <h1 style="padding-left: 42%; color: white;">Trending Items</h1> <br>
 
         
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -36,7 +36,7 @@ include __DIR__ . "/Header.php";
     <a href="view.php?id=2">  
       <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: 10px; padding-right:">
       <div >
-      <h1 style="">Titel</h1>
+      <h1 style="color: white;">USB ROCKET LAUNCHER (GRAY)</h1>
       </div>
       </div>
     </a>
@@ -44,7 +44,7 @@ include __DIR__ . "/Header.php";
       <a href="view.php?id=102">
       <img class="d-block" src="Public\ProductIMGHighRes\Hoodie.png" alt="First slide" style="width: 30%; height: 300px;">
       <div>
-        <h1>ALIEN OFFICER HOODIE (BLACK) XL</h1>
+        <h1 style="color: white;">ALIEN OFFICER HOODIE (BLACK) XL</h1>
       </div>
       </a>
     </div>
