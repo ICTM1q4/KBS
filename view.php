@@ -120,18 +120,18 @@ if ($R) {
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
-                        <h6> Inclusief BTW </h6>
+                        <h6 style="color: white;"> Inclusief BTW </h6>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="StockItemDescription">
-            <h3>Artikel beschrijving</h3>
+        <div id="StockItemDescription" style="color: white;">
+            <h3 style="color: white;">Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
         </div>
-        <div id="StockItemSpecifications">
-            <h3>Artikel specificaties</h3>
+        <div id="StockItemSpecifications" style="color: white;">
+            <h3 >Artikel specificaties</h3>
             <?php
             $CustomFields = json_decode($Result['CustomFields'], true);
             if (is_array($CustomFields)) { ?>
