@@ -9,8 +9,8 @@
 <?php
 include __DIR__ . "/Header.php";
 ?>
-
-<h1>Uw winkelmand</h1>
+<body id="winkelmandje">
+<h1>Uw winkelmand </h1>
 <table> <!--De inhoud van de winkelman moet met SQL werken! Dit is slechts een voorbeeld!-->
     <tr>
         <th>Productnaam</th>
@@ -32,3 +32,5 @@ include __DIR__ . "/Header.php";
 </table>
 Totaalprijs:    25,98 Euro<br>
 <button>Kopen die handel!</button>
+
+</body>
