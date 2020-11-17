@@ -79,20 +79,11 @@ h3{
   font-family: Calibri;
   z-index: 50;
 }
-<<<<<<< HEAD
 #login:hover{
   opacity: 0.5;
 }
 #winkelmand:hover{
   opacity: 0.5;
-=======
-#winkelmand:hover{
-  opacity:0.5;
-}
-#winkelmandje{
-  color: white;
-  font-family: Calibri;
->>>>>>> Yorben
 }
 #search{
     position: absolute;
