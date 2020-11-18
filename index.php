@@ -44,7 +44,7 @@ include __DIR__ . "/Header.php";
       <a href="view.php?id=102">
       <img class="d-block" src="Public\ProductIMGHighRes\Hoodie.png" alt="First slide" style="width: 30%; height: 300px;">
       <div>
-        <h1 style="color: white;">ALIEN OFFICER HOODIE (BLACK) XL</h1>
+        <h1 style="color: white;">ALIEN OFFICER HOODIE (BLACK)</h1>
       </div>
       </a>
     </div>
