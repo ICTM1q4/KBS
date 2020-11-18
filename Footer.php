@@ -8,7 +8,7 @@
   width: 100%;
   background-color: rgba(0,0,0,0.5);
   color: white;
-  text-align: fixed;
+  text-align: center;
   
   ">
 <div style="margin-top: 10px;">

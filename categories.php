@@ -12,7 +12,7 @@
 include __DIR__ . "/Header.php";
 ?>
 </header>
-<body style="height: 100%;">
+<body style="min-height: 100vh;">
     
 
 
