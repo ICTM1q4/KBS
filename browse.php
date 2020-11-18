@@ -290,7 +290,7 @@ if (isset($amount)) {
         <?php
     } else {
         ?>
-        <h2 id="NoSearchResults">
+        <h2 id="NoSearchResults" style="color: white; font-family: Calibri; background: none;">
             Yarr, er zijn geen resultaten gevonden.
         </h2>
         <?php

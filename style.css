@@ -610,6 +610,8 @@ ul#ul-class-price li {
   height: 100%;
   margin: 20px;
   position: relative;
+  color: white;
+  font-family: Calibri;
 }
 #ProductNotFound {
   text-align: center;
