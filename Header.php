@@ -17,17 +17,11 @@ include "connect.php";
     <script src="jquery-3.4.1.js"></script>
     <script type="text/javascript">
         function sendToPage() {
-            var input = document.getElementById("search").value;
-            //alert(input);
-            if (input == "happy") {
-                location.href = "/browse.php";
-                return false;
-            } else if (input == "sad") {
-                location.href = "/browse.php";
-                return false;
-            } else {
-                alert('Invalid Input.');
-            }
+            
+            
+            window.location = "www.google.com/browse.php";
+            
+            
         }
     </script>
 </head>
@@ -75,13 +69,15 @@ include "connect.php";
                 </div>
 
             </div>
-            <a href="contact.php" class="button" id="categories" style="margin-left: -400px;">Over Ons</a>
-
+            <a href="overons.php" class="button" id="categories" style="margin-left: -400px;">Over Ons</a>
+            <a href="contact.php" class="button" id="categories" style="margin-left: -280px;">Contact</a>         
         </div>
 
         <div class="background">
-            <form>
-                <input formaction="browse.php" type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onSubmit="sendToPage();">
+            <form action="browse.php">
+            <a>
+                <input type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onSubmit="sendToPage();">
+            </a>
             </form>
             
             

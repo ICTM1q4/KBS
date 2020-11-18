@@ -11,6 +11,7 @@ a.button {
 }
 body{
     background-color: #221c4c;
+    
 }
 
 
@@ -85,6 +86,9 @@ h3{
 #winkelmandje{
   color: white;
   font-family: Calibri;
+  margin-top: 10px;
+  margin-left: 10px;
+
 }
 #search{
     position: absolute;

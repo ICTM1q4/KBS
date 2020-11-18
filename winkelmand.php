@@ -5,11 +5,13 @@
     <title>Contact</title>
     <link rel='stylesheet' href='style.css'>
 </head>
-
+<header>
 <?php
 include __DIR__ . "/Header.php";
 ?>
-<body id="winkelmandje">
+</header>
+<body >
+<div id="winkelmandje" style="margin-top: 20px; margin-left: 30px;">
 <h1>Uw winkelmand </h1>
 <table> <!--De inhoud van de winkelman moet met SQL werken! Dit is slechts een voorbeeld!-->
     <tr>
@@ -32,5 +34,5 @@ include __DIR__ . "/Header.php";
 </table>
 Totaalprijs:    25,98 Euro<br>
 <button>Kopen die handel!</button>
-
+</div>
 </body>

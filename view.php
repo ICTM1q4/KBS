@@ -8,7 +8,7 @@ $Query = "
            SELECT SI.StockItemID, 
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
             StockItemName,
-            CONCAT('Voorraad: ',QuantityOnHand)AS QuantityOnHand,
+            (CASE WHEN (SIH.QuantityOnHand) >= ? THEN 'Ruime voorraad beschikbaar.' ELSE CONCAT('Voorraad: ',QuantityOnHand) END) AS QuantityOnHand,
             SearchDetails, 
             (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
             (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
@@ -21,7 +21,7 @@ $Query = "
 
 $ShowStockLevel = 1000;
 $Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+mysqli_stmt_bind_param($Statement, "ii", $ShowStockLevel,$_GET['id']);
 mysqli_stmt_execute($Statement);
 $ReturnableResult = mysqli_stmt_get_result($Statement);
 if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
@@ -49,14 +49,7 @@ if ($R) {
     <?php
     if ($Result != null) {
         ?>
-        <?php
-        if (isset($Result['Video'])) {
-            ?>
-            <div id="VideoFrame">
-                <?php print $Result['Video']; ?>
-            </div>
-        <?php }
-        ?>
+        
 
 
         <div id="ArticleHeader">
@@ -115,7 +108,7 @@ if ($R) {
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $Result['StockItemName']; ?>
             </h2>
-            <div class="QuantityText"><?php print $Result['QuantityOnHand']; ?></div>
+            <div class="QuantityText" style="color: white; font-family:Calibri;"><?php print $Result['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
@@ -127,11 +120,11 @@ if ($R) {
         </div>
 
         <div id="StockItemDescription" style="color: white;">
-            <h3 style="color: white;">Artikel beschrijving</h3>
+            <h3 style="color: white; border: none;">Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
         </div>
         <div id="StockItemSpecifications" style="color: white;">
-            <h3 >Artikel specificaties</h3>
+            <h3 style="border: none;">Artikel specificaties</h3>
             <?php
             $CustomFields = json_decode($Result['CustomFields'], true);
             if (is_array($CustomFields)) { ?>

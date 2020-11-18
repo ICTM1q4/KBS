@@ -29,7 +29,7 @@ include __DIR__ . "/Header.php";
     <table style="margin-left: 50px; width: 100%; height: 70%;">
         <tr style="width: 80%;">
             <td style="width: 40%; margin: auto;" >
-                <h1 style="font-family: Calibri; color: white;">Sign in:</h1>
+                <h1 style="font-family: Calibri; color: white;">Log in:</h1>
                 <div id="SignUp" style="font-family: Calibri;">
                     <form action="DatabaseLogin.php" style="margin-left: 20px; padding-top: 20px;" method="post">
                         <label for="Username">Username:</label><br>
