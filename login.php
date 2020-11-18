@@ -15,7 +15,7 @@ include __DIR__ . "/Header.php";
 ?>
 </header>
 
-<body>
+<body style="height: 100%;">
     <div style="
     background: rgba(0,0,0,0.5);
     border: 10px rgba(0,0,0,0.5) solid;
@@ -50,3 +50,6 @@ include __DIR__ . "/Header.php";
         
     </div>
 </body>
+<?php
+include __DIR__ . "/Footer.php";
+?>

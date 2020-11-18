@@ -11,7 +11,7 @@
 include __DIR__ . "/Header.php";
 ?>
 </header>
-<body>
+<body style="height: 100%;">
 
     <form action="" style="color: white; font-family: Calibri; margin: auto; width: 700px; font-size: 120%; margin-top: 3%;background-color: rgba(128,128,128,0.5); margin-top: 20px; border: 10px solid rgba(128,128,128,0.1); border-radius: 5px; padding-top: 10px; padding-left: 10px; padding-bottom: 10px;">
     <h1 style="color: white; font-family: Calibri;">Contactformulier:</h1>
@@ -26,7 +26,7 @@ include __DIR__ . "/Header.php";
     <input type="submit" id="submit" value="Versturen" style="margin-left: 30px; margin-top: 10px;">
     </div>    
 </form>
-    <div class="contactinfo" style="background-color: rgba(128,128,128,0.5); width: 20%; margin-top: 20px; border: 10px solid rgba(128,128,128,0.1); border-radius: 5px; padding-top: 10px; padding-left: 10px; padding-bottom: 10px; margin-left: 75%; margin-top: -27%;">
+    <div class="contactinfo" style="background-color: rgba(128,128,128,0.5); width: 20%; margin-top: 20px; border: 10px solid rgba(128,128,128,0.1); border-radius: 5px; padding-top: 10px; padding-left: 10px; padding-bottom: 10px; margin-left: 75%; margin-top: -32%;">
     <h1>Contact</h1>
     Telefoonnummer: 06123456<br>
     E-mail: nerdygadgets@gmail.com
@@ -37,3 +37,7 @@ include __DIR__ . "/Header.php";
 
 
 </body>
+
+<?php
+include __DIR__ . "/Footer.php";
+?>
