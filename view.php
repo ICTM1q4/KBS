@@ -110,20 +110,17 @@ if ($R) {
             }
             ?>
 
-
-            <h1 class="StockItemID">Artikelnummer: <?php print $Result["StockItemID"]; ?></h1>
-            <h2 class="StockItemNameViewSize StockItemName">
-                <?php print $Result['StockItemName']; ?>
-            </h2>
-            <div class="QuantityText"><?php print $Result['QuantityOnHand']; ?></div>
-            <div id="StockItemHeaderLeft">
-                <div class="CenterPriceLeft">
-                    <div class="CenterPriceLeftChild">
+                <div class="StockItemInfo">
+                    <h1 class="StockItemID">Artikelnummer: <?php print $Result["StockItemID"]; ?></h1>
+                    <h2 class="StockItemNameViewSize StockItemName">
+                        <?php print $Result['StockItemName']; ?>
+                    </h2>
+                    <div class="StockItemPrice">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6 style="color: white;"> Inclusief BTW </h6>
                     </div>
                 </div>
-            </div>
+            <div class="QuantityText"><?php print $Result['QuantityOnHand']; ?></div>
         </div>
 
         <div id="StockItemDescription" style="color: white;">
