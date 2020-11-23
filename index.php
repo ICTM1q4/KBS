@@ -31,9 +31,9 @@ include __DIR__ . "/Header.php";
       </div>
     </div>
     <div class="carousel-item " style="width: 100%; height: auto; background-color: rgba(128,128,128,0.5);">
-      <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: 10px; padding-right:">
+      <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: 10px; ">
       <div >
-      <h1 style="">Titel</h1>
+      <h1>Titel</h1>
       </div>
     </div>
     <div class="carousel-item " style="width: auto; height: auto; background-color: rgba(128,128,128,0.5);">
