@@ -19,7 +19,7 @@ include "connect.php";
         function sendToPage() {
             
             
-            window.location = "www.google.com/browse.php";
+            window.location = "browse.php";
             
             
         }
