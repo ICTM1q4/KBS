@@ -719,13 +719,13 @@ ul#ul-class-navigation li {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: gray;}
+.dropdown-content a:hover {background-color: #B90BD5;}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: rgb(36, 36, 110);}
+.dropdown:hover .dropbtn {background-color: #561AB9;}
 
 
 .contactinfo {color: #ffffff; display: block; margin-left: 10%;}
@@ -755,3 +755,4 @@ ul#ul-class-navigation li {
   width: 20%;
   margin-left: 7%;
 }
+.winkelmand {color: #ffffff; display: block; margin-left: 10%;}

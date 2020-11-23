@@ -74,10 +74,15 @@ include "connect.php";
         </div>
 
         <div class="background">
+<<<<<<< HEAD
             <form action="browse.php">
             <a>
                 <input type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onSubmit="sendToPage();">
             </a>
+=======
+            <form href="browse.php">
+                <input type="text"  name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onclick="sendToPage(event);">
+>>>>>>> 0b909ff3008e1601ad417b05b67b7890b1a3afd3
             </form>
             
             

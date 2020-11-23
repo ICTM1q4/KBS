@@ -32,9 +32,9 @@ include __DIR__ . "/Header.php";
       </div>
       </a>
     </div>
-    <div class="carousel-item " style="width: 100%; height: auto; background-color: rgba(128,128,128,0.5); border: 20px; border-radius: 10px;">
-    <a href="view.php?id=2" style="border: 20px; border-radius: 10px;" >  
-      <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: 10px; padding-right:">
+    <div class="carousel-item " style="width: 100%; height: auto; background-color: rgba(128,128,128,0.5);">
+    <a href="view.php?id=2">  
+      <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: 10px; ">
       <div >
       <h1 style="color: white;">USB ROCKET LAUNCHER (GRAY)</h1>
       </div>
