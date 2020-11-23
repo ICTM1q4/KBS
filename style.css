@@ -340,6 +340,7 @@ input{
 }
 .QuantityText {
   position: absolute;
+  color: white;
   left: 310px;
   bottom: 0;
 }
@@ -347,9 +348,9 @@ input{
   float: right;
   text-align: right;
   position: absolute;
-  top: 0;
+  top: 30px;
   right: 0;
-  height: 300px;
+  width: 200px
 }
 
 .StockItemNameViewSize {
@@ -564,6 +565,7 @@ ul#ul-class-price li {
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 15px;
+  width: 40%;
 }
 .StockItemName {
   font-family: pt-sans, sans-serif;
@@ -571,6 +573,7 @@ ul#ul-class-price li {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: bold;
+  width: 80%;
 }
 .StockItemComments {
   font-family: pt-sans, sans-serif;

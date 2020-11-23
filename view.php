@@ -112,12 +112,12 @@ if ($R) {
 
 
             <h1 class="StockItemID">Artikelnummer: <?php print $Result["StockItemID"]; ?></h1>
-            <h2 class="StockItemNameViewSize StockItemName">
+            <h2 class="StockItemNameViewSize StockItemName">  <!--naam van artikel en zo-->
                 <?php print $Result['StockItemName']; ?>
             </h2>
             <div class="QuantityText"><?php print $Result['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
-                <div class="CenterPriceLeft">
+                <div class="CenterPriceLeft"> <!--linkerkant-->
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6 style="color: white;"> Inclusief BTW </h6>
