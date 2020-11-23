@@ -9,12 +9,12 @@ include "connect.php";
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel='stylesheet' href='bootstrap.min.css'>
-    <link rel='stylesheet' href='style.css'>
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="fontawesome.js"></script>
-    <script src="jquery-3.4.1.js"></script>
+    <link rel='stylesheet' href='CSS/bootstrap.min.css'>
+    <link rel='stylesheet' href='CSS/style.css'>
+    <script src="JS/jquery.min.js"></script>
+    <script src="JS/bootstrap.min.js"></script>
+    <script src="JS/fontawesome.js"></script>
+    <script src="JS/jquery-3.4.1.js"></script>
     <script type="text/javascript">
         function sendToPage() {
             
@@ -29,7 +29,7 @@ include "connect.php";
     <div id="totaal">
         <div id="titel">
             <a href="index.php">
-                <picture id="picture"><img src="wauw%20(1).png"></picture>
+                <picture id="picture"><img src="Pictures/wauw%20(1).png"></picture>
                 <h3> NerdyGadgets </h3>
     </a>
         </div>

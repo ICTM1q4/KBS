@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='CSS/style.css'>
     
 
 </head>
@@ -41,7 +41,7 @@ include __DIR__ . "/Header.php";
       </div>
     </a>
     <div class="carousel-item " style="width: auto; height: auto; background-color: rgba(128,128,128,0.5); border: 20px; border-radius: 10px;">
-      <a href="view.php?id=102" ">
+      <a href="view.php?id=102" >
       <img class="d-block" src="Public\ProductIMGHighRes\Hoodie.png" alt="First slide" style="width: 30%; height: 300px;">
       <div>
         <h1 style="color: white;">ALIEN OFFICER HOODIE (BLACK)</h1>
