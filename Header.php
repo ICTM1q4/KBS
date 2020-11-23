@@ -37,9 +37,10 @@ include "connect.php";
             <a href="index.php">
                 <picture id="picture"><img src="wauw%20(1).png"></picture>
                 <h3> NerdyGadgets </h3>
+    </a>
         </div>
 
-        <div id="categorie" style="">
+        <div id="categorie" style="   overflow: visible;">
             <a href="index.php" class="button" id="categories">Home</a>
             <div id="categorie" class="dropdown" style="position: relative; font-family: Calibri; float: left; ">
                 <button class="dropbtn" onclick="window.location.href='categories.php'">Alle categorieen
@@ -74,7 +75,7 @@ include "connect.php";
                 </div>
 
             </div>
-            <a href="contact.php" class="button" id="categories" style="margin-left: -27%;">Over Ons</a>
+            <a href="contact.php" class="button" id="categories" style="margin-left: -400px;">Over Ons</a>
 
         </div>
 
