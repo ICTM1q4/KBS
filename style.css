@@ -32,6 +32,7 @@ body{
 }
 #categorie{
     margin-right: 400px ;
+    
    
     
 }
@@ -65,6 +66,9 @@ h3{
     border-radius: 10px;
     font-family: Calibri;
     z-index: 50;
+}
+#login:hover{
+  opacity:0.5;
 }
 #winkelmand{
   position: static;
@@ -107,7 +111,7 @@ h3{
     float: left;
     margin: auto;
     font-size: 143%;
-
+    overflow: visible;
     
 }
 #categories:hover{
@@ -716,4 +720,29 @@ ul#ul-class-navigation li {
 
 .contactinfo {color: #ffffff; display: block; margin-left: 10%;}
 
+
+#SignIn{
+  background: rgba(256,256,256,0.5);
+  height: 80%;
+  border: 10px;
+  border-radius: 5px;
+  
+  
+  
+  width: 32%;
+  margin-left: 7%;
+  
+}
+#SignUp{
+  
+    background: rgba(256,256,256,0.5);
+    height: 80%;
+    border: 10px;
+  border-radius: 5px;
+    
+    
+    
+  width: 20%;
+  margin-left: 7%;
+}
 .winkelmand {color: #ffffff; display: block; margin-left: 10%;}
