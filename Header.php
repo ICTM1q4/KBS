@@ -74,15 +74,10 @@ include "connect.php";
         </div>
 
         <div class="background">
-<<<<<<< HEAD
             <form action="browse.php">
             <a>
                 <input type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onSubmit="sendToPage();">
             </a>
-=======
-            <form href="browse.php">
-                <input type="text"  name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onclick="sendToPage(event);">
->>>>>>> 0b909ff3008e1601ad417b05b67b7890b1a3afd3
             </form>
             
             
@@ -91,13 +86,13 @@ include "connect.php";
             <?php
             $login = false;
             if ($login == false){
-                print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
+                print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px; margin-top: 0px;'>Login</a>");
             }
             else {
                 print("<a id='login' href='Account.php' id='categories' class='button' style='color: white;'>Account</a>");
             }
             ?>
-            <a id='winkelmand' href='winkelmand.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float: right; padding-right: 50px; '>Winkelmand</a>
+            <a id='winkelmand' href='winkelmand.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float: right; padding-right: 50px; margin-top: 0px; '>Winkelmand</a>
         </div>
 
     </div>
