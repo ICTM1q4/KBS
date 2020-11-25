@@ -24,7 +24,7 @@ $Query = "
 
 
 if ($ReturnableResult["username"] == $gebruikersNaam && $ReturnableResult["password"] == $gebruikersWachtwoord ){
-    print("<h1> Welkom $ReturnableResult['firstname'] . $ReturnableResult['lastname'], je bent zojuist ingelogd!</h1>");
+    print("<h1> Welkom". $ReturnableResult['firstname'] . $ReturnableResult['lastname'].", je bent zojuist ingelogd!</h1>");
     $_SESSION["loggedin"] == true;
 }
 else {

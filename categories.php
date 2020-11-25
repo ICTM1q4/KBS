@@ -52,6 +52,3 @@ $StockGroups = mysqli_fetch_all($Result, MYSQLI_ASSOC);
     } ?>
 </div>
 </body>
-<?php
-include __DIR__ . "/Footer.php";
-?>

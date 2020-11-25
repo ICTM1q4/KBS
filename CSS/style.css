@@ -138,7 +138,7 @@ input{
     background: rgba(0,0,0,0.5);
     border: 10px rgba(0,0,0,0.5) solid;
     border-radius: 10px;
-    height: 1000px;
+    height: 1500px;
     margin-top: 10px;
     
     width: 90%;
@@ -549,6 +549,7 @@ ul#ul-class-price li {
 #Wrap a {
   text-decoration: none;
   color: white;
+  
 }
 #Wrap a:hover {
   color: #ccc;
