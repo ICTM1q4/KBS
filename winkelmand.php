@@ -8,6 +8,7 @@
 <header>
 <?php
 include __DIR__ . "/Header.php";
+include __DIR__ . "/winkelmandConnect.php";
 ?>
 </header>
 <body >
@@ -32,6 +33,32 @@ include __DIR__ . "/Header.php";
         <td><button>Verwijderen</button></td>
     </tr>
 </table>
+<?php
+
+$Statement = "";
+
+$Query = "
+                SELECT WebOrderLine.StockItemID as Product, WebOrderLine.OrderAmount as Amount 
+                FROM WebOrder
+                RIGHT JOIN WebCustomer ON WebOrder.CustomerID = WebCustomer.CustomerID
+                JOIN WebOrderLine ON WebOrder.OrderID = WebOrderLine.OrderID
+                WHERE WebCustomer.Username = ?
+                AND WebCustomer.Password = ?;";
+
+
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "ii", $gebruikersNaam, $gebruikersWachtwoord);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+
+foreach ($ReturnableResult as $value){
+
+    
+    print "<h1> $value </h1> <br>" ;
+    print("<p style='color: white;'>hoi</p>");
+}
+?>
 Totaalprijs:    25,98 Euro<br>
 <button>Kopen die handel!</button>
 </div>
