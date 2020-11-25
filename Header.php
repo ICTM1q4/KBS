@@ -25,12 +25,12 @@ include "connect.php";
         }
     </script>
 </head>
-<header>
-    <div id="totaal">
-        <div id="titel">
-            <a href="index.php">
+<header style="color: white; background-color: black; border: black; padding-top: black;">
+    <div id="totaal" style="color: inherit;">
+        <div id="titel" style="color: inherit;">
+            <a href="index.php" style="color: inherit;">
                 <picture id="picture"><img src="Pictures/wauw%20(1).png"></picture>
-                <h3> NerdyGadgets </h3>
+                <h3 style="color: inherit;"> NerdyGadgets </h3>
     </a>
         </div>
 

@@ -10,13 +10,13 @@ a.button {
     font-family: Calibri;
 }
 body{
-    background-color: #221c4c;
+    background-color: #463886;
     
 }
 
 
 #totaal{
-    background: black;
+    background: inherit;
     overflow: visible;
     border: 20px black solid;
     border-radius: 10px;
@@ -49,7 +49,7 @@ img{
 
 
 h3{
-    color: white;
+    color: inherit;
     font-family: Calibri;
     border: 15px solid black;
     float: left;
@@ -84,7 +84,7 @@ h3{
   opacity:0.5;
 }
 #winkelmandje{
-  color: white;
+  color: inherit;
   font-family: Calibri;
   margin-top: 10px;
   margin-left: 10px;
@@ -112,7 +112,7 @@ h3{
 }
 
 #categories{
-    color: white;
+    color: inherit;
     border-left: 18px solid black;
     border-right: 18px solid black;
     border-top: 2px solid black;
@@ -285,7 +285,7 @@ input{
   position: relative;
   margin-left: 10%;
   padding: 1px;
-  border-bottom: 1px solid #fff;
+  
   display: block;
   font-family: Calibri;
 }
@@ -683,8 +683,8 @@ ul#ul-class-navigation li {
 }
 /* Dropdown Button */
 .dropbtn {
-  background-color: black;
-  color: white;
+  background-color: inherit;
+  color: inherit;
   
   font-size: 24px;
   border: none;

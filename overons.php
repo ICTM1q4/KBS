@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>NerdyGadgets</title>
     <link rel='stylesheet' href='CSS/style.css'>
-    <link rel='stylesheet' href='contact.css'>
+    <link rel='stylesheet' href='CSS/contact.css'>
 </head>
 <header>
 <?php
@@ -22,7 +22,7 @@ include __DIR__ . "/Header.php";
 
 </body>
 
-<footer style="padding-top: 320px;">
+<footer style="padding-top: 315px;">
 <?php
 include __DIR__ . "/Footer.php";
 ?>

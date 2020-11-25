@@ -10,10 +10,10 @@
 include __DIR__ . "/Header.php";
 ?>
 </header>
-<body >
+<body style="color: white;">
 <div id="winkelmandje" style="margin-top: 20px; margin-left: 30px;">
 <h1>Uw winkelmand </h1>
-<table> <!--De inhoud van de winkelman moet met SQL werken! Dit is slechts een voorbeeld!-->
+<table > <!--De inhoud van de winkelman moet met SQL werken! Dit is slechts een voorbeeld!-->
     <tr>
         <th>Productnaam</th>
         <th>Aantal</th>

@@ -221,15 +221,15 @@ if (isset($amount)) {
     </form>
 </div>
             </div>
-<div id="ResultsArea" class="Browse" style="margin-bottom: 700px;">
+<div id="ResultsArea" class="Browse" style="margin-bottom: 700px; ">
     <?php
     if (isset($ReturnableResult) && count($ReturnableResult) > 0) {
-        ?> <div style="margin-bottom: -550px;"> <?php
+        ?> <div style="margin-bottom: -550px; "> <?php
         foreach ($ReturnableResult as $row) {
             ?>
             
-            <a class="ListItem" >
-                <div id="ProductFrame"  >
+            <a class="ListItem"  >
+                <div id="ProductFrame" style="background-color: rgba(255,255,255,0.3);" >
                 <a href='view.php?id=<?php print $row['StockItemID']; ?>' style="text-decoration: none;">
                     <?php
                     if (isset($row['ImagePath'])) { ?>

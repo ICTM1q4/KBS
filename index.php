@@ -12,9 +12,9 @@
 include __DIR__ . "/Header.php";
 ?>
 </header>
-<body style="height: 900px;">
-    <div id="index" style="height: 100%;">
-        <h1 style="padding-left: 42%; color: white; margin-top: 30px;">Trending Items</h1> <br>
+<body style="height: 900px; ">
+    <div id="index" style="height: 100%; color: white;">
+        <h1 style="padding-left: 42%; color: inherit; margin-top: 30px;">Trending Items</h1> <br>
 
         
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -25,7 +25,7 @@ include __DIR__ . "/Header.php";
   </ol>
   <div class="carousel-inner" style="height: 100%; width: 950px; margin-left: auto; margin-right: auto; border: 20px; border-radius: 10px;">
     <div  class="carousel-item active " style="width: auto; height: auto; background-color: rgba(128,128,128,0.5);">
-      <a href="view.php?id=93" style="text-decoration: none;color: white; border: 20px; border-radius: 10px; border: 20px; border-radius: 10px;">
+      <a href="view.php?id=93" style="text-decoration: none;color: inherit; border: 20px; border-radius: 10px; border: 20px; border-radius: 10px;">
       <img  class="d-block" src="Public\ProductIMGHighRes\580b57fbd9996e24bc43bf55.png" alt="First slide" style="width: 30%; height: 300px;">
       <div >
       <h1>"THE GU" RED SHIRT T-SHIRT (BLACK) M</h1>
@@ -33,18 +33,18 @@ include __DIR__ . "/Header.php";
       </a>
     </div>
     <div class="carousel-item " style="width: 100%; height: auto; background-color: rgba(128,128,128,0.5); border: 20px; border-radius: 10px;">
-    <a href="view.php?id=2" style="text-decoration: none;border: 20px; border-radius: 10px;" >  
+    <a href="view.php?id=2" style="text-decoration: none;border: 20px; border-radius: 10px; color: inherit;" >  
       <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: 10px; padding-right:">
       <div >
-      <h1 style="color: white;">USB ROCKET LAUNCHER (GRAY)</h1>
+      <h1 style="color: inherit;">USB ROCKET LAUNCHER (GRAY)</h1>
       </div>
       </div>
     </a>
     <div class="carousel-item " style="width: auto; height: auto; background-color: rgba(128,128,128,0.5); border: 20px; border-radius: 10px;">
-      <a href="view.php?id=102" style="text-decoration: none;">
+      <a href="view.php?id=102" style="text-decoration: none; color: inherit;">
       <img class="d-block" src="Public\ProductIMGHighRes\Hoodie.png" alt="First slide" style="width: 30%; height: 300px;">
       <div>
-        <h1 style="color: white;">ALIEN OFFICER HOODIE (BLACK)</h1>
+        <h1 style="color: inherit;">ALIEN OFFICER HOODIE (BLACK)</h1>
       </div>
       </a>
     </div>
