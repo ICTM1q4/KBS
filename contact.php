@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel='stylesheet' href='style.css'>
-    <link rel='stylesheet' href='contact.css'>
+    <link rel='stylesheet' href='CSS/style.css'>
+    <link rel='stylesheet' href='CSS/contact.css'>
 </head>
 <header>
 <?php

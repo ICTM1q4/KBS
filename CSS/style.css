@@ -88,8 +88,11 @@ h3{
   font-family: Calibri;
   margin-top: 10px;
   margin-left: 10px;
-
 }
+#login:hover{
+  opacity: 0.5;
+}
+
 #search{
     position: absolute;
     
