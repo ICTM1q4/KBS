@@ -12,7 +12,7 @@
 include __DIR__ . "/Header.php";
 ?>
 </header>
-<body >
+<body style="height: 100%">
     <div id="index" >
         <h1 style="padding-left: 42%; color: white; margin-top: 30px;">Trending Items</h1> <br>
 
@@ -58,10 +58,13 @@ include __DIR__ . "/Header.php";
     <span class="sr-only">Next</span>
   </a>
 </div>
-
+</div>
  
 
 
-    <div>
+    
 </body>
+<?php
+include __DIR__ . "/Footer.php";
+?>
 </html>

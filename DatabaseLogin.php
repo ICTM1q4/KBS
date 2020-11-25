@@ -1,9 +1,9 @@
 <?php
-
+$Statement = "";
 $gebruikersNaam = "";
 $gebruikersWachtwoord = "";
 
-if (isset($_POST["Username"] && isset($_POST["Password"]){
+if (isset($_POST["Username"]) && isset($_POST["Password"])){
     $gebruikersNaam = $_POST["Username"];
     $gebruikersWachtwoord = $_POST["Password"];
 }
@@ -13,7 +13,7 @@ $Query = "
                 SELECT username, password, firstname, lastname
                 FROM webcustomers
                 WHERE username = ?
-                AND password = ?;"
+                AND password = ?;";
 
 
     $Statement = mysqli_prepare($Connection, $Query);
@@ -24,7 +24,7 @@ $Query = "
 
 
 if ($ReturnableResult["username"] == $gebruikersNaam && $ReturnableResult["password"] == $gebruikersWachtwoord ){
-    print("<h1> Welkom $ReturnableResult['firstname'] $ReturnableResult['lastname'], je bent zojuist ingelogd!</h1>");
+    print("<h1> Welkom $ReturnableResult['firstname'] . $ReturnableResult['lastname'], je bent zojuist ingelogd!</h1>");
     $_SESSION["loggedin"] == true;
 }
 else {

@@ -15,7 +15,7 @@ include __DIR__ . "/Header.php";
 ?>
 </header>
 
-<body>
+<body style="height: 100%;">
     <div style="
     background: rgba(0,0,0,0.5);
     border: 10px rgba(0,0,0,0.5) solid;
@@ -33,9 +33,9 @@ include __DIR__ . "/Header.php";
                 <div id="SignUp" style="font-family: Calibri;">
                     <form action="DatabaseLogin.php" style="margin-left: 20px; padding-top: 20px;" method="post">
                         <label for="Username">Username:</label><br>
-                        <input type="text" id="Username" name="Username"><br>
+                        <input required type="text" id="Username" name="Username"><br>
                         <label for="Password">Password:</label><br>
-                        <input type="text" id="Password" name="Password"><br><br>
+                        <input required type="text" id="Password" name="Password"><br><br>
                         <input type="submit" value="Sign in">
                     </form>
                     <a href="Signup.php"> 
@@ -50,3 +50,6 @@ include __DIR__ . "/Header.php";
         
     </div>
 </body>
+<?php
+include __DIR__ . "/Footer.php";
+?>

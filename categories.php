@@ -10,7 +10,13 @@
 <?php
 
 include __DIR__ . "/Header.php";
+?>
+</header>
+<body style="min-height: 100vh;">
+    
 
+
+<?php
 $Query = "
             SELECT StockGroupID, StockGroupName, ImagePath
             FROM stockgroups 
@@ -45,3 +51,7 @@ $StockGroups = mysqli_fetch_all($Result, MYSQLI_ASSOC);
         }
     } ?>
 </div>
+</body>
+<?php
+include __DIR__ . "/Footer.php";
+?>

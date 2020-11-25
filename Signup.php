@@ -36,23 +36,23 @@ include __DIR__ . "/Header.php";
                     <tr>
                         <td>
                         <label for="Username">*Username:</label><br>
-                        <input require type="text" id="Username" name="Username"><br>
+                        <input required type="text" id="Username" name="Username"><br>
                         <label for="Password">*Password:</label><br>
-                        <input require type="text" id="Password" name="Password"><br>
+                        <input required type="text" id="Password" name="Password"><br>
                         <label for="Password">*First Name:</label><br>
-                        <input require type="text" id="firstname" name="firstname"><br>
+                        <input required type="text" id="firstname" name="firstname"><br>
                         <label for="Password">*Last Name:</label><br>
-                        <input require type="text" id="lastname" name="lastname"><br>
+                        <input required type="text" id="lastname" name="lastname"><br>
                         </td>
                         <td>
                         <label for="Password">*Address:</label><br>
-                        <input require type="text" id="address" name="address"><br>
+                        <input required type="text" id="address" name="address"><br>
                         <label for="Password">*Zipcode:</label><br>
-                        <input require type="text" id="zipcode" name="zipcode"><br>
+                        <input required type="text" id="zipcode" name="zipcode"><br>
                         <label for="Password">Phonenumber:</label><br>
                         <input type="text" id="phonenumber" name="phonenumber"><br>
                         <label for="Password">*E-mail:</label><br>
-                        <input require type="text" id="email" name="email"><br>
+                        <input required type="text" id="email" name="email"><br>
                         </td>
                         </tr>
                         </table>
@@ -66,3 +66,6 @@ include __DIR__ . "/Header.php";
         
     </div>
 </body>
+<?php
+include __DIR__ . "/Footer.php";
+?>

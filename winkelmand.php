@@ -63,3 +63,6 @@ Totaalprijs:    25,98 Euro<br>
 <button>Kopen die handel!</button>
 </div>
 </body>
+<?php
+include __DIR__ . "/Footer.php";
+?>

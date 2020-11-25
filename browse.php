@@ -13,7 +13,7 @@ include __DIR__ . "/Header.php";
 
 
 
-<body>
+<body style="height: 100%">
     <?php
 $SearchString = "";
 $ReturnableResult = null;
@@ -298,4 +298,7 @@ if (isset($amount)) {
     ?>
 </div>
 </body>
+<?php
+include __DIR__ . "/Footer.php";
+?>
 </html>
