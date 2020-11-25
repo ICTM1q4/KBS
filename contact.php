@@ -36,8 +36,10 @@ include __DIR__ . "/Header.php";
 </div>
 </div>
 
-</body>
-
+</body >
+<footer style="margin-top: -40px;">
 <?php
 include __DIR__ . "/Footer.php";
 ?>
+
+</footer>

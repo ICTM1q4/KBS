@@ -8,7 +8,6 @@
 <header>
 <?php
 include __DIR__ . "/Header.php";
-include __DIR__ . "/winkelmandConnect.php";
 ?>
 </header>
 <body >
@@ -71,6 +70,8 @@ Totaalprijs:    25,98 Euro<br>
 <button>Kopen die handel!</button>
 </div>
 </body>
+<footer style="margin-top: 450px;">
 <?php
 include __DIR__ . "/Footer.php";
 ?>
+</footer>

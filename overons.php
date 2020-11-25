@@ -22,7 +22,7 @@ include __DIR__ . "/Header.php";
 
 </body>
 
-<footer>
+<footer style="padding-top: 320px;">
 <?php
 include __DIR__ . "/Footer.php";
 ?>

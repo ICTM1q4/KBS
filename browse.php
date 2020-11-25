@@ -221,12 +221,14 @@ if (isset($amount)) {
     </form>
 </div>
             </div>
-<div id="ResultsArea" class="Browse">
+<div id="ResultsArea" class="Browse" style="margin-bottom: 700px;">
     <?php
     if (isset($ReturnableResult) && count($ReturnableResult) > 0) {
+        ?> <div style="margin-bottom: -550px;"> <?php
         foreach ($ReturnableResult as $row) {
             ?>
-            <a class="ListItem"  >
+            
+            <a class="ListItem" >
                 <div id="ProductFrame"  >
                 <a href='view.php?id=<?php print $row['StockItemID']; ?>' style="text-decoration: none;">
                     <?php
@@ -293,10 +295,11 @@ if (isset($amount)) {
             }
             ?>
         </form>
+        </div>
         <?php
     } else {
         ?>
-        <h2 id="NoSearchResults" style="color: white; font-family: Calibri; background: none;">
+        <h2 id="NoSearchResults" style="color: white; font-family: Calibri; background: none; ">
             Yarr, er zijn geen resultaten gevonden.
         </h2>
         <?php
