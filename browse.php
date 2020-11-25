@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NerdyGadgets</title>
     <link rel='stylesheet' href='CSS/style.css'>
 </head>
 <header>
@@ -244,7 +244,13 @@ if (isset($amount)) {
                         <div class="CenterPriceLeftChild">
                             <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", $row["SellPrice"]); ?></h1>
                             <h6>Inclusief BTW </h6>
-                            <input type="button" class="toevoegen">Toevoegen aan winkelmand</input>
+                            <div style="margin-top: 30px;">
+                            <form action="Toevoegen.php?product_id=<?php print $row['StockItemID']; ?>">
+                            <input type="button" class="toevoegen" style="  background-color: #85bf31; border: 5px solid #85bf31; border-radius: 3px; color: white; font-family: Calibri; font-weight: bold;" value="Toevoegen aan winkelmand" ></input>
+                            </form>
+                            
+                            </div>
+                            
                         </div>
                     </div>
                     <a href='view.php?id=<?php print $row['StockItemID']; ?>' style="text-decoration: none;">

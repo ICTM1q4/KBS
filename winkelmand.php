@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact</title>
+    <title>NerdyGadgets</title>
     <link rel='stylesheet' href='CSS/style.css'>
 </head>
 <header>
@@ -38,10 +38,11 @@ include __DIR__ . "/winkelmandConnect.php";
 $Statement = "";
 
 $Query = "
-                SELECT WebOrderLine.StockItemID as Product, WebOrderLine.OrderAmount as Amount 
+                SELECT SI.StockItemName as Product, WebOrderLine.StockItemID as ProductID, WebOrderLine.OrderAmount as Amount, ROUND(SI.TaxRate * SI.RecommendedRetailPrice / 100 + SI.RecommendedRetailPrice,2) as SellPrice
                 FROM WebOrder
                 RIGHT JOIN WebCustomer ON WebOrder.CustomerID = WebCustomer.CustomerID
                 JOIN WebOrderLine ON WebOrder.OrderID = WebOrderLine.OrderID
+                JOIN stockitems SI ON SI.StockItemID = WebOrderLine.StockItemID
                 WHERE WebCustomer.Username = ?
                 AND WebCustomer.Password = ?;";
 
@@ -52,12 +53,19 @@ $Query = "
     $ReturnableResult = mysqli_stmt_get_result($Statement);
     $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
 
-foreach ($ReturnableResult as $value){
+    print("<table>");
 
-    
-    print "<h1> $value </h1> <br>" ;
-    print("<p style='color: white;'>hoi</p>");
+foreach ($ReturnableResult as $row){
+
+    print("<tr>");
+    print(""); //image
+    print("<td><h1>". $row['Product'] ."</h1> </td>") ; //artikelnaam
+    print("<td><p style='color: white;'>".$row['ProductID']."</p> </td>"); //artikelcode
+    print("<td><p style='color: white;'></p>".$row['Amount']." </td>"); //artikelamount
+    print("<td><p style='color: white;'></p>".$row['SellPrice']. "</td>"); //artikelprijs
+    print("</tr>");
 }
+print("</table>");
 ?>
 Totaalprijs:    25,98 Euro<br>
 <button>Kopen die handel!</button>

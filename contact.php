@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NerdyGadgets</title>
     <link rel='stylesheet' href='CSS/style.css'>
     <link rel='stylesheet' href='CSS/contact.css'>
 </head>

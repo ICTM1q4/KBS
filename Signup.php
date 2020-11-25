@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        Login
+    NerdyGadgets
     </title>
     <link rel='stylesheet' href='CSS/style.css'>
     

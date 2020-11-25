@@ -8,7 +8,7 @@ include "connect.php";
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NerdyGagdets</title>
     <link rel='stylesheet' href='CSS/bootstrap.min.css'>
     <link rel='stylesheet' href='CSS/style.css'>
     <script src="JS/jquery.min.js"></script>
