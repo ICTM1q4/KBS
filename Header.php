@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "connect.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -84,13 +85,24 @@ include "connect.php";
             
 
             <?php
-            $login = false; 
-            if ($login == false && $_SESSION["Naam"] != ""){
-                print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
+             
+             
+            
+            $login = false;
+            if(isset($_SESSION["Naam"])){
+                if ($_SESSION["Naam"] != "" ){
+                    print("<a id='login' href='Account.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Account</a>");
+                }
+                else {
+                    
+                    print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
+                }
+                
             }
             else {
-                print("<a id='login' href='Account.php' id='categories' class='button' style='color: white;'>Account</a>");
+                print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
             }
+            
             ?>
             <a id='winkelmand' href='winkelmand.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float: right; padding-right: 50px; '>Winkelmand</a>
         </div>

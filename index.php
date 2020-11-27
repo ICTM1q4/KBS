@@ -97,6 +97,7 @@ $StockGroups = mysqli_fetch_all($Result, MYSQLI_ASSOC);
         }
     } ?>
 </div>
+
 </div>
  
 

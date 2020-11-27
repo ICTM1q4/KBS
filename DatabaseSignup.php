@@ -10,20 +10,20 @@ $gebruikersZipcode = "";
 $gebruikersPhone = "";
 $gebruikersEmail = "";
 
-$gebruikersNaam = mysqli_real_escape_string($Connection, $_POST["Username"]);
-$gebruikersWachtwoord = mysqli_real_escape_string($Connection, $_POST["Password"]);
-$gebruikersFirstNaam = mysqli_real_escape_string($Connection, $_POST["firstname"]);
-$gebruikersLastNaam = mysqli_real_escape_string($Connection, $_POST["lastname"]);
-$gebruikersAddress = mysqli_real_escape_string($Connection, $_POST["address"]);
-$gebruikersZipcode = mysqli_real_escape_string($Connection, $_POST["zipcode"]);
-$gebruikersPhone = mysqli_real_escape_string($Connection, $_POST["phonenumber"]);
-$gebruikersEmail = mysqli_real_escape_string($Connection, $_POST["email"]);
+$gebruikersNaam = $_POST["Username"];
+$gebruikersWachtwoord = $_POST["Password"];
+$gebruikersFirstNaam = $_POST["firstname"];
+$gebruikersLastNaam = $_POST["lastname"];
+$gebruikersAddress = $_POST["address"];
+$gebruikersZipcode = $_POST["zipcode"];
+$gebruikersPhone = $_POST["phonenumber"];
+$gebruikersEmail = $_POST["email"];
 
-
+x
         $Query ="INSERT INTO webcustomer (Firstname,Lastname,Username,Password,Address,Zipcode,Phonenumber,Email)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         $Statement = mysqli_prepare($Connection, $Query);
-        mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
+        mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
 
         mysqli_stmt_execute($Statement);
 
@@ -39,13 +39,48 @@ $gebruikersEmail = mysqli_real_escape_string($Connection, $_POST["email"]);
     // mysqli_stmt_execute($Statement);
     // $ReturnableResult = mysqli_stmt_get_result($Statement);
     // $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
-$Query = " SELECT Username FROM WebCostumer WHERE Username LIKE " . mysqli_real_escape_string($Connection, $_POST['Username']) . "; ";
+    $Query = " SELECT Username, CustomerID FROM WebCustomer WHERE Username = ?; ";
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $gebruikersNaam);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+    foreach ($ReturnableResult as $ReturnableResult){
+        if ($ReturnableResult["Username"] == $gebruikersNaam){
+            $ID = $ReturnableResult["CustomerID"];
+            $gebruikersNaam = $ReturnableResult["Username"];
+
+            print("yes");
+        }
+        
+
+        
+    }
+
+    
 
 
 //$Queryun= mysqli_query($Connection, $Query);
-if(true){
+if($gebruikersNaam == $ReturnableResult["Username"]){
     print("Huge Succ");
     echo "<script>window.location = 'login.php'</script>";
+
+    $Query = "
+    INSERT INTO weborder (CustomerID)
+    VALUES (?);";
+
+
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_bind_param($Statement, "i", $ID);
+mysqli_stmt_execute($Statement);
+$_SESSION["CustomerID"] = $ID;
+
+
+
+
+
+
+
 }
 // if ($ReturnableResult["Username"] == $gebruikersNaam && $ReturnableResult["Password"] == $gebruikersWachtwoord ){
 //     print("Welkom". $ReturnableResult['firstname']. $ReturnableResult['lastname'].", je bent zojuist ingelogd!");

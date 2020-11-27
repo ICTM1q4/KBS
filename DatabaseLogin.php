@@ -27,8 +27,9 @@ $Query = "
 foreach ($ReturnableResult as $ReturnableResult){
     if ($ReturnableResult["username"] == $gebruikersNaam && $ReturnableResult["password"] == $gebruikersWachtwoord ){
         print("Welkom ".$ReturnableResult['firstname']. $ReturnableResult['lastname'].", je bent zojuist ingelogd!");
-        echo "<script>window.location = 'index.php'</script>";
+        session_start();
         $_SESSION["Naam"] = $gebruikersNaam;
+        echo "<script>window.location = 'index.php'</script>";
     }
     else {
         print($ReturnableResult["username"] . $ReturnableResult["password"]);
