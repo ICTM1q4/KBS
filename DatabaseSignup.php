@@ -36,25 +36,11 @@ else {
     mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail); 
 }
 
-
-                
-
-
-    // $Statement = mysqli_prepare($Connection, $Query);
-    // mysqli_stmt_bind_param($Statement, "ii", $gebruikersNaam, $gebruikersWachtwoord);
-    // mysqli_stmt_execute($Statement);
-    // $ReturnableResult = mysqli_stmt_get_result($Statement);
-    // $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
 $Queryun= mysqli_query($Connection, "SELECT Username FROM webcostumer WHERE Username LIKE" . mysqli_real_escape_string($Connection, $_POST['Username']) . ";");
 if($_POST["Username"] == $Queryun){
     print("Huge Succ");
 }
-// if ($ReturnableResult["Username"] == $gebruikersNaam && $ReturnableResult["Password"] == $gebruikersWachtwoord ){
-//     print("Welkom". $ReturnableResult['firstname']. $ReturnableResult['lastname'].", je bent zojuist ingelogd!");
-//     $_SESSION["loggedin"] == true;
 
 else {
     print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
 }
-
-// $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord,$gebruikersAddress,$gebruikersZipcode,$gebruikersPhone,$gebruikersEmail
