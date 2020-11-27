@@ -1,15 +1,6 @@
 <?php
 include "connect.php";
 
-$gebruikersNaam = "";
-$gebruikersWachtwoord = "";
-$gebruikersFirstNaam = "";
-$gebruikersLastNaam = "";
-$gebruikersAddress = "";
-$gebruikersZipcode = "";
-$gebruikersPhone = "";
-$gebruikersEmail = "";
-
 $gebruikersNaam = mysqli_real_escape_string($Connection, $_POST["Username"]);
 $gebruikersWachtwoord = mysqli_real_escape_string($Connection, $_POST["Password"]);
 $gebruikersFirstNaam = mysqli_real_escape_string($Connection, $_POST["firstname"]);
