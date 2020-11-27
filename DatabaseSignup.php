@@ -19,7 +19,14 @@ $gebruikersZipcode = mysqli_real_escape_string($Connection, $_POST["zipcode"]);
 $gebruikersPhone = mysqli_real_escape_string($Connection, $_POST["phonenumber"]);
 $gebruikersEmail = mysqli_real_escape_string($Connection, $_POST["email"]);
 
-if (isset($_POST["phonenumber"])){
+$uppercase = preg_match('@[A-Z]@', $gebruikersWachtwoord);
+$lowercase = preg_match('@[a-z]@', $gebruikersWachtwoord);
+$number    = preg_match('@[0-9]@', $gebruikersWachtwoord);
+$specialChars = preg_match('@[^\w]@', $gebruikersWachtwoord);
+
+if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruikersWachtwoord) < 8) {
+    print("Wachtwoord moet minimaal 8 karakters lang zijn en minimaal 1 hoofdletter, 1 cijfer en 1 speciaal karakter bevatten.");
+} elseif (isset($_POST["phonenumber"])){
         $Query ="INSERT INTO webcustomer (Firstname,Lastname,Username,Password,Address,Zipcode,Phonenumber,Email)
         VALUES ('$gebruikersFirstNaam', '$gebruikersLastNaam', '$gebruikersNaam', '$gebruikersWachtwoord','$gebruikersAddress','$gebruikersZipcode','$gebruikersPhone','$gebruikersEmail');";
         $Statement = mysqli_prepare($Connection, $Query);
@@ -34,10 +41,4 @@ if (isset($_POST["phonenumber"])){
     mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail); 
 }
 
-$Queryun= mysqli_query($Connection, "SELECT Username FROM webcostumer WHERE Username LIKE" . mysqli_real_escape_string($Connection, $_POST['Username']) . ";");
-
-if($_POST["Username"] == $Queryun){
-    print("Huge Succ");
-} else {
-    print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
-}
+?>
