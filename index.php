@@ -36,6 +36,13 @@ include __DIR__ . "/Header.php";
       <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: 10px; ">
       <div >
       <h1>Titel</h1>
+<<<<<<< HEAD
+=======
+    <a href="view.php?id=2">  
+      <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: 10px; ">
+      <div >
+      <h1 style="color: white;">USB ROCKET LAUNCHER (GRAY)</h1>
+>>>>>>> 860bf03b967fd72b46ce49e96349481bc111602d
       </div>
       </div>
     </a>
