@@ -27,7 +27,7 @@ $specialChars = preg_match('@[^\w]@', $gebruikersWachtwoord);
 if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruikersWachtwoord) < 8) {
     print("Wachtwoord moet minimaal 8 karakters lang zijn en minimaal 1 hoofdletter, 1 cijfer en 1 speciaal karakter bevatten.");
 } elseif (isset($_POST["phonenumber"])){
-        $Query ="INSERT INTO webcustomer (Firstname,Lastname,Username,Password,Address,Zipcode,Phonenumber,Email)
+        $Query ="INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode, phonenumber, email)
         VALUES ('$gebruikersFirstNaam', '$gebruikersLastNaam', '$gebruikersNaam', '$gebruikersWachtwoord','$gebruikersAddress','$gebruikersZipcode','$gebruikersPhone','$gebruikersEmail');";
         $Statement = mysqli_prepare($Connection, $Query);
         mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
