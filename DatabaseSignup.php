@@ -30,15 +30,15 @@ if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruiker
         $Query ="INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode, phonenumber, email)
         VALUES ('$gebruikersFirstNaam', '$gebruikersLastNaam', '$gebruikersNaam', '$gebruikersWachtwoord','$gebruikersAddress','$gebruikersZipcode','$gebruikersPhone','$gebruikersEmail');";
         $Statement = mysqli_prepare($Connection, $Query);
-        mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
-
+        mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
         mysqli_stmt_execute($Statement);
     } else {
-    $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,email)
-    VALUES (?,?,?,?,?,?,?);";
-
-    $Statement = mysqli_prepare($Connection, $Query);
-    mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail); 
+            $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,email)
+            VALUES (?,?,?,?,?,?,?);";
+            $Statement = mysqli_prepare($Connection, $Query);
+            mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail); 
+            mysqli_stmt_execute($Statement);
 }
+
 
 ?>
