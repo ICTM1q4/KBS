@@ -13,7 +13,7 @@ include __DIR__ . "/Header.php";
 </header>
 <body>
 
-    <form action="" style="color: white; font-family: Calibri; margin: auto; width: 700px; font-size: 120%; margin-top: 3%;background-color: rgba(128,128,128,0.5); margin-top: 20px; border: 10px solid rgba(128,128,128,0.1); border-radius: 5px; padding-top: 10px; padding-left: 10px; padding-bottom: 10px;">
+    <form method="post" action="contactmailhandler.php" style="color: white; font-family: Calibri; margin: auto; width: 700px; font-size: 120%; margin-top: 3%;background-color: rgba(128,128,128,0.5); margin-top: 20px; border: 10px solid rgba(128,128,128,0.1); border-radius: 5px; padding-top: 10px; padding-left: 10px; padding-bottom: 10px;">
     <h1 style="color: white; font-family: Calibri;">Contactformulier:</h1>
 
     <div style="margin-left: 17px;">
