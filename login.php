@@ -35,7 +35,7 @@ include __DIR__ . "/Header.php";
                         <label for="Username">Username:</label><br>
                         <input type="text" id="Username" name="Username"><br>
                         <label for="Password">Password:</label><br>
-                        <input type="text" id="Password" name="Password"><br><br>
+                        <input type="password" id="Password" name="Password"><br><br>
                         <input type="submit" value="Sign in">
                     </form>
                     <a href="Signup.php"> 

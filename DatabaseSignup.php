@@ -26,12 +26,9 @@ if (isset($_POST["phonenumber"])){
         mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
 
         mysqli_stmt_execute($Statement);
-    }
-
-else {
+    } else {
     $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,email)
     VALUES (?,?,?,?,?,?,?);";
-
     $Statement = mysqli_prepare($Connection, $Query);
     mysqli_stmt_bind_param($Statement, "isisisis", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail); 
 }
@@ -39,8 +36,6 @@ else {
 $Queryun= mysqli_query($Connection, "SELECT Username FROM webcostumer WHERE Username LIKE" . mysqli_real_escape_string($Connection, $_POST['Username']) . ";");
 if($_POST["Username"] == $Queryun){
     print("Huge Succ");
-}
-
-else {
+} else {
     print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
 }
