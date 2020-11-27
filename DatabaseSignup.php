@@ -1,6 +1,15 @@
 <?php
 include "connect.php";
 
+$gebruikersNaam = "";
+$gebruikersWachtwoord = "";
+$gebruikersFirstNaam = "";
+$gebruikersLastNaam = "";
+$gebruikersAddress = "";
+$gebruikersZipcode = "";
+$gebruikersPhone = "";
+$gebruikersEmail = "";
+
 $gebruikersNaam = mysqli_real_escape_string($Connection, $_POST["Username"]);
 $gebruikersWachtwoord = mysqli_real_escape_string($Connection, $_POST["Password"]);
 $gebruikersFirstNaam = mysqli_real_escape_string($Connection, $_POST["firstname"]);
@@ -30,6 +39,5 @@ if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruiker
             mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail); 
             mysqli_stmt_execute($Statement);
 }
-
 
 ?>
