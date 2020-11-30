@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "connect.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +9,7 @@ include "connect.php";
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NerdyGagdets</title>
     <link rel='stylesheet' href='CSS/bootstrap.min.css'>
     <link rel='stylesheet' href='CSS/style.css'>
     <script src="JS/jquery.min.js"></script>
@@ -25,19 +26,19 @@ include "connect.php";
         }
     </script>
 </head>
-<header>
-    <div id="totaal">
-        <div id="titel">
-            <a href="index.php">
+<header style="color: white; background-color: black; border: black; padding-top: black;">
+    <div id="totaal" style="color: inherit;">
+        <div id="titel" style="color: inherit;">
+            <a href="index.php" style="color: inherit;">
                 <picture id="picture"><img src="Pictures/wauw%20(1).png"></picture>
-                <h3> NerdyGadgets </h3>
+                <h3 style="color: inherit;"> NerdyGadgets </h3>
     </a>
         </div>
 
         <div id="categorie" style="   overflow: visible;">
             <a href="index.php" class="button" id="categories">Home</a>
             <div id="categorie" class="dropdown" style="position: relative; font-family: Calibri; float: left; ">
-                <button class="dropbtn" onclick="window.location.href='categories.php'">Alle categorieen
+                <button class="dropbtn" onclick="window.location.href='categories.php'">Producten
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content" style="position: absolute;">
@@ -84,13 +85,29 @@ include "connect.php";
             
 
             <?php
+             
+             
+            
             $login = false;
+<<<<<<< HEAD
             if ($login == false){
                 print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px; margin-top: 0px;'>Login</a>");
+=======
+            if(isset($_SESSION["Naam"])){
+                if ($_SESSION["Naam"] != "" ){
+                    print("<a id='login' href='Account.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Account</a>");
+                }
+                else {
+                    
+                    print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
+                }
+                
+>>>>>>> origin/Yorben
             }
             else {
-                print("<a id='login' href='Account.php' id='categories' class='button' style='color: white;'>Account</a>");
+                print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
             }
+            
             ?>
             <a id='winkelmand' href='winkelmand.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float: right; padding-right: 50px; margin-top: 0px; '>Winkelmand</a>
         </div>
