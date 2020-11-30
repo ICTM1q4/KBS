@@ -11,7 +11,8 @@ if (isset($_POST["Username"]) && isset($_POST["Password"])){
     $gebruikersNaam = $_POST["Username"];
     $gebruikersWachtwoord = $_POST["Password"];
 }
-
+print($gebruikersWachtwoord);
+$gebruikersNaam = password_hash($gebruikersNaam, PASSWORD_BCRYPT);
 
 $Query = "
                 SELECT username, password, firstname, lastname
@@ -47,15 +48,16 @@ foreach ($ReturnableResult as $ReturnableResult){
         $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
         foreach ($ReturnableResult as $ReturnableResult){
         $_SESSION["OrderID"] = $ReturnableResult["OrderID"];
+        print($gebruikersWachtwoord);
     }
 
 
 
-        echo "<script>window.location = 'login.php?Login=goed'</script>";
+        //echo "<script>window.location = 'login.php?Login=goed'</script>";
         break;
     }
     else if ($ReturnableResult["username"] != $gebruikersNaam && $ReturnableResult["password"] != $gebruikersWachtwoord ){
-        echo "<script>window.location = 'login.php?Login=fout'</script>";
+        //echo "<script>window.location = 'login.php?Login=fout'</script>";
         // print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
     }
 }

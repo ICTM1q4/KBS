@@ -28,22 +28,14 @@ $specialChars = preg_match('@[^\w]@', $gebruikersWachtwoord);
 if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruikersWachtwoord) < 8) {
     print("<script>window.location = 'Signup.php?ww=fout'</script>");
 } 
-
-
-//         $gebruikersWachtwoord = password_hash($gebruikersWachtwoord, PASSWORD_BCRYPT);
-//         $Query ="INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode, phonenumber, email)
-//         VALUES ('$gebruikersFirstNaam', '$gebruikersLastNaam', '$gebruikersNaam', '$gebruikersWachtwoord','$gebruikersAddress','$gebruikersZipcode','$gebruikersPhone','$gebruikersEmail');";
-//         $Statement = mysqli_prepare($Connection, $Query);
-//         mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
-//         mysqli_stmt_execute($Statement);
-//     } else {
-//             $gebruikersWachtwoord = password_hash($gebruikersWachtwoord, PASSWORD_BCRYPT);
-//             $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,email)
-//             VALUES (?,?,?,?,?,?,?);";
-//             $Statement = mysqli_prepare($Connection, $Query);
-//             mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail); 
-//             mysqli_stmt_execute($Statement);
-// }
+else {
+            $gebruikersWachtwoord = password_hash($gebruikersWachtwoord, PASSWORD_BCRYPT);
+            $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,Email,Phonenumber)
+            VALUES (?,?,?,?,?,?,?,?);";
+            $Statement = mysqli_prepare($Connection, $Query);
+             mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail, $gebruikersPhone); 
+            mysqli_stmt_execute($Statement);
+}
  
 
 
@@ -69,13 +61,8 @@ $Query = " SELECT DISTINCT Username FROM WebCustomer;";
 
 
 
-//INSERT INTO DATABASE
-        $Query ="INSERT INTO webcustomer (Firstname,Lastname,Username,Password,Address,Zipcode,Phonenumber,Email)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-        $Statement = mysqli_prepare($Connection, $Query);
-        mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
 
-        mysqli_stmt_execute($Statement);
+
 
 
 
@@ -84,11 +71,7 @@ $Query = " SELECT DISTINCT Username FROM WebCustomer;";
                 
 
 
-    // $Statement = mysqli_prepare($Connection, $Query);
-    // mysqli_stmt_bind_param($Statement, "ii", $gebruikersNaam, $gebruikersWachtwoord);
-    // mysqli_stmt_execute($Statement);
-    // $ReturnableResult = mysqli_stmt_get_result($Statement);
-    // $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+
     $Query = " SELECT Username, CustomerID FROM WebCustomer WHERE Username = ?; ";
     $Statement = mysqli_prepare($Connection, $Query);
     mysqli_stmt_bind_param($Statement, "i", $gebruikersNaam);
@@ -109,8 +92,6 @@ $Query = " SELECT DISTINCT Username FROM WebCustomer;";
 
     
 
-
-//$Queryun= mysqli_query($Connection, $Query);
 if($gebruikersNaam == $ReturnableResult["Username"]){
     print("Huge Succ");
     echo "<script>window.location = 'login.php'</script>";
