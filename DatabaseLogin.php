@@ -29,10 +29,11 @@ foreach ($ReturnableResult as $ReturnableResult){
         print("Welkom ".$ReturnableResult['firstname']. $ReturnableResult['lastname'].", je bent zojuist ingelogd!");
         session_start();
         $_SESSION["Naam"] = $gebruikersNaam;
-        echo "<script>window.location = 'index.php'</script>";
+        echo "<script>window.location = 'login.php?Login=goed'</script>";
+        break;
     }
-    else {
-        print($ReturnableResult["username"] . $ReturnableResult["password"]);
+    else if ($ReturnableResult["username"] != $gebruikersNaam && $ReturnableResult["password"] != $gebruikersWachtwoord ){
+        echo "<script>window.location = 'login.php?Login=fout'</script>";
         // print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
     }
 }

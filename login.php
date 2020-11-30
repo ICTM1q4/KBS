@@ -14,7 +14,7 @@
 include __DIR__ . "/Header.php";
 ?>
 </header>
-
+<?php if(isset($_SESSION["Naam"])) {echo "<script>window.location = 'index.php'</script>";}?>
 <body style="height: 100%;">
     <div style="
     background: rgba(0,0,0,0.5);
@@ -36,6 +36,7 @@ include __DIR__ . "/Header.php";
                         <input required type="text" id="Username" name="Username"><br>
                         <label for="Password">Password:</label><br>
                         <input required type="text" id="Password" name="Password"><br><br>
+                        <?php if(isset($_GET["fout"])) {if ($_GET["Login"] == "fout") { print("<p style='color: rgb(200,0,0);'>Username of password incorrect</p>");}}?>
                         <input type="submit" value="Sign in">
                     </form>
                     <a href="Signup.php"> 
@@ -47,7 +48,7 @@ include __DIR__ . "/Header.php";
             </td>
         </tr>
     </table>
-        
+    
     </div>
 </body>
 <?php

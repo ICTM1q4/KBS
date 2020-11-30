@@ -18,8 +18,28 @@ $gebruikersAddress = $_POST["address"];
 $gebruikersZipcode = $_POST["zipcode"];
 $gebruikersPhone = $_POST["phonenumber"];
 $gebruikersEmail = $_POST["email"];
+//CHECK IF DUPE
+$Query = " SELECT DISTINCT Username FROM WebCustomer;";
+    $Statement = mysqli_prepare($Connection, $Query);
+    
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
 
-x
+    foreach ($ReturnableResult as $ReturnableResult){
+        if (isset($ReturnableResult["Username"])){
+            if ($ReturnableResult["Username"] == $gebruikersNaam){
+                print("<script>window.location = 'Signup.php?Registreer=fout'</script>;");
+                break;
+            }
+        }
+    }
+
+
+
+
+
+//INSERT INTO DATABASE
         $Query ="INSERT INTO webcustomer (Firstname,Lastname,Username,Password,Address,Zipcode,Phonenumber,Email)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         $Statement = mysqli_prepare($Connection, $Query);
