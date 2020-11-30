@@ -89,10 +89,6 @@ include "connect.php";
              
             
             $login = false;
-<<<<<<< HEAD
-            if ($login == false){
-                print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px; margin-top: 0px;'>Login</a>");
-=======
             if(isset($_SESSION["Naam"])){
                 if ($_SESSION["Naam"] != "" ){
                     print("<a id='login' href='Account.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Account</a>");
@@ -102,7 +98,6 @@ include "connect.php";
                     print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
                 }
                 
->>>>>>> origin/Yorben
             }
             else {
                 print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");

@@ -38,7 +38,7 @@ include __DIR__ . "/Header.php";
                         <label for="Username">*Username:</label><br>
                         <input required type="text" id="Username" name="Username"><br>
                         <label for="Password">*Password:</label><br>
-                        <input required type="text" id="Password" name="Password"><br>
+                        <input require type="password" id="Password" name="Password"><br>
                         <label for="Password">*First Name:</label><br>
                         <input required type="text" id="firstname" name="firstname"><br>
                         <label for="Password">*Last Name:</label><br>
@@ -52,7 +52,7 @@ include __DIR__ . "/Header.php";
                         <label for="Password">Phonenumber:</label><br>
                         <input type="text" id="phonenumber" name="phonenumber"><br>
                         <label for="Password">*E-mail:</label><br>
-                        <input required type="text" id="email" name="email"><br>
+                        <input require type="email" id="email" name="email"><br>
                         </td>
                         </tr>
                         </table>

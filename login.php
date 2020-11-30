@@ -35,7 +35,7 @@ include __DIR__ . "/Header.php";
                         <label for="Username">Username:</label><br>
                         <input required type="text" id="Username" name="Username"><br>
                         <label for="Password">Password:</label><br>
-                        <input required type="text" id="Password" name="Password"><br><br>
+                        <input required type="password" id="Password" name="Password"><br><br>
                         <?php if(isset($_GET["fout"])) {if ($_GET["Login"] == "fout") { print("<p style='color: rgb(200,0,0);'>Username of password incorrect</p>");}}?>
                         <input type="submit" value="Sign in">
                     </form>
