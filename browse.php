@@ -247,7 +247,8 @@ if (isset($amount)) {
                             <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", $row["SellPrice"]); ?></h1>
                             <h6>Inclusief BTW </h6>
                             <div style="margin-top: 30px;">
-                            <form action="Toevoegen.php?product_id=<?php print $row['StockItemID']; ?>">
+                            <form action="Toevoegen.php?product=<?php print($row['StockItemID']); ?>">
+                            <input type="hidden" name="product" value="<?php print($row['StockItemID']); ?>">
                             <input type="submit" class="toevoegen" style="  background-color: #85bf31; border: 5px solid #85bf31; border-radius: 3px; color: white; font-family: Calibri; font-weight: bold;" value="Toevoegen aan winkelmand" ></input>
                             </form>
                             

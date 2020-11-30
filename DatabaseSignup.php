@@ -1,6 +1,7 @@
 <?php
 include "connect.php";
 
+//PREPARE ALL VARIABLES
 $gebruikersNaam = "";
 $gebruikersWachtwoord = "";
 $gebruikersFirstNaam = "";
@@ -29,17 +30,9 @@ if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruiker
     print("<script>window.location = 'Signup.php?ww=fout'</script>");
 } 
 else {
-            $gebruikersWachtwoord = password_hash($gebruikersWachtwoord, PASSWORD_BCRYPT);
-            $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,Email,Phonenumber)
-            VALUES (?,?,?,?,?,?,?,?);";
-            $Statement = mysqli_prepare($Connection, $Query);
-             mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail, $gebruikersPhone); 
-            mysqli_stmt_execute($Statement);
+            
 }
  
-
-
-
 //CHECK IF DUPE
 $Query = " SELECT DISTINCT Username FROM WebCustomer;";
     $Statement = mysqli_prepare($Connection, $Query);
@@ -57,43 +50,16 @@ $Query = " SELECT DISTINCT Username FROM WebCustomer;";
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-                
-
-
-
-    $Query = " SELECT Username, CustomerID FROM WebCustomer WHERE Username = ?; ";
+//INSERT DATA INTO DATABASE
+    $gebruikersWachtwoord = hash("SHA256", $gebruikersWachtwoord);
+    $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,Email,Phonenumber)
+    VALUES (?,?,?,?,?,?,?,?);";
     $Statement = mysqli_prepare($Connection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $gebruikersNaam);
+     mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail, $gebruikersPhone); 
     mysqli_stmt_execute($Statement);
-    $ReturnableResult = mysqli_stmt_get_result($Statement);
-    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
-    foreach ($ReturnableResult as $ReturnableResult){
-        if ($ReturnableResult["Username"] == $gebruikersNaam){
-            $ID = $ReturnableResult["CustomerID"];
-            $gebruikersNaam = $ReturnableResult["Username"];
 
-            print("yes");
-        }
-        
-
-        
-    }
-
-    
-
+//GO BACK AND SET SESSION ID
 if($gebruikersNaam == $ReturnableResult["Username"]){
-    print("Huge Succ");
     echo "<script>window.location = 'login.php'</script>";
 
     $Query = "
@@ -105,20 +71,9 @@ $Statement = mysqli_prepare($Connection, $Query);
 mysqli_stmt_bind_param($Statement, "i", $ID);
 mysqli_stmt_execute($Statement);
 $_SESSION["CustomerID"] = $ID;
-
-
-
-
-
-
-
 }
-// if ($ReturnableResult["Username"] == $gebruikersNaam && $ReturnableResult["Password"] == $gebruikersWachtwoord ){
-//     print("Welkom". $ReturnableResult['firstname']. $ReturnableResult['lastname'].", je bent zojuist ingelogd!");
-//     $_SESSION["loggedin"] == true;
-
 else {
     print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
 }
 
-// $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord,$gebruikersAddress,$gebruikersZipcode,$gebruikersPhone,$gebruikersEmail
+

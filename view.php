@@ -165,6 +165,9 @@ if ($R) {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
+
+<footer style="padding-top: 330px;">
 <?php
 include __DIR__ . "/Footer.php";
 ?>
+</footer>
