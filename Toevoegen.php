@@ -1,6 +1,7 @@
 <?php 
-
-$ProductID = $_GET['product_id'];
+include "connect.php";
+session_start();
+if(isset($_GET['product_id'])){ $ProductID = $_GET['product_id'];};
 $OrderID = "";
 $Statement = "";
 
@@ -9,7 +10,7 @@ $Query = "
                 FROM WebOrder
                 RIGHT JOIN WebCustomer ON WebOrder.CustomerID = WebCustomer.CustomerID
                 JOIN WebOrderLine ON WebOrder.OrderID = WebOrderLine.OrderID
-                JOIN stockitems SI ON stockitems.StockItemID = WebOrderLine.StockItemID
+                JOIN stockitems SI ON SI.StockItemID = WebOrderLine.StockItemID
                 WHERE WebCustomer.Username = ?
                 AND WebCustomer.Password = ?;";
 
@@ -20,7 +21,7 @@ $Query = "
     $ReturnableResult = mysqli_stmt_get_result($Statement);
     $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
 
-    $OrderID = $ReturnableResult['OrderID'];
+    $OrderID = $_SESSION['OrderID'];
 
     $Query = "
     SELECT ROUND(SI.TaxRate * SI.RecommendedRetailPrice / 100 + SI.RecommendedRetailPrice,2) as SellPrice,
@@ -49,4 +50,4 @@ $Query = "
     $ReturnableResult = mysqli_stmt_get_result($Statement);
     $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
     print_r($ReturnableResult);
-    header('Location: http://localhost:83/Github/KBS-1/winkelmand.php');
+    //header('Location: http://localhost:83/Github/KBS-1/winkelmand.php');

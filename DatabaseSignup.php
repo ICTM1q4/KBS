@@ -18,6 +18,36 @@ $gebruikersAddress = $_POST["address"];
 $gebruikersZipcode = $_POST["zipcode"];
 $gebruikersPhone = $_POST["phonenumber"];
 $gebruikersEmail = $_POST["email"];
+
+//password check
+$uppercase = preg_match('@[A-Z]@', $gebruikersWachtwoord);
+$lowercase = preg_match('@[a-z]@', $gebruikersWachtwoord);
+$number    = preg_match('@[0-9]@', $gebruikersWachtwoord);
+$specialChars = preg_match('@[^\w]@', $gebruikersWachtwoord);
+ 
+if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruikersWachtwoord) < 8) {
+    print("<script>window.location = 'Signup.php?ww=fout'</script>");
+} 
+
+
+//         $gebruikersWachtwoord = password_hash($gebruikersWachtwoord, PASSWORD_BCRYPT);
+//         $Query ="INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode, phonenumber, email)
+//         VALUES ('$gebruikersFirstNaam', '$gebruikersLastNaam', '$gebruikersNaam', '$gebruikersWachtwoord','$gebruikersAddress','$gebruikersZipcode','$gebruikersPhone','$gebruikersEmail');";
+//         $Statement = mysqli_prepare($Connection, $Query);
+//         mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersPhone, $gebruikersEmail);
+//         mysqli_stmt_execute($Statement);
+//     } else {
+//             $gebruikersWachtwoord = password_hash($gebruikersWachtwoord, PASSWORD_BCRYPT);
+//             $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,email)
+//             VALUES (?,?,?,?,?,?,?);";
+//             $Statement = mysqli_prepare($Connection, $Query);
+//             mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail); 
+//             mysqli_stmt_execute($Statement);
+// }
+ 
+
+
+
 //CHECK IF DUPE
 $Query = " SELECT DISTINCT Username FROM WebCustomer;";
     $Statement = mysqli_prepare($Connection, $Query);

@@ -30,7 +30,7 @@ include __DIR__ . "/Header.php";
         <tr style="width: 80%;">
             <td style="width: 40%; margin: auto;" >
                 <h1 style="font-family: Calibri; color: white;">Log in:</h1>
-                <div id="SignUp" style="font-family: Calibri;">
+                <div id="SignUp" style="font-family: Calibri; min-width: 213px;">
                     <form action="DatabaseLogin.php" style="margin-left: 20px; padding-top: 20px;" method="post">
                         <label for="Username">Username:</label><br>
                         <input required type="text" id="Username" name="Username"><br>

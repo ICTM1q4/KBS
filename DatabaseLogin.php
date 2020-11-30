@@ -5,6 +5,8 @@ include "connect.php";
 $gebruikersNaam = "";
 $gebruikersWachtwoord = "";
 
+
+
 if (isset($_POST["Username"]) && isset($_POST["Password"])){
     $gebruikersNaam = $_POST["Username"];
     $gebruikersWachtwoord = $_POST["Password"];
@@ -29,6 +31,26 @@ foreach ($ReturnableResult as $ReturnableResult){
         print("Welkom ".$ReturnableResult['firstname']. $ReturnableResult['lastname'].", je bent zojuist ingelogd!");
         session_start();
         $_SESSION["Naam"] = $gebruikersNaam;
+        
+        $Query = "
+                SELECT OrderID
+                FROM weborder
+                WHERE CustomerID IN ( SELECT CustomerID FROM webcustomer 
+                WHERE username = ?
+                AND password = ?);";
+
+
+        $Statement = mysqli_prepare($Connection, $Query);
+        mysqli_stmt_bind_param($Statement, "ii", $gebruikersNaam, $gebruikersWachtwoord);
+        mysqli_stmt_execute($Statement);
+        $ReturnableResult = mysqli_stmt_get_result($Statement);
+        $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+        foreach ($ReturnableResult as $ReturnableResult){
+        $_SESSION["OrderID"] = $ReturnableResult["OrderID"];
+    }
+
+
+
         echo "<script>window.location = 'login.php?Login=goed'</script>";
         break;
     }

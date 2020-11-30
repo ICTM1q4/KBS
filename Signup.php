@@ -59,8 +59,16 @@ include __DIR__ . "/Header.php";
                         <?php if(isset($_GET["Registreer"])) {
                             if ($_GET["Registreer"] == "fout"){
                                 print("<p style='color: rgb(200,0,0);'>Username is al gebruikt</p>");
+                                
                         }
-                        }?>
+                        
+                        }
+                        if (isset($_GET["ww"])){
+                            if ($_GET["ww"] == "fout"){
+                                print(" <p style='color: rgb(200,0,0);'> Wachtwoord moet minimaal 8 karakters lang zijn en minimaal 1 hoofdletter, 1 cijfer en 1 speciaal karakter bevatten.</p>");
+                            }
+                        }
+                        ?>
                         <br>
                         <input type="submit" value="Sign up">
                     </form>
