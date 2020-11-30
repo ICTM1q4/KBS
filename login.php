@@ -5,7 +5,7 @@
     <title>
         Login
     </title>
-    <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='CSS/style.css'>
     
 
 </head>
@@ -14,8 +14,8 @@
 include __DIR__ . "/Header.php";
 ?>
 </header>
-
-<body>
+<?php if(isset($_SESSION["Naam"])) {echo "<script>window.location = 'index.php'</script>";}?>
+<body style="height: 100%;">
     <div style="
     background: rgba(0,0,0,0.5);
     border: 10px rgba(0,0,0,0.5) solid;
@@ -29,13 +29,14 @@ include __DIR__ . "/Header.php";
     <table style="margin-left: 50px; width: 100%; height: 70%;">
         <tr style="width: 80%;">
             <td style="width: 40%; margin: auto;" >
-                <h1 style="font-family: Calibri; color: white;">Sign in:</h1>
+                <h1 style="font-family: Calibri; color: white;">Log in:</h1>
                 <div id="SignUp" style="font-family: Calibri;">
                     <form action="DatabaseLogin.php" style="margin-left: 20px; padding-top: 20px;" method="post">
                         <label for="Username">Username:</label><br>
-                        <input type="text" id="Username" name="Username"><br>
+                        <input required type="text" id="Username" name="Username"><br>
                         <label for="Password">Password:</label><br>
-                        <input type="text" id="Password" name="Password"><br><br>
+                        <input required type="password" id="Password" name="Password"><br><br>
+                        <?php if(isset($_GET["fout"])) {if ($_GET["Login"] == "fout") { print("<p style='color: rgb(200,0,0);'>Username of password incorrect</p>");}}?>
                         <input type="submit" value="Sign in">
                     </form>
                     <a href="Signup.php"> 
@@ -47,6 +48,9 @@ include __DIR__ . "/Header.php";
             </td>
         </tr>
     </table>
-        
+    
     </div>
 </body>
+<?php
+include __DIR__ . "/Footer.php";
+?>

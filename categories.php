@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='CSS/style.css'>
 </head>
 <header>
 
 <?php
 
 include __DIR__ . "/Header.php";
+?>
+</header>
+<body style="min-height: 100vh;">
+    
 
+
+<?php
 $Query = "
             SELECT StockGroupID, StockGroupName, ImagePath
             FROM stockgroups 
@@ -45,3 +51,4 @@ $StockGroups = mysqli_fetch_all($Result, MYSQLI_ASSOC);
         }
     } ?>
 </div>
+</body>

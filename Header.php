@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "connect.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -8,42 +9,36 @@ include "connect.php";
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel='stylesheet' href='bootstrap.min.css'>
-    <link rel='stylesheet' href='style.css'>
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="fontawesome.js"></script>
-    <script src="jquery-3.4.1.js"></script>
+    <title>NerdyGagdets</title>
+    <link rel='stylesheet' href='CSS/bootstrap.min.css'>
+    <link rel='stylesheet' href='CSS/style.css'>
+    <script src="JS/jquery.min.js"></script>
+    <script src="JS/bootstrap.min.js"></script>
+    <script src="JS/fontawesome.js"></script>
+    <script src="JS/jquery-3.4.1.js"></script>
     <script type="text/javascript">
-        function sendToPage(){
-                var input = document.getElementById("search").value;
-                var inputkey = document.getElementById("myInput");
-                 //alert(input);
-                 
-                if (input != "" && event.keyCode != 13){
-                    
-                        window.location.href = "browse.php";
-                    
-                    
-                }}
-
-                    
+        function sendToPage() {
+            
+            
+            window.location = "browse.php";
+            
+            
+        }
     </script>
 </head>
-<header>
-    <div id="totaal">
-        <div id="titel">
-            <a href="index.php">
-                <picture id="picture"><img src="wauw%20(1).png"></picture>
-                <h3> NerdyGadgets </h3>
+<header style="color: white; background-color: black; border: black; padding-top: black;">
+    <div id="totaal" style="color: inherit;">
+        <div id="titel" style="color: inherit;">
+            <a href="index.php" style="color: inherit;">
+                <picture id="picture"><img src="Pictures/wauw%20(1).png"></picture>
+                <h3 style="color: inherit;"> NerdyGadgets </h3>
     </a>
         </div>
 
         <div id="categorie" style="   overflow: visible;">
             <a href="index.php" class="button" id="categories">Home</a>
             <div id="categorie" class="dropdown" style="position: relative; font-family: Calibri; float: left; ">
-                <button class="dropbtn" onclick="window.location.href='categories.php'">Alle categorieen
+                <button class="dropbtn" onclick="window.location.href='categories.php'">Producten
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content" style="position: absolute;">
@@ -75,28 +70,41 @@ include "connect.php";
                 </div>
 
             </div>
-            <a href="contact.php" class="button" id="categories" style="margin-left: -400px;">Over Ons</a>
-
+            <a href="overons.php" class="button" id="categories" style="margin-left: -400px;">Over Ons</a>
+            <a href="contact.php" class="button" id="categories" style="margin-left: -280px;">Contact</a>         
         </div>
 
         <div class="background">
-            <form href="browse.php">
-                <input type="text"  name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onclick="sendToPage(event);">
+            <form action="browse.php">
+            <a>
+                <input type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onSubmit="sendToPage();">
+            </a>
             </form>
             
             
             
 
             <?php
+             
+             
+            
             $login = false;
-            if ($login == false){
-                print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
+            if(isset($_SESSION["Naam"])){
+                if ($_SESSION["Naam"] != "" ){
+                    print("<a id='login' href='Account.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Account</a>");
+                }
+                else {
+                    
+                    print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
+                }
+                
             }
             else {
-                print("<a id='login' href='Account.php' id='categories' class='button' style='color: white;'>Account</a>");
+                print("<a id='login' href='login.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float:right; padding-right: 50px;'>Login</a>");
             }
+            
             ?>
-            <a id='winkelmand' href='winkelmand.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float: right; padding-right: 50px; '>Winkelmand</a>
+            <a id='winkelmand' href='winkelmand.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float: right; padding-right: 50px; margin-top: 0px; '>Winkelmand</a>
         </div>
 
     </div>
