@@ -135,6 +135,15 @@
     <div class="signup-form" style="margin-left: 600px; margin-top: 100px;">
         <form action="DatabaseLogin.php" method="post" style="height: 400px; width: 700px; margin: auto;">
             <h2 style="font-size: ">Inloggen</h2>
+            <?php if(isset($_GET["Login"])){
+                if ($_GET["Login"] == "fout"){
+                    ?> <p style="color: rgb(200,0,0)"> Wachtwoord of Username klopt niet </p><?php
+                }
+            }
+            
+            
+            
+            ?>
             <p class="hint-text"></p>
             <div class="form-group">
                 <input type="Text" class="form-control" name="Username" placeholder="Gebruikersnaam" required="required">

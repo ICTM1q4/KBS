@@ -141,20 +141,15 @@
         <div class="form-group">
             <input type="password" class="form-control" name="Password" placeholder="Wachtwoord" required="required">
         </div>
-
         <div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Herhaal wachtwoord"
-                   required="required">
+            <input type="password" class="form-control" name="confirm_password" placeholder="Herhaal wachtwoord" required="required">
         </div>
-
         <div class="form-group">
             <div class="row">
-                <div class="col-xs-6" style="margin-left:15px;"><input type="text" class="form-control" name="firstname"
-                                             placeholder="Voornaam"
-                                             required="required"></div>
-                <div class="col-xs-6"><input type="text" class="form-control" name="lastname"
-                                             placeholder="Achternaam"
-                                             required="required"></div>
+                <div class="col-xs-6" style="margin-left:15px;"><input type="text" class="form-control" name="firstname" placeholder="Voornaam" required="required">
+                </div>
+                <div class="col-xs-6"><input type="text" class="form-control" name="lastname" placeholder="Achternaam" required="required">
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -165,24 +160,33 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-xs-6" style="margin-left:15px;"><input type="text" class="form-control" name="zipcode" placeholder="Postcode"
-                                             required="required"></div>
-                <div class="col-xs-6"><input type="number" class="form-control" name="phonenumber"
-                                             placeholder="Telefoonnummer"
-                                             required="required"></div>
+                <div class="col-xs-6" style="margin-left:15px;">
+                    <input type="text" class="form-control" name="zipcode" placeholder="Postcode" required="required">
+                </div>
+                <div class="col-xs-6">
+                    <input type="number" class="form-control" name="phonenumber" placeholder="Telefoonnummer">
+                </div>
             </div>
-
-
+            <?php if(isset($_GET["Registreer"])){
+                if ($_GET["Registreer"] == "fout"){
+                    ?> <p style="color: rgb(200,0,0); margin-top: 5px;"> Wachtwoord of Gebruikersnaam klopt niet </p><?php
+                }
+            }
+            
+            
+            
+            ?>
         </div>
+        
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg btn-block">Account aanmaken</button>
         </div>
-</div>
-<div class="text-center" style="color: white">Heb je al een account? <a href="login.php">Log in</a></div>
-
-
-
-    
+    </div>
+    <div class="text-center" style="color: white">Heb je al een account? 
+        <a href="login.php">
+            Log in
+        </a>
+    </div>
 </body>
 
 <footer>

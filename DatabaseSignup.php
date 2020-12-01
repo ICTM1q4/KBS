@@ -27,7 +27,7 @@
     $specialChars = preg_match('@[^\w]@', $gebruikersWachtwoord);
     
     if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruikersWachtwoord) < 8) {
-        print("<script>window.location = 'Signup.php?ww=fout'</script>");
+        print("<script>window.location = 'Signup.php?registreer=fout'</script>");
     } 
  
 //CHECK IF DUPE
