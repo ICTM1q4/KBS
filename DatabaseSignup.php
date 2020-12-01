@@ -57,7 +57,7 @@
     mysqli_stmt_execute($Statement);
 
 //GO BACK AND SET SESSION ID
-    if($gebruikersNaam == $ReturnableResult["Username"]){
+    if($gebruikersNaam != $ReturnableResult["Username"]){
         $Query = "
         INSERT INTO weborder (CustomerID)
         VALUES (?);";
@@ -68,7 +68,7 @@
         $_SESSION["CustomerID"] = $ID;
         echo "<script>window.location = 'login.php'</script>";
     }
-    else {
+    else if ($gebruikersNaam == $ReturnableResult["Username"]){
         print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
     }
 
