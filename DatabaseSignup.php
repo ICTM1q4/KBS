@@ -1,46 +1,44 @@
 <?php
-include "connect.php";
+    include "connect.php";
 
 //PREPARE ALL VARIABLES
-$gebruikersNaam = "";
-$gebruikersWachtwoord = "";
-$gebruikersFirstNaam = "";
-$gebruikersLastNaam = "";
-$gebruikersAddress = "";
-$gebruikersZipcode = "";
-$gebruikersPhone = "";
-$gebruikersEmail = "";
+    $gebruikersNaam = "";
+    $gebruikersWachtwoord = "";
+    $gebruikersFirstNaam = "";
+    $gebruikersLastNaam = "";
+    $gebruikersAddress = "";
+    $gebruikersZipcode = "";
+    $gebruikersPhone = "";
+    $gebruikersEmail = "";
 
-$gebruikersNaam = $_POST["Username"];
-$gebruikersWachtwoord = $_POST["Password"];
-$gebruikersFirstNaam = $_POST["firstname"];
-$gebruikersLastNaam = $_POST["lastname"];
-$gebruikersAddress = $_POST["address"];
-$gebruikersZipcode = $_POST["zipcode"];
-$gebruikersPhone = $_POST["phonenumber"];
-$gebruikersEmail = $_POST["email"];
+    $gebruikersNaam = $_POST["Username"];
+    $gebruikersWachtwoord = $_POST["Password"];
+    $gebruikersFirstNaam = $_POST["firstname"];
+    $gebruikersLastNaam = $_POST["lastname"];
+    $gebruikersAddress = $_POST["address"];
+    $gebruikersZipcode = $_POST["zipcode"];
+    $gebruikersPhone = $_POST["phonenumber"];
+    $gebruikersEmail = $_POST["email"];
 
 //password check
-$uppercase = preg_match('@[A-Z]@', $gebruikersWachtwoord);
-$lowercase = preg_match('@[a-z]@', $gebruikersWachtwoord);
-$number    = preg_match('@[0-9]@', $gebruikersWachtwoord);
-$specialChars = preg_match('@[^\w]@', $gebruikersWachtwoord);
- 
-if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruikersWachtwoord) < 8) {
-    print("<script>window.location = 'Signup.php?ww=fout'</script>");
-} 
-else {
-            
-}
+    $uppercase    = preg_match('@[A-Z]@', $gebruikersWachtwoord);
+    $lowercase    = preg_match('@[a-z]@', $gebruikersWachtwoord);
+    $number       = preg_match('@[0-9]@', $gebruikersWachtwoord);
+    $specialChars = preg_match('@[^\w]@', $gebruikersWachtwoord);
+    
+    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruikersWachtwoord) < 8) {
+        print("<script>window.location = 'Signup.php?ww=fout'</script>");
+    } 
  
 //CHECK IF DUPE
-$Query = " SELECT DISTINCT Username FROM WebCustomer;";
+    $Query = "
+        SELECT DISTINCT Username 
+        FROM WebCustomer;";
+
     $Statement = mysqli_prepare($Connection, $Query);
-    
     mysqli_stmt_execute($Statement);
     $ReturnableResult = mysqli_stmt_get_result($Statement);
     $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
-
     foreach ($ReturnableResult as $ReturnableResult){
         if (isset($ReturnableResult["Username"])){
             if ($ReturnableResult["Username"] == $gebruikersNaam){
@@ -55,25 +53,23 @@ $Query = " SELECT DISTINCT Username FROM WebCustomer;";
     $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,Email,Phonenumber)
     VALUES (?,?,?,?,?,?,?,?);";
     $Statement = mysqli_prepare($Connection, $Query);
-     mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail, $gebruikersPhone); 
+    mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail, $gebruikersPhone); 
     mysqli_stmt_execute($Statement);
 
 //GO BACK AND SET SESSION ID
-if($gebruikersNaam == $ReturnableResult["Username"]){
-    echo "<script>window.location = 'login.php'</script>";
+    if($gebruikersNaam == $ReturnableResult["Username"]){
+        $Query = "
+        INSERT INTO weborder (CustomerID)
+        VALUES (?);";
 
-    $Query = "
-    INSERT INTO weborder (CustomerID)
-    VALUES (?);";
-
-
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $ID);
-mysqli_stmt_execute($Statement);
-$_SESSION["CustomerID"] = $ID;
-}
-else {
-    print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
-}
+        $Statement = mysqli_prepare($Connection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $ID);
+        mysqli_stmt_execute($Statement);
+        $_SESSION["CustomerID"] = $ID;
+        echo "<script>window.location = 'login.php'</script>";
+    }
+    else {
+        print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
+    }
 
 

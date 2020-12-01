@@ -1,11 +1,10 @@
 
 <?php
-$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
-mysqli_set_charset($Connection, 'latin1');
-include __DIR__ . "/header.php";
-
-$Query = " 
-           SELECT SI.StockItemID, 
+    $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+    mysqli_set_charset($Connection, 'latin1');
+    include __DIR__ . "/header.php";
+    $Query = " 
+            SELECT SI.StockItemID, 
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
             StockItemName,
             (CASE WHEN (SIH.QuantityOnHand) >= ? THEN 'Ruime voorraad beschikbaar.' ELSE CONCAT('Voorraad: ',QuantityOnHand) END) AS QuantityOnHand,
@@ -19,47 +18,44 @@ $Query = "
             WHERE SI.stockitemid = ?
             GROUP BY StockItemID";
 
-$ShowStockLevel = 1000;
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "ii", $ShowStockLevel,$_GET['id']);
-mysqli_stmt_execute($Statement);
-$ReturnableResult = mysqli_stmt_get_result($Statement);
-if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
-    $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
-} else {
-    $Result = null;
-}
+    $ShowStockLevel = 1000;
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "ii", $ShowStockLevel,$_GET['id']);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
+        $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
+    } 
+    else {
+        $Result = null;
+    }
+
 //Get Images
-$Query = "
-                SELECT ImagePath
-                FROM stockitemimages 
-                WHERE StockItemID = ?";
+    $Query = "
+        SELECT ImagePath
+        FROM stockitemimages 
+        WHERE StockItemID = ?";
 
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
-mysqli_stmt_execute($Statement);
-$R = mysqli_stmt_get_result($Statement);
-$R = mysqli_fetch_all($R, MYSQLI_ASSOC);
-
-if ($R) {
-    $Images = $R;
-}
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    if ($R) {
+        $Images = $R;
+    }
 ?>
 <div id="CenteredContent">
     <?php
-    if ($Result != null) {
-        ?>
-        
-
-
-        <div id="ArticleHeader">
-            <?php
+        if ($Result != null) {
+    ?>
+    <div id="ArticleHeader">
+        <?php
             if (isset($Images)) {
-                // print Single
+// print Single
                 if (count($Images) == 1) {
                     ?>
-                    <div id="ImageFrame"
-                         style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
+                    <div id="ImageFrame" style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
                     <?php
                 } else if (count($Images) >= 2) { ?>
                     <div id="ImageFrame">
