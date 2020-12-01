@@ -56,8 +56,25 @@
     mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail, $gebruikersPhone); 
     mysqli_stmt_execute($Statement);
 
+    $Query = " SELECT Username, CustomerID FROM WebCustomer WHERE Username = ?; ";
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $gebruikersNaam);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+    foreach ($ReturnableResult as $ReturnableResult){
+        if ($ReturnableResult["Username"] == $gebruikersNaam){
+            $ID = $ReturnableResult["CustomerID"];
+            $gebruikersNaam = $ReturnableResult["Username"];
+
+            print("yes");
+        }
+        
+
+        
+    }
 //GO BACK AND SET SESSION ID
-    if($gebruikersNaam != $ReturnableResult["Username"]){
+    
         $Query = "
         INSERT INTO weborder (CustomerID)
         VALUES (?);";
@@ -67,9 +84,5 @@
         mysqli_stmt_execute($Statement);
         $_SESSION["CustomerID"] = $ID;
         echo "<script>window.location = 'login.php'</script>";
-    }
-    else if ($gebruikersNaam == $ReturnableResult["Username"]){
-        print("<h1>Gegevens incorrect, probeer opnieuw</h1>");
-    }
-
+    
 

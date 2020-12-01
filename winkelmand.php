@@ -173,7 +173,7 @@
         <form action="checkout.php" method="post">
             <input type="hidden" name="price" value="<?php print(number_format($totaal,2))?>">
             <button type="submit" style="background-color: rgb(0,220,0); border: none; color: white; padding: 5px 13px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 5px; border: 5px solid rgb(0,180,0); margin-left: 650px;">
-                Kopen die handel!
+                Afrekenen
             </button> 
         </form>
     </div>

@@ -55,6 +55,7 @@
                 }
             }
 //GO BACK
+            $_SESSION["loggedin"] = "ja";
             echo "<script>window.location = 'login.php?Login=goed'</script>";
             break;
         }

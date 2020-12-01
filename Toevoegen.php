@@ -1,6 +1,21 @@
 <?php 
     include "connect.php";
     session_start();
+    if(isset($_SESSION['loggedin']) == false){
+        
+            $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            $position = strrpos($actual_link, "/");
+            $count = strlen($actual_link);
+            $positionChar = substr($actual_link, $position);
+            while ($positionChar != ""){
+                $actual_link = substr_replace($actual_link, "", $position);
+                $positionChar = substr($actual_link, $position);
+            }
+            header('Location: ' . $actual_link . '/login.php');
+        }
+    
+
+
 
 //PREPARE ALL VARIABLES
     if(isset($_GET['product'])){
