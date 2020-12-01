@@ -38,29 +38,35 @@ foreach ($ReturnableResult as $ReturnableResult){
         $_SESSION["Naam"] = $gebruikersNaam;
         
         $Query = "
-                SELECT OrderID
-                FROM weborder
-                WHERE CustomerID IN ( SELECT CustomerID FROM webcustomer 
+                SELECT WO.OrderID, WC.username as username, WC.Address address, WC.zipcode zip
+                FROM weborder WO
+                JOIN webcustomer WC ON WO.CustomerID = WC.CustomerID
                 WHERE username = ?
-                AND password = ?);";
+                AND password = ?;";
 
         $Statement = mysqli_prepare($Connection, $Query);
-        mysqli_stmt_bind_param($Statement, "ii", $gebruikersNaam, $gebruikersWachtwoord);
+        mysqli_stmt_bind_param($Statement, "ii", $_SESSION["Naam"], $gebruikersWachtwoord);
         mysqli_stmt_execute($Statement);
         $ReturnableResult = mysqli_stmt_get_result($Statement);
         $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
         foreach ($ReturnableResult as $ReturnableResult){
-        $_SESSION["OrderID"] = $ReturnableResult["OrderID"];
+            if ($gebruikersNaam == $ReturnableResult["username"]){
+                $_SESSION["OrderID"] = $ReturnableResult["OrderID"];
+                $_SESSION["Address"] = $ReturnableResult["address"];
+                $_SESSION["Zip"] = $ReturnableResult["zip"];
+                print($_SESSION["Naam"] . $ReturnableResult["OrderID"]);
+            }
+        
     }
 
 //GO BACK
-        echo "<script>window.location = 'login.php?Login=goed'</script>";
+       echo "<script>window.location = 'login.php?Login=goed'</script>";
         break;
     }
 
 //IF INPUT IS INCORRECT, GO BACK AND GIVE ERROR
     else if ($ReturnableResult["username"] != $gebruikersNaam && $ReturnableResult != $gebruikersWachtwoord ){
-       echo "<script>window.location = 'login.php?Login=fout'</script>"; 
+      echo "<script>window.location = 'login.php?Login=fout'</script>"; 
     }
 }
 

@@ -66,27 +66,86 @@ $Query = "
     $ReturnableResult = mysqli_stmt_get_result($Statement);
     $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
 ?>
-    <table>
-<tr><th></th><th>Product</th><th>Artikelnummer</th><th>Aantal</th><th>Prijs</th></tr>
+    <table >
 
+<thead><tr><th style="width: 100px;"></th><th style="width: 700px;">Product</th><th>Artikelnummer</th><th>Aantal</th><th>Prijs</th><th></th></tr></thead>
+<tbody>
 <?php
+
+    
+    
+    
+    
+
+
+
+$switch = 1;
+$totaal = 0;
 foreach ($ReturnableResult as $row){
+    
 if (isset($row['Image'])){
     $ImageLine = "Public/StockItemIMG/".$row['Image'];
+    $switch = 0;
 }
 else{
     $ImageLine = "Public/StockGroupIMG/".$row['BackupImagePath'];
+    $switch = 0;
 }
 
 
-    
+    $totaal += $row['SellPrice'] * $row['Amount'];
     print("<tr style='text-align: center; '>");
     print("<td><img src='$ImageLine' style='width: 80px; height:80px;'> </td>"); //image
     print("<td><h1 style='font-size: 150%;'>". $row['Product'] ."</h1> </td>") ; //artikelnaam
     print("<td><p style='color: white;'>".$row['ProductID']."</p> </td>"); //artikelcode
     print("<td><p style='color: white;'>".$row['Amount']." </p></td>"); //artikelamount
-    print("<td><p style='color: white;'>".$row['SellPrice']. "</p></td>"); //artikelprijs
+    print("<td><p style='color: white;'>€". number_format(($row['SellPrice'] * $row['Amount']),2). "</p></td>"); //artikelprijs
     ?> <td><form action="Delete.php" method="post"> <input type="hidden" name="ID" value="<?php print($row['ID']); ?>" ></input><input style="background-color: rgb(220,0,0);
+    border: none;
+    color: white;
+    padding: 5px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-top: -10px;
+    cursor: pointer;
+    border-radius: 40px;
+    border: 5px solid rgb(180,0,0)" type="submit" value="X"> </form></td> <?php
+    print("</tr>");
+    ?>
+    <?php
+}
+
+if (isset($_GET["bestelling"])){
+    if ($_GET["bestelling"] == "fout"){
+        
+        
+        ?>
+        <script type='text/javascript'> alert('Er zit nog niks in je winkelmand!');</script>
+        <p style='color: rgb(200,0,0);'>Er zit nog niks in je winkelmand!</p>
+        <?php
+        }
+}
+
+if ($switch != 0){
+    ?>
+<tr style='text-align: center; height: 100px;'>
+    <td></td>
+    <td><h1 style='font-size: 150%;'></h1> </td>
+    <td><p style='color: white;'></p> </td>
+    <td><p style='color: white;'></p></td>
+    <td><p style='color: white;'></p></td>
+</tr>
+<?php }
+?>
+</tbody>
+<tfoot style="text-align: center;"><tr><td></td><td></td><td></td><td>Totaalprijs:</td><td><p style="margin-bottom: 0px;"><?php print ("€".number_format($totaal,2));?></p></td><td></td></tr></tfoot>
+</table>
+<form action="checkout.php" method="post">
+<input type="hidden" name="price" value="<?php print(number_format($totaal,2))?>">
+<button type="submit" style="background-color: rgb(0,220,0);
     border: none;
     color: white;
     padding: 5px 13px;
@@ -97,18 +156,9 @@ else{
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px ;
-    border: 5px solid rgb(220,0,0)" type="submit" value="Verwijderen"> </form></td> <?php
-    print("</tr>");
-}
-print("</table>");
-
-
-
-
-?>
-<tr><td></td><td></td><td></td><td></td><td><p><?php print ($totaal);?></p></td></tr>
-Totaalprijs:    25,98 Euro<br>
-<button>Kopen die handel!</button>
+    border: 5px solid rgb(0,180,0);
+    margin-left: 650px;">Kopen die handel!</button> 
+    </form>
 </div>
 </body>
 <footer style="margin-top: 450px;">

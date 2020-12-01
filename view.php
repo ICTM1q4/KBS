@@ -114,6 +114,10 @@ if ($R) {
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6 style="color: white;"> Inclusief BTW </h6>
+                        <form action="Toevoegen.php?product=<?php print($_GET["id"]); ?>">
+                            <input type="hidden" name="product" value="<?php print($_GET["id"]); ?>">
+                            <input type="submit" class="toevoegen" style="  background-color: #85bf31; border: 5px solid #85bf31; border-radius: 3px; color: white; font-family: Calibri; font-weight: bold;" value="Toevoegen aan winkelmand" ></input>
+                        </form>
                     </div>
                 </div>
             </div>
