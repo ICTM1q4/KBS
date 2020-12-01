@@ -98,7 +98,30 @@ else{
     print("<td><img src='$ImageLine' style='width: 80px; height:80px;'> </td>"); //image
     print("<td><h1 style='font-size: 150%;'>". $row['Product'] ."</h1> </td>") ; //artikelnaam
     print("<td><p style='color: white;'>".$row['ProductID']."</p> </td>"); //artikelcode
-    print("<td><p style='color: white;'>".$row['Amount']." </p></td>"); //artikelamount
+    ?> <td style='padding-top: 0px; padding-bottom: 20px;'>
+    <form action="Amount.php">
+    <input type="hidden" name="change" value="plus">
+    <input type="hidden" name="OrderLine" value="<?php print($row["ID"]); ?>">
+    <button type='submit' style='border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    background-color: #463886;'></button></form>
+    <p style='color: white; margin-bottom: -10px;'><?php print($row['Amount']); ?> </p>
+    <form action="Amount.php">
+    <input type="hidden" name="change" value="minus">
+    <input type="hidden" name="OrderLine" value="<?php print($row["ID"]); ?>">
+    <button style='border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    background-color: #463886;'></button></form>
+    </td>
+    <?php
     print("<td><p style='color: white;'>€". number_format(($row['SellPrice'] * $row['Amount']),2). "</p></td>"); //artikelprijs
     ?> <td><form action="Delete.php" method="post"> <input type="hidden" name="ID" value="<?php print($row['ID']); ?>" ></input><input style="background-color: rgb(220,0,0);
     border: none;
