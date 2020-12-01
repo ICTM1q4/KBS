@@ -67,7 +67,7 @@ include "connect.php";
         <div class="background">
             <form action="browse.php">
                 <a>
-                    <input type="text" name="search_string" id="search" id="search_string" placeholder="search" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onSubmit="sendToPage();">
+                    <input type="text" name="search_string" id="search" id="search_string" placeholder="Zoeken" value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>" class="form-submit" onSubmit="sendToPage();">
                 </a>
             </form>
             <?php
