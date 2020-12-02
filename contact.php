@@ -21,11 +21,11 @@
             <h1 style="color: white; font-family: Calibri;">Contactformulier:</h1>
             <div style="margin-left: 17px;">
                 <label for="Titel">Titel:</label> <br>
-                <input required type="text" id="Titel" name="Titel" style="width: 600px; border-top: 1px gray solid;"> <br>
+                <textarea required maxlength="32" type="text" id="Titel" name="Titel" style="width: 600px; border-top: 1px gray solid; height: 35px;"> </textarea><br>
                 <label for="email">E-mail:</label> <br>
-                <input required type="text" id="email" name="email" style="width: 600px; border-top: 1px gray solid;"> <br>
+                <input required type="email" id="email" name="email" style="width: 600px; border-top: 1px gray solid;"> <br>
                 <label for="beschrijving">Vraag/Klacht:</label> <br>
-                <textarea required type="text" id="beschrijving" name="beschrijving" style="width: 600px; height: 300px; text-align: upper-left; border-top: 1px gray solid;"></textarea> <br>
+                <textarea required maxlength="300" type="text" id="beschrijving" name="beschrijving" style="width: 600px; height: 300px; text-align: upper-left; border-top: 1px gray solid;"></textarea> <br>
                 <input type="submit" id="submit" value="Versturen" style="margin-left: 30px; margin-top: 10px;">
             </div>    
         </form>

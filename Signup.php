@@ -167,8 +167,8 @@
                     <input type="number" class="form-control" name="phonenumber" placeholder="Telefoonnummer">
                 </div>
             </div>
-            <?php if(isset($_GET["Registreer"])){
-                if ($_GET["Registreer"] == "fout"){
+            <?php if(isset($_GET["registreer"])){
+                if ($_GET["registreer"] == "fout"){
                     ?> <p style="color: rgb(200,0,0); margin-top: 5px;"> Wachtwoord of Gebruikersnaam klopt niet </p><?php
                 }
             }
