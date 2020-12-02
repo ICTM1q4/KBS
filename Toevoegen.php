@@ -96,6 +96,7 @@
     }
 
 //GET URL AND GO TO winkelmand.php
+    $totaal = "";
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $position = strrpos($actual_link, "/");
     $count = strlen($actual_link);
@@ -104,4 +105,31 @@
         $actual_link = substr_replace($actual_link, "", $position);
         $positionChar = substr($actual_link, $position);
     }
-    header('Location: ' . $actual_link . '/winkelmand.php');
+    $i = 0;
+    if (isset($_GET['url']) && $_GET['url'] != ""){
+        $url = $_GET['url'];
+
+        
+        
+        $count = strlen($_GET['url']);
+        $positionChar = substr($_GET['url'], $position);
+        while ($positionChar != ""){
+            
+            $totaal =  substr($_GET['url'], $position) . $totaal;
+            $actual_link = substr_replace($_GET['url'], "", $position);
+            $positionChar = substr($_GET['url'], $position);
+            
+        print($totaal);
+        
+        $totaal = substr_replace($totaal, "", 0, 1);
+        print($totaal);
+        break;
+        }
+
+    }
+    
+    
+
+    $product = $totaal;
+    $nexturl = "/winkelmand.php?url=" . $product;
+    header("Location: " . $actual_link . $nexturl);

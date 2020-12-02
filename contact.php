@@ -24,7 +24,7 @@
                 <input required type="text" id="Titel" name="Titel" style="width: 600px; border-top: 1px gray solid;"> <br>
                 <label for="email">E-mail:</label> <br>
                 <input required type="text" id="email" name="email" style="width: 600px; border-top: 1px gray solid;"> <br>
-                <label for="beschrijving">Beschrijving:</label> <br>
+                <label for="beschrijving">Vraag/Klacht:</label> <br>
                 <textarea required type="text" id="beschrijving" name="beschrijving" style="width: 600px; height: 300px; text-align: upper-left; border-top: 1px gray solid;"></textarea> <br>
                 <input type="submit" id="submit" value="Versturen" style="margin-left: 30px; margin-top: 10px;">
             </div>    
@@ -33,7 +33,7 @@
             <h1>Contact</h1>
             <p>Telefoonnummer: 06123456</p>
             <br>
-            <p>E-mail: nerdygadgets@gmail.com</p>
+            <p></p>
             <h2>Sociale media</h2>
             <p> Twitter: </p> 
             <a href='twitter.com'>Nerdygadgets</a>
