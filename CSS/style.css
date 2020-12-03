@@ -10,12 +10,13 @@ a.button {
     font-family: Calibri;
 }
 body{
-    background-color: #221c4c;
+    background-color: #463886;
+    
 }
 
 
 #totaal{
-    background: black;
+    background: inherit;
     overflow: visible;
     border: 20px black solid;
     border-radius: 10px;
@@ -48,7 +49,7 @@ img{
 
 
 h3{
-    color: white;
+    color: inherit;
     font-family: Calibri;
     border: 15px solid black;
     float: left;
@@ -79,12 +80,19 @@ h3{
   font-family: Calibri;
   z-index: 50;
 }
+#winkelmand:hover{
+  opacity:0.5;
+}
+#winkelmandje{
+  color: inherit;
+  font-family: Calibri;
+  margin-top: 10px;
+  margin-left: 10px;
+}
 #login:hover{
   opacity: 0.5;
 }
-#winkelmand:hover{
-  opacity: 0.5;
-}
+
 #search{
     position: absolute;
     
@@ -104,7 +112,7 @@ h3{
 }
 
 #categories{
-    color: white;
+    color: inherit;
     border-left: 18px solid black;
     border-right: 18px solid black;
     border-top: 2px solid black;
@@ -130,7 +138,7 @@ input{
     background: rgba(0,0,0,0.5);
     border: 10px rgba(0,0,0,0.5) solid;
     border-radius: 10px;
-    height: 1000px;
+    height: 1500px;
     margin-top: 10px;
     
     width: 90%;
@@ -248,7 +256,7 @@ input{
   background-color: rgba(35, 40, 47, 0.8);
   float: left;
   top:216px;
-  border: 1px solid #fff;
+  border: 3px solid black;
   margin-left: 5px;
   margin-top: 10px;
   padding: 20px;
@@ -277,7 +285,7 @@ input{
   position: relative;
   margin-left: 10%;
   padding: 1px;
-  border-bottom: 1px solid #fff;
+  
   display: block;
   font-family: Calibri;
 }
@@ -541,6 +549,7 @@ ul#ul-class-price li {
 #Wrap a {
   text-decoration: none;
   color: white;
+  
 }
 #Wrap a:hover {
   color: #ccc;
@@ -609,6 +618,8 @@ ul#ul-class-price li {
   height: 100%;
   margin: 20px;
   position: relative;
+  color: white;
+  font-family: Calibri;
 }
 #ProductNotFound {
   text-align: center;
@@ -672,8 +683,8 @@ ul#ul-class-navigation li {
 }
 /* Dropdown Button */
 .dropbtn {
-  background-color: black;
-  color: white;
+  background-color: inherit;
+  color: inherit;
   
   font-size: 24px;
   border: none;

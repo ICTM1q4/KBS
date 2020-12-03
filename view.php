@@ -1,14 +1,13 @@
 
 <?php
-$Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
-mysqli_set_charset($Connection, 'latin1');
-include __DIR__ . "/header.php";
-
-$Query = " 
-           SELECT SI.StockItemID, 
+    $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
+    mysqli_set_charset($Connection, 'latin1');
+    include __DIR__ . "/header.php";
+    $Query = " 
+            SELECT SI.StockItemID, 
             (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
             StockItemName,
-            CONCAT('Voorraad: ',QuantityOnHand)AS QuantityOnHand,
+            (CASE WHEN (SIH.QuantityOnHand) >= ? THEN 'Ruime voorraad beschikbaar.' ELSE CONCAT('Voorraad: ',QuantityOnHand) END) AS QuantityOnHand,
             SearchDetails, 
             (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
             (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
@@ -19,54 +18,44 @@ $Query = "
             WHERE SI.stockitemid = ?
             GROUP BY StockItemID";
 
-$ShowStockLevel = 1000;
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
-mysqli_stmt_execute($Statement);
-$ReturnableResult = mysqli_stmt_get_result($Statement);
-if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
-    $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
-} else {
-    $Result = null;
-}
+    $ShowStockLevel = 1000;
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "ii", $ShowStockLevel,$_GET['id']);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
+        $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
+    } 
+    else {
+        $Result = null;
+    }
+
 //Get Images
-$Query = "
-                SELECT ImagePath
-                FROM stockitemimages 
-                WHERE StockItemID = ?";
+    $Query = "
+        SELECT ImagePath
+        FROM stockitemimages 
+        WHERE StockItemID = ?";
 
-$Statement = mysqli_prepare($Connection, $Query);
-mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
-mysqli_stmt_execute($Statement);
-$R = mysqli_stmt_get_result($Statement);
-$R = mysqli_fetch_all($R, MYSQLI_ASSOC);
-
-if ($R) {
-    $Images = $R;
-}
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $_GET['id']);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    if ($R) {
+        $Images = $R;
+    }
 ?>
 <div id="CenteredContent">
     <?php
-    if ($Result != null) {
-        ?>
+        if ($Result != null) {
+    ?>
+    <div id="ArticleHeader">
         <?php
-        if (isset($Result['Video'])) {
-            ?>
-            <div id="VideoFrame">
-                <?php print $Result['Video']; ?>
-            </div>
-        <?php }
-        ?>
-
-
-        <div id="ArticleHeader">
-            <?php
             if (isset($Images)) {
-                // print Single
+// print Single
                 if (count($Images) == 1) {
                     ?>
-                    <div id="ImageFrame"
-                         style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
+                    <div id="ImageFrame" style="background-image: url('Public/StockItemIMG/<?php print $Images[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
                     <?php
                 } else if (count($Images) >= 2) { ?>
                     <div id="ImageFrame">
@@ -115,23 +104,29 @@ if ($R) {
             <h2 class="StockItemNameViewSize StockItemName">
                 <?php print $Result['StockItemName']; ?>
             </h2>
-            <div class="QuantityText"><?php print $Result['QuantityOnHand']; ?></div>
+            <div class="QuantityText" style="color: white; font-family:Calibri;"><?php print $Result['QuantityOnHand']; ?></div>
             <div id="StockItemHeaderLeft">
                 <div class="CenterPriceLeft">
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $Result['SellPrice']); ?></b></p>
                         <h6 style="color: white;"> Inclusief BTW </h6>
+                        <form action="Toevoegen.php?product=<?php print($_GET["id"]); ?>">
+                            <input type="hidden" name="product" value="<?php print($_GET["id"]); ?>">
+                            <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+                            <input type="hidden" name="url" value="<?php print($actual_link); ?>">
+                            <input type="submit" class="toevoegen" style="  background-color: #85bf31; border: 5px solid #85bf31; border-radius: 3px; color: white; font-family: Calibri; font-weight: bold;" value="Toevoegen aan winkelmand" ></input>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="StockItemDescription" style="color: white;">
-            <h3 style="color: white;">Artikel beschrijving</h3>
+            <h3 style="color: white; border: none;">Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
         </div>
         <div id="StockItemSpecifications" style="color: white;">
-            <h3 >Artikel specificaties</h3>
+            <h3 style="border: none;">Artikel specificaties</h3>
             <?php
             $CustomFields = json_decode($Result['CustomFields'], true);
             if (is_array($CustomFields)) { ?>
@@ -172,3 +167,9 @@ if ($R) {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
+
+<footer style="padding-top: 330px;">
+<?php
+include __DIR__ . "/Footer.php";
+?>
+</footer>

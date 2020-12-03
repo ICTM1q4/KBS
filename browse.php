@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel='stylesheet' href='style.css'>
+    <title>NerdyGadgets</title>
+    <link rel='stylesheet' href='CSS/style.css'>
 </head>
 <header>
 <?php
@@ -13,7 +13,7 @@ include __DIR__ . "/Header.php";
 
 
 
-<body>
+<body style="height: 100%">
     <?php
 $SearchString = "";
 $ReturnableResult = null;
@@ -174,7 +174,7 @@ if (isset($amount)) {
     $AmountOfPages = ceil($amount["count(*)"] / $ProductsOnPage);
 }
 ?>
-<div id="FilterFrame"><h2 class="FilterText"><i class="fas fa-filter"></i> Filteren </h2>
+<div id="FilterFrame" style="margin-left: 50px; border: 3px solid black;"><h2 class="FilterText"><i class="fas fa-filter"></i> Filteren </h2>
     <form>
         <div id="FilterOptions">
             <h4 class="FilterTopMargin"><i class="fas fa-search"></i> Zoeken</h4>
@@ -221,13 +221,15 @@ if (isset($amount)) {
     </form>
 </div>
             </div>
-<div id="ResultsArea" class="Browse">
+<div id="ResultsArea" class="Browse" style="margin-bottom: 700px; ">
     <?php
     if (isset($ReturnableResult) && count($ReturnableResult) > 0) {
+        ?> <div style="margin-bottom: -550px; "> <?php
         foreach ($ReturnableResult as $row) {
             ?>
+            
             <a class="ListItem"  >
-                <div id="ProductFrame"  >
+                <div id="ProductFrame" style="background-color: rgba(255,255,255,0.3);" >
                 <a href='view.php?id=<?php print $row['StockItemID']; ?>' style="text-decoration: none;">
                     <?php
                     if (isset($row['ImagePath'])) { ?>
@@ -244,7 +246,17 @@ if (isset($amount)) {
                         <div class="CenterPriceLeftChild">
                             <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", $row["SellPrice"]); ?></h1>
                             <h6>Inclusief BTW </h6>
-                            <input type="button" class="toevoegen">Toevoegen aan winkelmand</input>
+                            <div style="margin-top: 30px;">
+                            
+                            <form action="Toevoegen.php?product=<?php print($row['StockItemID'] . "&url=" . $actual_link); ?>">
+                            <input type="hidden" name="product" value="<?php print($row['StockItemID']); ?>">
+                            <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+                            <input type="hidden" name="url" value="<?php print($actual_link); ?>">
+                            <input type="submit" class="toevoegen" style="  background-color: #85bf31; border: 5px solid #85bf31; border-radius: 3px; color: white; font-family: Calibri; font-weight: bold;" value="Toevoegen aan winkelmand" ></input>
+                            </form>
+                            
+                            </div>
+                            
                         </div>
                     </div>
                     <a href='view.php?id=<?php print $row['StockItemID']; ?>' style="text-decoration: none;">
@@ -287,10 +299,11 @@ if (isset($amount)) {
             }
             ?>
         </form>
+        </div>
         <?php
     } else {
         ?>
-        <h2 id="NoSearchResults">
+        <h2 id="NoSearchResults" style="color: white; font-family: Calibri; background: none; ">
             Yarr, er zijn geen resultaten gevonden.
         </h2>
         <?php
@@ -298,4 +311,7 @@ if (isset($amount)) {
     ?>
 </div>
 </body>
+<?php
+include __DIR__ . "/Footer.php";
+?>
 </html>
