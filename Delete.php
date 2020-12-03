@@ -24,4 +24,5 @@ include "connect.php";
         $actual_link = substr_replace($actual_link, "", $position);
         $positionChar = substr($actual_link, $position);
     }
+    $_POST['url'] = preg_replace("/\r|\n/", "", $_POST['url']);
     header('Location: ' . $actual_link . '/winkelmand.php?url=' . $_POST['url']);

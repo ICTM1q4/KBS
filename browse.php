@@ -263,7 +263,39 @@ if (isset($amount)) {
                     <h1 class="StockItemID">Artikelnummer: <?php print $row["StockItemID"]; ?></h1>
                     <p class="StockItemName"><?php print $row["StockItemName"]; ?></p>
                     <p class="StockItemComments"><?php print $row["MarketingComments"]; ?></p>
-                    <h4 class="ItemQuantity"><?php print $row["QuantityOnHand"]; ?></h4>
+                    <p style="color: rgb(255,100,100); ">
+                    <?php
+                    $Query = "
+                    SELECT COUNT(WOL.stockitemid) amount
+                    FROM weborderline WOL
+                    WHERE WOL.StockItemID = ?;";
+            
+                    $Statement = mysqli_prepare($Connection, $Query);
+                    mysqli_stmt_bind_param($Statement, "s", $row['StockItemID']);
+                    mysqli_stmt_execute($Statement);
+                    $ReturnableResult = mysqli_stmt_get_result($Statement);
+                    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+                    if(isset($ReturnableResult)){
+                        foreach($ReturnableResult as $rows){
+                            $amountInCart = $rows['amount'];
+                        }
+                        if ($amountInCart != 0 && $amountInCart != 1){
+                            print($amountInCart . " klanten hebben dit product in hun winkelmand.");
+                        }
+                        else if ($amountInCart != 0 && $amountInCart == 1){
+                            print($amountInCart . " klant heeft dit product in zijn winkelmand.");
+                        }
+                    }
+                    
+                    ?></p>
+                    <h4 class="ItemQuantity"><?php print $row["QuantityOnHand"]; ?>
+                    
+                    
+                    
+                    
+                    
+                    
+                    </h4>
                     </a>
                 </div>
                 
