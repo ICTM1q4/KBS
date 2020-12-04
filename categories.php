@@ -14,7 +14,7 @@
     ?>
 </header>
 
-<body style="min-height: 100vh;">
+<body style="min-height: 100vh; background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed;">
     <?php
         $Query = "
             SELECT StockGroupID, StockGroupName, ImagePath

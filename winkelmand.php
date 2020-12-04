@@ -25,7 +25,7 @@
     ?>
 </header>
 
-<body style="color: white;">
+<body style="color: white; background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed;">
     <div id="winkelmandje" style="margin-top: 20px; margin-left: 30px;">
         <h1>Uw winkelmand </h1>
         <?php

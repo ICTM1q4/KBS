@@ -15,7 +15,7 @@
     ?>
 </header>
 
-<body style="height: 100%;">
+<body style="height: 100%; background-attachment: fixed;">
     <div class="contactinfo" style="background-color: rgba(128,128,128,0.5); width: 60%; margin-top: 20px; border: 10px solid rgba(128,128,128,0.1); border-radius: 5px; padding-top: 10px; padding-left: 10px; padding-bottom: 10px;">
         <h1>Het Bedrijf:</h1>
         <p>NerdyGadgets is een importeur en groothandel die producten levert aan verschillende warenhuizen en supermarkten in de Verenigde Staten. Ook levert NerdyGadgets producten aan weer andere groothandels. Incidenteel verkoopt NerdyGadgets producten rechtstreeks aan consumenten. NerdyGadgets werkt met een groot netwerk aan vertegenwoordigers die het land doortrekken om hun producten in de markt te krijgen. NerdyGadgets heeft ambities om hun activiteiten ook in Europa op te starten vanuit een nieuw hoofdkantoor in Amsterdam.</p>

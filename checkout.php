@@ -18,7 +18,7 @@
     ?>
 </header>
 
-<body>
+<body style="background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed;">
     <div> 
         <br>
         <br>

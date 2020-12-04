@@ -14,7 +14,7 @@
   ?>
 </header>
 
-<body style="height: 900px; ">
+<body style="height: 900px; background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed;">
   <div id="index" style="height: 100%; color: white;">
     <h1 style="padding-left: 42%; color: inherit; margin-top: 30px;">Trending Items</h1> 
     <br>
@@ -41,7 +41,7 @@
               </div>
             </a>
           </div>
-          <div class="carousel-item " style="width: auto; height: auto; background-color: rgba(128,128,128,0.5); border: 20px; border-radius: 10px;">
+          <div class="carousel-item " style=" height: auto; background-color: rgba(128,128,128,0.5); border: 20px; border-radius: 10px;">
             <a href="view.php?id=102" style="text-decoration: none; color: inherit;">
               <img class="d-block" src="Public\ProductIMGHighRes\Hoodie.png" alt="First slide" style="width: 30%; height: 300px;">
               <div>
@@ -50,7 +50,7 @@
             </a>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="margin-bottom: 50px; margin-left: 150px;">
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="margin-bottom: 50px; margin-left: 150px; z-index: 1;">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>

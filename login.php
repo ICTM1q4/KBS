@@ -131,7 +131,7 @@
     }
 ?>
 
-<body style="height: 100%;">
+<body style="height: 100%; background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed;">
     <div class="signup-form" style="margin-left: 600px; margin-top: 100px;">
         <form action="DatabaseLogin.php" method="post" style="height: 400px; width: 700px; margin: auto;">
             <h2 style="font-size: ">Inloggen</h2>

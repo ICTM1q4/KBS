@@ -45,6 +45,7 @@
         $Images = $R;
     }
 ?>
+<body style="background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed;">
 <div id="CenteredContent">
     <?php
         if ($Result != null) {
@@ -167,7 +168,7 @@
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
-
+</body>
 <footer style="padding-top: 330px;">
 <?php
 include __DIR__ . "/Footer.php";

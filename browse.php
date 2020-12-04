@@ -13,7 +13,7 @@ include __DIR__ . "/Header.php";
 
 
 
-<body style="height: 100%">
+<body style="height: 100%; background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed;">
     <?php
 $SearchString = "";
 $ReturnableResult = null;

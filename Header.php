@@ -35,7 +35,7 @@ include "connect.php";
         </div>
         <div id="categorie" style="   overflow: visible;">
             <a href="index.php" class="button" id="categories">Home</a>
-            <div id="categorie" class="dropdown" style="position: relative; font-family: Calibri; float: left; ">
+            <div id="categorie" class="dropdown" style="position: relative; font-family: Calibri; float: left; z-index: 5;">
                 <button class="dropbtn" onclick="window.location.href='categories.php'">Producten
                     <i class="fa fa-caret-down"></i>
                 </button>
