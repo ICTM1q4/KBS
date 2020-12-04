@@ -1,4 +1,5 @@
 
+
 <?php
     $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
     mysqli_set_charset($Connection, 'latin1');
@@ -167,7 +168,65 @@
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
+<body>
 
+    <div class='rating' style='margin-top: -50px; margin-left: -530px'>
+        <input type='radio' name='ster' id='ster1'><label for='ster1'></label>
+        <input type='radio' name='ster' id='ster2'><label for='ster2'></label>
+        <input type='radio' name='ster' id='ster3'><label for='ster3'></label>
+        <input type='radio' name='ster' id='ster4'><label for='ster4'></label>
+        <input type='radio' name='ster' id='ster5'><label for='ster5'></label>
+</div>
+<!-- <div class="rate">
+    <input type="radio" id="star5" name="rate" value="5" />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" id="star4" name="rate" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" id="star3" name="rate" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" id="star2" name="rate" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" id="star1" name="rate" value="1" />
+    <label for="star1" title="text">1 star</label>
+  </div> -->
+<div>
+    <form action="Reviewen.php?product=<?php print($_POST["review"]); ?>">
+    <textarea required maxlength="300" type="text" id="review" name="review" style="margin-left: 230px; width: 30%; height: 300px; text-align: upper-left; border-top: 1px gray solid;"></textarea> <br>
+                <input type="submit" id="submit" value="Versturen" style="margin-left: 230px; margin-top: 10px;">
+            </div>   
+<!-- review   -->
+            <div id="StockItemSpecifications" style="color: white; margin-top: -260px; margin-left: 760px; width: 40%;">
+                <h3 style="border: none;">Reviews</h3>
+                <?php
+                $CustomFields = json_decode($Result['CustomFields'], true);
+                if (is_array($CustomFields)) { ?>
+                    <table>
+                    <thead>
+                    <th>Username</th>
+                    <th>Review</th>
+                    </thead>
+                    <?php
+                    foreach ($CustomFields as $SpecName => $SpecText) { ?>
+                        <tr>
+                            <td>
+                                <?php print $SpecName; ?>
+                            </td>
+                            <td>
+                                <?php
+                                if (is_array($SpecText)) {
+                                    foreach ($SpecText as $SubText) {
+                                        print $SubText . " ";
+                                    }
+                                } else {
+                                    print $SpecText;
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                    <?php }} ?>
+                    </table>
+                    </div>
+</body>
 <footer style="padding-top: 330px;">
 <?php
 include __DIR__ . "/Footer.php";
