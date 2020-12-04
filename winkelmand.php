@@ -82,7 +82,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            
                 <?php
                     $switch = 1;
                     $totaal = 0;
@@ -96,7 +96,8 @@
                             $switch = 0;
                         }
                         $totaal += $row['SellPrice'] * $row['Amount'];
-                        print("<tr style='text-align: center; '>");
+                        
+                        print("<tr style='text-align: center; height: 140px; padding-bottom: 30px;'>");
                         print("<td><img src='$ImageLine' style='width: 80px; height:80px;'> </td>"); //image
                         print("<td><h1 style='font-size: 150%;'>". $row['Product'] ."</h1> </td>") ; //artikelnaam
                         print("<td><p style='color: white;'>".$row['ProductID']."</p> </td>"); //artikelcode
@@ -128,8 +129,8 @@
                                 </input>
                                 <input style="background-color: rgb(220,0,0); border: none; color: white; padding: 5px 13px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; margin-top: -10px; cursor: pointer; border-radius: 40px; border: 5px solid rgb(180,0,0)" type="submit" value="X"> 
                             </form>
-                        </td> <?php
-                        print("</tr>");
+                        </td>  
+                        <?php
                 }
                 if (isset($_GET["bestelling"])){
                     if ($_GET["bestelling"] == "fout"){
@@ -151,7 +152,7 @@
                     <?php 
                 }
             ?>
-            </tbody>
+            
             <tfoot style="text-align: center;">
                 <tr>
                     <td>

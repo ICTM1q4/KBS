@@ -35,7 +35,7 @@
             $_SESSION["Naam"] = $gebruikersNaam;
             
             $Query = "
-                    SELECT WO.OrderID, WC.username as username, WC.Address address, WC.zipcode zip
+                    SELECT WO.OrderID OrderID, WC.username as username, WC.Address address, WC.zipcode zip, WC.CustomerID CustomerID 
                     FROM weborder WO
                     JOIN webcustomer WC ON WO.CustomerID = WC.CustomerID
                     WHERE username = ?
@@ -51,6 +51,7 @@
                     $_SESSION["OrderID"] = $ReturnableResult["OrderID"];
                     $_SESSION["Address"] = $ReturnableResult["address"];
                     $_SESSION["Zip"] = $ReturnableResult["zip"];
+                    $_SESSION["Customer"] = $ReturnableResult["CustomerID"];
                     print($_SESSION["Naam"] . $ReturnableResult["OrderID"]);
                 }
             }
