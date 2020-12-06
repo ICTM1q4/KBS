@@ -168,34 +168,63 @@
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
-<body>
+<!-- Sterren -->
+<style>
+    ul{
+        padding: 0;
+        margin-top: -50px;
+        margin-left: -30px;
+    }
 
-    <div class='rating' style='margin-top: -50px; margin-left: -530px'>
-        <input type='radio' name='ster' id='ster1'><label for='ster1'></label>
-        <input type='radio' name='ster' id='ster2'><label for='ster2'></label>
-        <input type='radio' name='ster' id='ster3'><label for='ster3'></label>
-        <input type='radio' name='ster' id='ster4'><label for='ster4'></label>
-        <input type='radio' name='ster' id='ster5'><label for='ster5'></label>
+    ul li{
+        list-style-type: none;
+        display: inline-block;
+        margin: 10px;
+        color: white;
+        text-shadow: 2px 2px 7px;
+        font-size: 25px !important;
+    }
+
+    ul li:hover{
+        color: yellow;
+    }
+
+    ul li.active, ul li.secondary-active{
+        color: yellow;
+    }
+
+    input[type='radio']{
+        display: none;
+    }
+</style>
+<body>
+  <div>
+                <ul>
+                    <class='rating' style='margin-top: -1050px; margin-left: 250px'>
+                    <li><label for="rating_1"><i class="fa fa-star" aria-hidden="true"></i></label><input type="radio" name="ratings" id="rating_1" value="1"/></li>
+                    <li><label for="rating_2"><i class="fa fa-star" aria-hidden="true"></i></label><input type="radio" name="ratings" id="rating_2" value="1"/></li>
+                    <li><label for="rating_3"><i class="fa fa-star" aria-hidden="true"></i></label><input type="radio" name="ratings" id="rating_3" value="1"/></li>
+                    <li><label for="rating_4"><i class="fa fa-star" aria-hidden="true"></i></label><input type="radio" name="ratings" id="rating_4" value="1"/></li>
+                    <li><label for="rating_5"><i class="fa fa-star" aria-hidden="true"></i></label><input type="radio" name="ratings" id="rating_5" value="1"/></li>
+                </ul>
 </div>
-<!-- <div class="rate">
-    <input type="radio" id="star5" name="rate" value="5" />
-    <label for="star5" title="text">5 stars</label>
-    <input type="radio" id="star4" name="rate" value="4" />
-    <label for="star4" title="text">4 stars</label>
-    <input type="radio" id="star3" name="rate" value="3" />
-    <label for="star3" title="text">3 stars</label>
-    <input type="radio" id="star2" name="rate" value="2" />
-    <label for="star2" title="text">2 stars</label>
-    <input type="radio" id="star1" name="rate" value="1" />
-    <label for="star1" title="text">1 star</label>
-  </div> -->
+<script>
+    $('li').on('click',function(){
+        $('li').removeClass('active');
+        $('li').removeClass('secondary-active');
+        $(this).addClass('active');
+        $(this).prevAll().addClass('secondary-active');
+    })
+</script>
 <div>
     <form action="Reviewen.php?product=<?php print($_POST["review"]); ?>">
-    <textarea required maxlength="300" type="text" id="review" name="review" style="margin-left: 230px; width: 30%; height: 300px; text-align: upper-left; border-top: 1px gray solid;"></textarea> <br>
+    <textarea required maxlength="300" type="text" id="review" name="review" placeholder="Schrijf hier uw review" style="margin-left: 230px; width: 30%; height: 215px; text-align: upper-left; border-top: 1px gray solid;"></textarea> <br>
                 <input type="submit" id="submit" value="Versturen" style="margin-left: 230px; margin-top: 10px;">
             </div>   
-<!-- review   -->
-            <div id="StockItemSpecifications" style="color: white; margin-top: -260px; margin-left: 760px; width: 40%;">
+
+
+<!-- reviewtabel   -->
+            <div id="StockItemSpecifications" style="color: white; margin-top: -260px; margin-left: 760px; width: 40%; height: 50%">
                 <h3 style="border: none;">Reviews</h3>
                 <?php
                 $CustomFields = json_decode($Result['CustomFields'], true);
