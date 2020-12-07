@@ -16,7 +16,7 @@
 
 //PULL DATA FROM DATABASE TO COMPARE
     $Query = "
-            SELECT username, password, firstname, lastname
+            SELECT username, password, firstname, lastname, CustomerID
             FROM webcustomer
             WHERE username = ?
             AND password = ?;";
@@ -33,7 +33,7 @@
             print("Welkom ".$ReturnableResult['firstname']. $ReturnableResult['lastname'].", je bent zojuist ingelogd!");
             session_start();
             $_SESSION["Naam"] = $gebruikersNaam;
-            
+            $_SESSION["Customer"] = $ReturnableResult['CustomerID'];
             $Query = "
                     SELECT WO.OrderID OrderID, WC.username as username, WC.Address address, WC.zipcode zip, WC.CustomerID CustomerID 
                     FROM weborder WO

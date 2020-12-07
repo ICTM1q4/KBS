@@ -1,4 +1,7 @@
 
+
+
+
 <?php
     $Connection = mysqli_connect("localhost", "root", "", "nerdygadgets");
     mysqli_set_charset($Connection, 'latin1');
@@ -168,6 +171,173 @@
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
+    <div style="height: 50%; width: 70%; margin-top: 330px; margin-left: auto; margin-right: auto;">
+        
+<?php
+include "connect.php";
+
+$switch = 0;
+
+$Query = "
+        SELECT WR.CustomerID ID, WR.StockItemID Item
+        FROM webreview WR
+        WHERE WR.StockItemID = ?;";
+
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $_GET['id']);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+
+foreach($ReturnableResult as $row){
+    if ($_SESSION['Customer'] == $row['ID']){
+        $switch = 1;
+    }
+}
+
+
+$Query = "
+        SELECT WR.Rating Rating, WR.Beschrijving Beschrijving, WC.Username Naam
+        FROM webreview WR
+        JOIN webcustomer WC ON WR.CustomerID = WC.CustomerID
+        WHERE WR.StockItemID = ?;";
+
+    $Statement = mysqli_prepare($Connection, $Query);
+    mysqli_stmt_bind_param($Statement, "s", $_GET['id']);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+
+?>
+        <table style="width: 100%;">
+         
+            <thead style="background-color: #0277bd; text-align: center; ">
+                <tr >
+                    <td>
+                    <h1 style="font-size: 170%;"> Rating
+                    </h1>
+                    </td>
+                    
+                    <td>
+                    <h1 style="font-size: 170%;"> Naam</h1>
+                    </td>
+                    <td>
+                        <h1 style="font-size: 170%;">Beschrijving<h1>
+                    </td>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <?php
+                    foreach ($ReturnableResult as $row){
+                    ?> 
+                    <tr style="background-color: rgb(35, 40, 47); color: white; text-align: center; border-bottom: 5px black solid;">
+                    <td>
+
+                    <div>
+                    <?php
+                    $none = 5;
+                    while ($row['Rating'] > 0){
+                        $row['Rating']--;
+                        print("<span class='fa fa-star' style='color: yellow'></span>");
+                        $none--;
+                    }
+                    while ($none > 0){
+                        $none--;
+                        print("<span class='fa fa-star'></span>");
+
+                    }
+                    ?>
+                    </div>
+                    </td>
+                    <td>
+                    <?php print("<h1 style='font-size: 170%;'>" . $row['Naam'] . "</h1>");?>
+                    </td>
+                    <td>
+                    <?php print("<h1 style='font-size: 170%;'>" . $row['Beschrijving'] . "</h1>");?>
+                    </td>
+                    </tr>
+                <?php
+                }
+
+                ?>
+            </tbody>
+        </table>
+        <?php if ($switch != 1){ ?>
+        <div style="margin-top: 50px; background-color: rgb(35, 40, 47); width: 100%; <?php if(isset($_SESSION['Customer'])){print('height: 500px;');}else{print('height: 200px;');}?>  ">
+        <div style="margin-left: 10px; width: 60%; margin-left: 20%; margin-right: 20%;"> <br>
+        <h1 style="color: white; text-align: center;">Review aanmaken:</h1>
+        <?php if(isset($_SESSION['Customer']) ){?>
+            <form action="ReviewToevoegen.php" style="margin-left: 40px; margin-top: 40px;">
+                <div style="width: 50%;">
+                <style>
+                
+                ul{
+                    padding: 0;
+                    margin-top: -50px;
+                    margin-left: -30px;
+                }
+
+                ul li{
+                    list-style-type: none;
+                    display: inline-block;
+                    margin: 10px;
+                    color: white;
+                    
+                    font-size: 25px !important;
+                }
+                ul li:hover, li:hover ~ li{
+                    color: yellow;
+                }
+                ul li:checked, li input:checked ~ li{
+                    color: yellow;
+                }
+                ul li.active, ul li.secondary-active{
+                    color: yellow;
+                }
+                input[type='radio']{
+                    display: none;
+                }
+                .checked ul li:hover, li:hover ~ li{
+                    color: yellow;
+                }
+                .checked {
+                color: orange;
+                }
+                ul li input[type='radio']:checked{
+                    color: yellow;
+                }
+     
+                </style>
+                
+                <ul>
+                <class="rating" >
+                <li style="float: right;"><label for="rating5"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                <input type="radio" name="ratings" id="rating5" value="5"></li>
+                <li style="float: right;"><label for="rating4"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                <input type="radio" name="ratings" id="rating4" value="4"></li>
+                <li style="float: right;"><label for="rating3"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                <input type="radio" name="ratings" id="rating3" value="3"></li>
+                <li style="float: right;"><label for="rating2"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                <input type="radio" name="ratings" id="rating2" value="2"></li>
+                <li style="float: right;"><label for="rating1"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                <input type="radio" name="ratings" id="rating1" value="1"></li>
+                
+                </ul>
+                </div>
+            <textarea type="text" maxlength="300" name="beschrijving" id="beschrijving" style="width: 100%; height: 200px;"> </textarea>
+            <input type="hidden" name="Product" value="<?php print($_GET['id']); ?>">
+            <input type="submit" value="Versturen" style="width: 18%; margin-left: 41%; margin-right: 41%; height: 3em; background-color: #85bf31; color: white; border: #85bf31 solid 1px;">
+            </form>
+            <?php } 
+            else {
+                print("<br> <h1 style='color: white; font-size: 150%; text-align: center;'> Je moet ingelogd zijn om een review te maken! </h1>");
+            } ?>
+        </div>
+            
+        </div>
+        <?php } ?>
+    </div>
 </body>
 <footer style="padding-top: 330px;">
 <?php
