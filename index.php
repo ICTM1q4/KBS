@@ -30,6 +30,12 @@
               <img  class="d-block" src="Public\ProductIMGHighRes\580b57fbd9996e24bc43bf55.png" alt="First slide" style="width: 30%; height: 300px;">
               <div>
                 <h1>"THE GU" RED SHIRT T-SHIRT (BLACK) M</h1>
+                <form action="Toevoegen.php?product=93" style="margin-top: 110px; float: right; margin-right: 40px;">
+                            <input type="hidden" name="product" value="93">
+                            <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+                            <input type="hidden" name="url" value="<?php print($actual_link); ?>">
+                            <input type="submit" class="toevoegen" style="  background-color: #85bf31; border: 5px solid #85bf31; border-radius: 3px; color: white; font-family: Calibri; font-weight: bold;" value="Toevoegen aan winkelmand" ></input>
+                        </form>
               </div>
             </a>
           </div>
@@ -38,6 +44,12 @@
               <img class="d-block" src="Public\ProductIMGHighRes\usb.png" alt="First slide" style="width: 30%; height: 270px; margin-bottom: 15px; margin-top: 15px; margin-left: 20px; margin-right: 10px; padding-right:">
               <div>
                 <h1 style="color: inherit;">USB ROCKET LAUNCHER (GRAY)</h1>
+                  	<form action="Toevoegen.php?product=2" style="margin-top: 150px; float: right; margin-right: 40px;">
+                            <input type="hidden" name="product" value="2">
+                            <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+                            <input type="hidden" name="url" value="<?php print($actual_link); ?>">
+                            <input type="submit" class="toevoegen" style="  background-color: #85bf31; border: 5px solid #85bf31; border-radius: 3px; color: white; font-family: Calibri; font-weight: bold;" value="Toevoegen aan winkelmand" ></input>
+                        </form>
               </div>
             </a>
           </div>
@@ -46,6 +58,12 @@
               <img class="d-block" src="Public\ProductIMGHighRes\Hoodie.png" alt="First slide" style="width: 30%; height: 300px;">
               <div>
                 <h1 style="color: inherit;">ALIEN OFFICER HOODIE (BLACK)</h1>
+                <form action="Toevoegen.php?product=102" style="margin-top: 150px; float: right; margin-right: 40px;">
+                            <input type="hidden" name="product" value="102">
+                            <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+                            <input type="hidden" name="url" value="<?php print($actual_link); ?>">
+                            <input type="submit" class="toevoegen" style="  background-color: #85bf31; border: 5px solid #85bf31; border-radius: 3px; color: white; font-family: Calibri; font-weight: bold;" value="Toevoegen aan winkelmand" ></input>
+                        </form>
               </div>
             </a>
           </div>
