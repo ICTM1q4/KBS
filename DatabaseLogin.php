@@ -12,7 +12,7 @@
     }
 
 //CONVERT PASSWORD TO HASH
-    $gebruikersWachtwoord = hash("SHA256", $gebruikersWachtwoord);;
+    $gebruikersWachtwoord = hash("SHA256", $gebruikersWachtwoord);
 
 //PULL DATA FROM DATABASE TO COMPARE
     $Query = "

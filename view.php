@@ -197,7 +197,7 @@ foreach($ReturnableResult as $row){
 
 
 $Query = "
-        SELECT WR.Rating Rating, WR.Beschrijving Beschrijving, WC.Username Naam
+        SELECT WR.Rating Rating, WR.Beschrijving Beschrijving, WC.Username Naam, WR.CustomerID CustomerID, WR.StockItemID Stock
         FROM webreview WR
         JOIN webcustomer WC ON WR.CustomerID = WC.CustomerID
         WHERE WR.StockItemID = ?;";
@@ -207,30 +207,34 @@ $Query = "
     mysqli_stmt_execute($Statement);
     $ReturnableResult = mysqli_stmt_get_result($Statement);
     $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
-
+    $count = 0;
 ?>
         <table style="width: 100%;">
          
-            <thead style="background-color: #0277bd; text-align: center; ">
-                <tr >
-                    <td>
-                    <h1 style="font-size: 170%;"> Rating
-                    </h1>
-                    </td>
-                    
-                    <td>
-                    <h1 style="font-size: 170%;"> Naam</h1>
-                    </td>
-                    <td>
-                        <h1 style="font-size: 170%;">Beschrijving<h1>
-                    </td>
-                </tr>
-            </thead>
             
-            <tbody>
                 <?php
                     foreach ($ReturnableResult as $row){
+                        if ($count < 1){
                     ?> 
+                    <thead style="background-color: #0277bd; text-align: center; ">
+                        <tr >
+                            <td>
+                            <h1 style="font-size: 170%;"> Rating
+                            </h1>
+                            </td>
+                            
+                            <td>
+                            <h1 style="font-size: 170%;"> Naam</h1>
+                            </td>
+                            <td>
+                                <h1 style="font-size: 170%;">Beschrijving<h1>
+                            </td>
+                        </tr>
+                    </thead>
+         
+                    <tbody>
+                        <?php $count++;} ?>
+
                     <tr style="background-color: rgb(35, 40, 47); color: white; text-align: center; border-bottom: 5px black solid;">
                     <td>
 
@@ -254,7 +258,13 @@ $Query = "
                     <?php print("<h1 style='font-size: 170%;'>" . $row['Naam'] . "</h1>");?>
                     </td>
                     <td>
-                    <?php print("<h1 style='font-size: 170%;'>" . $row['Beschrijving'] . "</h1>");?>
+                    <?php print("<h1 style='font-size: 170%; margin-top: 5px;'>" . $row['Beschrijving'] . "</h1>");?>
+                    <?php if($row['CustomerID'] == $_SESSION['Customer']){?>
+                        <form action="DeleteReview.php">
+                        <input type="hidden" name="product" value="<?php print($row['Stock']); ?>">
+                        <input type="submit" value="X" style="color: white; float: right; background-color: red; border: 10px red solid; border-radius: 50px; margin-top: -40px; height: 40px; width: 40px;">
+                        </form>
+                        <?php } ?>
                     </td>
                     </tr>
                 <?php
@@ -310,7 +320,7 @@ $Query = "
      
                 </style>
                 
-                <ul>
+                <ul style="padding-top: 10px; margin-left: 60px; width: 320px;">
                 <class="rating" >
                 <li style="float: right;"><label for="rating5"><i class='fa fa-star' aria-hidden="true" ></i></label>
                 <input type="radio" name="ratings" id="rating5" value="5"></li>
@@ -325,9 +335,10 @@ $Query = "
                 
                 </ul>
                 </div>
-            <textarea type="text" maxlength="300" name="beschrijving" id="beschrijving" style="width: 100%; height: 200px;"> </textarea>
+                <label for="beschrijving" style="color: white; margin-top: 25px;">Tips/Tops:</label>
+            <textarea type="text" maxlength="300" name="beschrijving" id="beschrijving" style="width: 100%; height: 200px; margin-top: 0px;"> </textarea>
             <input type="hidden" name="Product" value="<?php print($_GET['id']); ?>">
-            <input type="submit" value="Versturen" style="width: 18%; margin-left: 41%; margin-right: 41%; height: 3em; background-color: #85bf31; color: white; border: #85bf31 solid 1px;">
+            <input type="submit" value="Versturen" style="margin-top: 10px; width: 18%; margin-left: 41%; margin-right: 41%; height: 3em; background-color: #85bf31; color: white; border: #85bf31 solid 1px;">
             </form>
             <?php } 
             else {
