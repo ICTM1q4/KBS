@@ -299,39 +299,42 @@ $Query = "
                 ul li:hover, li:hover ~ li{
                     color: yellow;
                 }
-                ul li:checked, li input:checked ~ li{
-                    color: yellow;
-                }
-                ul li.active, ul li.secondary-active{
-                    color: yellow;
-                }
+                
                 input[type='radio']{
                     display: none;
                 }
-                .checked ul li:hover, li:hover ~ li{
-                    color: yellow;
-                }
-                .checked {
-                color: orange;
-                }
+                
                 ul li input[type='radio']:checked{
                     color: yellow;
                 }
-     
-                </style>
+                li input:checked ~ label{
+                    color: yellow;
+                }
+                input.active, input.secondary-active{
+                    color: yellow;
+                }
                 
-                <ul style="padding-top: 10px; margin-left: 60px; width: 320px;">
+                </style>
+                <script>
+                    $('input').on('click',function(){
+                        $('input').removeClass('active');
+                        $('input').removeClass('secondary-active');
+                        $(this).addClass('active');
+                        $(this).nextAll().addClass('secondary-active');
+                    })
+                </script>
+                <ul style="padding-top: 10px; margin-left: 60px; width: 110%;">
                 <class="rating" >
-                <li style="float: right;"><label for="rating5"><i class='fa fa-star' aria-hidden="true" ></i></label>
-                <input type="radio" name="ratings" id="rating5" value="5"></li>
-                <li style="float: right;"><label for="rating4"><i class='fa fa-star' aria-hidden="true" ></i></label>
-                <input type="radio" name="ratings" id="rating4" value="4"></li>
-                <li style="float: right;"><label for="rating3"><i class='fa fa-star' aria-hidden="true" ></i></label>
-                <input type="radio" name="ratings" id="rating3" value="3"></li>
-                <li style="float: right;"><label for="rating2"><i class='fa fa-star' aria-hidden="true" ></i></label>
-                <input type="radio" name="ratings" id="rating2" value="2"></li>
-                <li style="float: right;"><label for="rating1"><i class='fa fa-star' aria-hidden="true" ></i></label>
-                <input type="radio" name="ratings" id="rating1" value="1"></li>
+                <li style="float: right;"><input type="radio" name="ratings" id="rating5" value="5"><label for="rating5"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                </li>
+                <li style="float: right;"><input type="radio" name="ratings" id="rating4" value="4"><label for="rating4"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                </li>
+                <li style="float: right;"><input type="radio" name="ratings" id="rating3" value="3"><label for="rating3"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                </li>
+                <li style="float: right;"><input type="radio" name="ratings" id="rating2" value="2"><label for="rating2"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                </li>
+                <li style="float: right;"><input type="radio" name="ratings" id="rating1" value="1"><label for="rating1"><i class='fa fa-star' aria-hidden="true" ></i></label>
+                </li>
                 
                 </ul>
                 </div>
