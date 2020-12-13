@@ -247,8 +247,21 @@ if (isset($amount)) {
                             <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", $row["SellPrice"]); ?></h1>
                             <h6>Inclusief BTW </h6>
                             <div style="margin-top: 30px;">
+                            <form action="AddWishList.php" style="margin-bottom: 5px; margin-right: 20px;">
+                            <input type="hidden" name="product" value="<?php print($row['StockItemID']); ?>">
+                            <style type="text/css">
+                                .fabutton {
+                                    background: none;
+                                    padding: 0px;
+                                    border: none;
+                                }
+                            </style>
                             
-                            <form action="Toevoegen.php?product=<?php print($row['StockItemID'] . "&url=" . $actual_link); ?>">
+                            <button class="fabutton" type="submit" style="  background-color: none; border: none; color: white; font-family: Calibri; font-weight: bold;"  value=""><i class="fa">&#xf004;</i></button>
+                            
+                            
+                            </form>
+                            <form style="margin-top: 10px;" action="Toevoegen.php?product=<?php print($row['StockItemID'] . "&url=" . $actual_link); ?>">
                             <input type="hidden" name="product" value="<?php print($row['StockItemID']); ?>">
                             <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
                             <input type="hidden" name="url" value="<?php print($actual_link); ?>">
