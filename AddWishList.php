@@ -107,7 +107,7 @@ print('jaja');
 
 
     }
-    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $actual_link = $_GET['url'];
             $position = strrpos($actual_link, "/");
             $count = strlen($actual_link);
             $positionChar = substr($actual_link, $position);
@@ -115,4 +115,11 @@ print('jaja');
                 $actual_link = substr_replace($actual_link, "", $position);
                 $positionChar = substr($actual_link, $position);
             }
-            header('Location: ' . $actual_link . '/WishList.php');
+            if(isset($_GET['url'])){
+                if ($_GET['url']){
+                    print($_GET['url']);
+                }
+            } else {
+                print('index.php');
+            }
+            header('Location: ' . $_GET['url']);

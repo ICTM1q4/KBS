@@ -139,7 +139,7 @@ if ($CategoryID == "") {
     }
 
     $Query = "
-                SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, 
+                SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, WW.StockItemID Wish,
                 ROUND(SI.TaxRate * SI.RecommendedRetailPrice / 100 + SI.RecommendedRetailPrice,2) as SellPrice, 
                 (CASE WHEN (SIH.QuantityOnHand) >= ? THEN 'Ruime voorraad beschikbaar.' ELSE CONCAT('Voorraad: ',QuantityOnHand) END) AS QuantityOnHand,
                 (SELECT ImagePath FROM stockitemimages WHERE StockItemID = SI.StockItemID LIMIT 1) as ImagePath,
@@ -148,6 +148,7 @@ if ($CategoryID == "") {
                 JOIN stockitemholdings SIH USING(stockitemid)
                 JOIN stockitemstockgroups USING(StockItemID)
                 JOIN stockgroups ON stockitemstockgroups.StockGroupID = stockgroups.StockGroupID
+                LEFT JOIN webwishlistline WW ON WW.StockItemID = SI.StockItemID
                 WHERE " . $queryBuildResult . " ? IN (SELECT StockGroupID from stockitemstockgroups WHERE StockItemID = SI.StockItemID)
                 GROUP BY StockItemID
                 ORDER BY " . $Sort . " 
@@ -241,7 +242,7 @@ if (isset($amount)) {
                     <?php }
                     ?>
                     </a>
-
+                    <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
                     <div id="StockItemFrameRight">
                         <div class="CenterPriceLeftChild">
                             <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", $row["SellPrice"]); ?></h1>
@@ -256,14 +257,14 @@ if (isset($amount)) {
                                     border: none;
                                 }
                             </style>
-                            
-                            <button class="fabutton" type="submit" style="  background-color: none; border: none; color: white; font-family: Calibri; font-weight: bold;"  value=""><i class="fa">&#xf004;</i></button>
+                            <input type="hidden" name="url" value="<?php print($actual_link); ?>">
+                            <button class="fabutton" type="submit" style="  background-color: none; border: none; color: white;  font-family: Calibri; font-weight: bold;"  value=""><i class="<?php if ($row['Wish'] != ""){print('fa');}else{print('far');}?>">&#xf004;</i></button>
                             
                             
                             </form>
                             <form style="margin-top: 10px;" action="Toevoegen.php?product=<?php print($row['StockItemID'] . "&url=" . $actual_link); ?>">
                             <input type="hidden" name="product" value="<?php print($row['StockItemID']); ?>">
-                            <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+                            
                             <input type="hidden" name="url" value="<?php print($actual_link); ?>">
                             <input type="submit" class="toevoegen" style="  background-color: #85bf31; border: 5px solid #85bf31; border-radius: 3px; color: white; font-family: Calibri; font-weight: bold;" value="Toevoegen aan winkelmand" ></input>
                             </form>
