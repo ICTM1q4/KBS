@@ -86,6 +86,7 @@
                 <?php
                     $switch = 1;
                     $totaal = 0;
+                    $counter = 0;
                     foreach ($ReturnableResult as $row){ 
                         if (isset($row['Image'])){
                             $ImageLine = "Public/StockItemIMG/".$row['Image'];
@@ -96,7 +97,7 @@
                             $switch = 0;
                         }
                         $totaal += $row['SellPrice'] * $row['Amount'];
-                        
+                        $counter++;
                         print("<tr style='text-align: center; height: 140px; padding-bottom: 30px;'>");
                         print("<td><img src='$ImageLine' style='width: 80px; height:80px;'> </td>"); //image
                         print("<td><h1 style='font-size: 150%;'>". $row['Product'] ."</h1> </td>") ; //artikelnaam
@@ -185,12 +186,13 @@
                 Verder Winkelen
             </button> 
         </form>
+        <?php if ($counter != 0){?>
         <form action="checkout.php" method="post" style="float: left;">
             <input type="hidden" name="price" value="<?php print(number_format($totaal,2))?>">
             <button type="submit" style="background-color: rgb(0,220,0); border: none; color: white; padding: 5px 13px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 5px; border: 5px solid rgb(0,180,0); margin-left: 10px;">
                 Afrekenen
             </button> 
-        </form>
+        </form> <?php } ?>
     </div>
 </body>
 

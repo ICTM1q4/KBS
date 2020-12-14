@@ -45,7 +45,7 @@
 
 <!-- Het adress-->
     <div>
-        <form action="" style="margin-left: 35%; margin-top: 3%; width: 30%;">
+        <form action="Betalen.php" style="margin-left: 35%; margin-top: 3%; width: 30%;" method='post'>
             <div style="border: black solid 3px; background-color: white;">
                 <label for="Address1">Opgeslagen:</label>
                 <input type="radio" name="Address" id="Address1" style="margin-left: 5px;">  
@@ -64,6 +64,7 @@
                 <input type="text" name="ZipCustom" id="ZIP" style="margin-bottom: 10px;" placeholder="7951AA"> 
                 <br>
             </div>
+            <input type="hidden" value="<?php print($totaalprijs); ?>" name='price' id='price'>
             <input type="submit" style="width: 150px; height: 50px; background-color: rgb(0,200,0); color: white; border: 5px solid rgb(0,180,0); border-radius: 3px; margin-top: 10px; margin-left: 180px;" value="Bestelling Afronden">
         </form>
     </div>

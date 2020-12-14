@@ -82,6 +82,15 @@
         $Statement = mysqli_prepare($Connection, $Query);
         mysqli_stmt_bind_param($Statement, "i", $ID);
         mysqli_stmt_execute($Statement);
+
+        $Query = "
+        INSERT INTO webwishlist (CustomerID)
+        VALUES (?);";
+
+        $Statement = mysqli_prepare($Connection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $ID);
+        mysqli_stmt_execute($Statement);
+
         $_SESSION["CustomerID"] = $ID;
         echo "<script>window.location = 'login.php'</script>";
     

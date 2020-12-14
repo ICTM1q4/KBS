@@ -39,7 +39,8 @@
                     FROM weborder WO
                     JOIN webcustomer WC ON WO.CustomerID = WC.CustomerID
                     WHERE username = ?
-                    AND password = ?;";
+                    AND password = ?
+                    AND Payment = 0;";
 
             $Statement = mysqli_prepare($Connection, $Query);
             mysqli_stmt_bind_param($Statement, "ii", $_SESSION["Naam"], $gebruikersWachtwoord);
