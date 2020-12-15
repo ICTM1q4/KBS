@@ -21,7 +21,7 @@ include "connect.php";
 $CustomerID = $_SESSION['Customer'];
 
 $Query = "
-SELECT (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = WOL.StockItemID LIMIT 1) as BackupImagePath, SII.imagepath as Image, WO.Payment, WO.TotalPrice, WO.OrderDate, SI.StockItemName, WOL.OrderAmount
+SELECT (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = WOL.StockItemID LIMIT 1) as BackupImagePath, SII.imagepath as Image, WO.Payment, WO.TotalPrice, WO.OrderDate, SI.StockItemName, WOL.OrderAmount, WOL.OrderID
 FROM weborder WO
 LEFT JOIN weborderline WOL ON WOL.OrderID = WO.OrderID
 LEFT JOIN stockitems SI ON SI.StockItemID = WOL.StockItemID
@@ -65,7 +65,7 @@ $Product = mysqli_fetch_all($Product, MYSQLI_ASSOC);
                     <table style='height: 50px;'>
                     <tr>
                         <?php foreach ($ReturnableResult as $R){
-                            
+                            if ($R['OrderID'] == $row['OrderID']){
                             if ($R['Image'] != ''){
                                 $image = 'Public/StockItemIMG/' . $R['Image'];
                             }
@@ -79,7 +79,7 @@ $Product = mysqli_fetch_all($Product, MYSQLI_ASSOC);
                             <p style='margin-left: 5px;'><?php print($R['StockItemName']); ?></p> 
                             <p style='text-align: center;'><?php print('x' . $R['OrderAmount']); ?></p>
                             </td>
-                            <?php } ?>
+                            <?php }} ?>
                             </tr>
                     </table>
                     <input type="hidden" name='order' id='order' value="<?php print($row['OrderID']); ?> ">
