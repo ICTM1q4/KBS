@@ -51,3 +51,8 @@
         } ?>
     </div>
 </body>
+<footer style="margin-top: 240px;">
+    <?php
+        include __DIR__ . "/Footer.php";
+    ?>
+</footer>

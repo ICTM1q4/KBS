@@ -19,9 +19,10 @@
 include "connect.php";
 
 $CustomerID = $_SESSION['Customer'];
+$LastOrderLineID = "";
 
 $Query = "
-SELECT (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = WOL.StockItemID LIMIT 1) as BackupImagePath, SII.imagepath as Image, WO.Payment, WO.TotalPrice, WO.OrderDate, SI.StockItemName, WOL.OrderAmount, WOL.OrderID
+SELECT (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = WOL.StockItemID LIMIT 1) as BackupImagePath, SII.imagepath as Image, WO.Payment, WO.TotalPrice, WO.OrderDate, SI.StockItemName, WOL.OrderAmount, WOL.OrderID, WOL.OrderLineID
 FROM weborder WO
 LEFT JOIN weborderline WOL ON WOL.OrderID = WO.OrderID
 LEFT JOIN stockitems SI ON SI.StockItemID = WOL.StockItemID
@@ -65,7 +66,10 @@ $Product = mysqli_fetch_all($Product, MYSQLI_ASSOC);
                     <table style='height: 50px;'>
                     <tr>
                         <?php foreach ($ReturnableResult as $R){
-                            if ($R['OrderID'] == $row['OrderID']){
+                            
+                            if ($R['OrderID'] == $row['OrderID'] && $LastOrderLineID != $R['OrderLineID']){
+
+                                $LastOrderLineID = $R['OrderLineID'];
                             if ($R['Image'] != ''){
                                 $image = 'Public/StockItemIMG/' . $R['Image'];
                             }
