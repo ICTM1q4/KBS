@@ -85,10 +85,8 @@ include "connect.php";
                 }
             ?>
             <a id='winkelmand' href='winkelmand.php' id='categories' class='button' style='color: white; font-family: Calibri; font-size: 150%; float: right; padding-right: 50px; margin-top: 0px; '><i class="fa" style="font-size:24px">&#xf07a;</i></a> 
-            <style>
-            
-            </style>
-            <a href="WishList.php" id='categories' class='button' style="float: right; margin-right: 2%; color: white; margin-top: -1px;" ><i class="fa">&#xf004;</i></a>
+            <?php if(isset($_SESSION['loggedin'])){?>
+            <a href="WishList.php" id='categories' class='button' style="float: right; margin-right: 2%; color: white; margin-top: -1px;" ><i class="fa">&#xf004;</i></a> <?php } ?>
         </div>
     </div>
 </header>

@@ -22,6 +22,9 @@
         <a href="bewerken.php" >
             <h1 style="color: white; text-align: center; font-size: 150%;">gegevens bewerken</h1>
         </a>
+        <a href="ordergeschiedenis.php" >
+            <h1 style="color: white; text-align: center; font-size: 150%;">Ordergeschiedenis</h1>
+        </a>
         <a href="logout.php" >
             <h1 style="color: white; text-align: center;">logout</h1>
         </a>
