@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <title>
@@ -13,9 +13,13 @@
     include __DIR__ . "/Header.php";
   ?>
 </header>
+<div>
 
-<body style="height: 900px; background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed;">
-  <div id="index" style="height: 100%; color: white;">
+</div>
+
+<body style="height: 900px; background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed; ">
+
+  <div id="index" style="height: 100%; color: white; ">
     <h1 style="padding-left: 42%; color: inherit; margin-top: 30px;">Trending Items</h1> 
     <br>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
