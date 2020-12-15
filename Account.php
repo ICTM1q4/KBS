@@ -28,16 +28,15 @@ $Query = "
         AND Payment = 1;";
 
     $Statement = mysqli_prepare($Connection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $CustomerID);
+    mysqli_stmt_bind_param($Statement, "s", $CustomerID);
     mysqli_stmt_execute($Statement);
     $ReturnableResult = mysqli_stmt_get_result($Statement);
     $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
 
-foreach ($ReturnableResult as $row){
-    if ($row['Payment'] == 1){
+if (isset($ReturnableResult)){    
         $switch = 1;
-    }
 }
+
 ?>
 
 <body style="height: 100%; background-image: linear-gradient(45deg, #693675, #1e008a); background-attachment: fixed;">
@@ -48,7 +47,7 @@ foreach ($ReturnableResult as $row){
         <a href="bewerken.php" >
             <h1 style="color: white; text-align: center; font-size: 150%;">gegevens bewerken</h1>
         </a>
-        <?php if ($switch = 0){ ?>
+        <?php if ($switch == 1){ ?>
         <a href="ordergeschiedenis.php" >
             <h1 style="color: white; text-align: center; font-size: 150%;">Ordergeschiedenis</h1>
         </a>
