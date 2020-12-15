@@ -106,7 +106,7 @@
                         <td style='padding-top: 0px; padding-bottom: 20px;'>
                             <form action="Amount.php">
                                 <input type="hidden" name="change" value="plus">
-                                <input type="hidden" name="url" value="<?php print($_GET['url'])?>">
+                                <input type="hidden" name="url" value="<?php if (isset($_GET['url'])){print($_GET['url']);} ?>">
                                 <input type="hidden" name="OrderLine" value="<?php print($row["ID"]); ?>">
                                 <button type='submit' style='border: solid black; border-width: 0 3px 3px 0; display: inline-block; padding: 3px; transform: rotate(-135deg); -webkit-transform: rotate(-135deg); background-color: #463886;'>
                                 </button>
@@ -114,7 +114,7 @@
                             <p style='color: white; margin-bottom: -10px;'><?php print($row['Amount']); ?> </p>
                             <form action="Amount.php">
                                 <input type="hidden" name="change" value="minus">
-                                <input type="hidden" name="url" value="<?php print($_GET['url'])?>">
+                                <input type="hidden" name="url" value="<?php if (isset($_GET['url'])){print($_GET['url']);} ?> ">
                                 <input type="hidden" name="OrderLine" value="<?php print($row["ID"]); ?>">
                                 <button style='border: solid black; border-width: 0 3px 3px 0; display: inline-block; padding: 3px; transform: rotate(45deg); -webkit-transform: rotate(45deg); background-color: #463886;'>
                                 </button> 
@@ -125,7 +125,7 @@
                         ?> 
                         <td>
                             <form action="Delete.php" method="post"> 
-                            <input type="hidden" name="url" value="<?php print($_GET['url'])?>">
+                            <input type="hidden" name="url" value="<?php if (isset($_GET['url'])){print($_GET['url']);} ?> " >
                                 <input type="hidden" name="ID" value="<?php print($row['ID']); ?>" >
                                 </input>
                                 <input style="background-color: rgb(220,0,0); border: none; color: white; padding: 5px 13px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; margin-top: -10px; cursor: pointer; border-radius: 40px; border: 5px solid rgb(180,0,0)" type="submit" value="X"> 
