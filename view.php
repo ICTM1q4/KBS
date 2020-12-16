@@ -246,7 +246,7 @@ foreach ($ReturnableResult as $temp){
       gauge.draw(gaugeData, gaugeOptions);
     }
   </script>
-  <h1 style='color: white; text-align: center;'>Actueele temperatuur:</h1>
+  <h1 style='color: white; text-align: center;'>Actuele temperatuur:</h1>
  <div id="gauge_div" style="width:500px; height: 250px; margin-left: auto; margin-right: auto; "></div> 
 
 

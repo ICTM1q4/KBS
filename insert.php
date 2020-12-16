@@ -28,17 +28,12 @@ while ($sensor < 5){
         $Statement = mysqli_prepare($Connection, $Query);
         mysqli_stmt_bind_param($Statement, "sss", $newdate, $sensor, $random);
         mysqli_stmt_execute($Statement);
-        
-
         $minuut += 10;
         if ($minuut >= 60){
             $minuut = 0;
             $uur++;
         }
     }
-
-
-
     $minuut = 0;
     $uur = 0;
     $sensor++;
