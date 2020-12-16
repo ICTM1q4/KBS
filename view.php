@@ -12,7 +12,7 @@
             StockItemName,
             (CASE WHEN (SIH.QuantityOnHand) >= ? THEN 'Ruime voorraad beschikbaar.' ELSE CONCAT('Voorraad: ',QuantityOnHand) END) AS QuantityOnHand,
             SearchDetails, 
-            (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
+            (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video, SI.IsChillerStock,
             (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
             FROM stockitems SI 
             JOIN stockitemholdings SIH USING(stockitemid)
@@ -56,6 +56,9 @@
     <div id="ArticleHeader">
         <?php
             if (isset($Images)) {
+                
+        
+        
 // print Single
                 if (count($Images) == 1) {
                     ?>
@@ -128,6 +131,13 @@
         <div id="StockItemDescription" style="color: white;">
             <h3 style="color: white; border: none;">Artikel beschrijving</h3>
             <p><?php print $Result['SearchDetails']; ?></p>
+            <?php if (isset($Result['Video'])) {
+            ?>
+            <form action='video.php' method='post'>
+            <input type="hidden" value='<?php print $Result['Video']; ?>' id='video' name='video'>
+                <input type="submit" style='width: 300px; height: 50px; color: white; background-color: rgb(100,100,200); border: 5px solid rgb(100,100,200); border-radius: 5px; font-family: Calibri;' value='video bekijken'>
+            </form>
+        <?php } ?>
         </div>
         <div id="StockItemSpecifications" style="color: white;">
             <h3 style="border: none;">Artikel specificaties</h3>
@@ -171,7 +181,303 @@
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
-    <div style="height: 50%; width: 70%; margin-top: 330px; margin-left: auto; margin-right: auto;">
+<?php if ($Result['IsChillerStock'] == 1){ ?>
+<div style='margin-top: 300px;'>
+<?php
+$sensor1 = '';
+$sensor2 = '';
+$sensor3 = '';
+$sensor4 = '';
+
+$Query = "
+        SELECT Temperature, ColdRoomSensorNumber 
+        FROM coldroomtemperatures
+        ORDER BY RecordedWhen, ColdRoomSensorNumber;";
+
+    $Statement = mysqli_prepare($Connection, $Query);
+    
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+foreach ($ReturnableResult as $temp){
+    if ($temp['ColdRoomSensorNumber'] == 1){
+        $sensor1 = $temp['Temperature'];
+    }
+    if ($temp['ColdRoomSensorNumber'] == 2){
+        $sensor2 = $temp['Temperature'];
+    }
+    if ($temp['ColdRoomSensorNumber'] == 3){
+        $sensor3 = $temp['Temperature'];
+    }
+    if ($temp['ColdRoomSensorNumber'] == 4){
+        $sensor4 = $temp['Temperature'];
+    }
+}
+?>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['gauge']});
+    google.charts.setOnLoadCallback(drawGauge);
+
+    var gaugeOptions = {min: 0, max: 10, yellowFrom: 7, yellowTo: 8.5,
+      redFrom: 8.5, redTo: 10, minorTicks: 5};
+    var gauge;
+
+    function drawGauge() {
+      gaugeData = new google.visualization.DataTable();
+      gaugeData.addColumn('number', 'Sensor 1');
+      gaugeData.addColumn('number', 'Sensor 2');
+      gaugeData.addColumn('number', 'Sensor 3');
+      gaugeData.addColumn('number', 'Sensor 4');
+      gaugeData.addRows(4);
+      gaugeData.setCell(0, 0, <?php print($sensor1); ?>);
+      gaugeData.setCell(0, 1, <?php print($sensor2); ?>);
+      gaugeData.setCell(0, 2, <?php print($sensor3); ?>);
+      gaugeData.setCell(0, 3, <?php print($sensor4); ?>);
+
+      gauge = new google.visualization.Gauge(document.getElementById('gauge_div'));
+      gauge.draw(gaugeData, gaugeOptions);
+    }
+
+    function changeTemp(dir) {
+      gaugeData.setValue(0, 0, gaugeData.getValue(0, 0) + dir * 25);
+      gaugeData.setValue(0, 1, gaugeData.getValue(0, 1) + dir * 20);
+      gauge.draw(gaugeData, gaugeOptions);
+    }
+  </script>
+  <h1 style='color: white; text-align: center;'>Actueele temperatuur:</h1>
+ <div id="gauge_div" style="width:500px; height: 250px; margin-left: auto; margin-right: auto; "></div> 
+
+
+<?php
+$Query = "
+SELECT Temperature, RecordedWhen
+FROM coldroomtemperatures
+WHERE ColdRoomSensorNumber = 1
+ORDER BY RecordedWhen";
+
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+$ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+$counter = 1;
+?>
+<script>
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBackgroundColor);
+
+function drawBackgroundColor() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('timeofday', 'X');
+      data.addColumn('number', 'Sensor 1');
+      
+
+      data.addRows([
+        [[0, 0, 0], 0]
+          <?php foreach ($ReturnableResult as $temps){
+            $date = $temps['RecordedWhen'];
+            $old_date_timestamp = strtotime($date);
+            $new_date = date('H, i, s', $old_date_timestamp);
+         print(', [['.$new_date.'], '.$temps['Temperature'].']');   
+         $counter++;
+        }?> 
+        
+      ]);
+      
+      var options = {
+        hAxis: {
+          title: 'Tijd'
+        },
+        vAxis: {
+          title: 'Temperatuur'
+        },
+        series: {
+            0: { color: '#040404' },
+          },
+        backgroundColor: '#0277bd'
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div1'));
+      chart.draw(data, options);
+    }
+</script>
+<h1 style='text-align: center; color: white;'>Temperatuur van de afgelopen 24 uur:</h1>
+<div style='margin-left: auto; margin-right: auto; width: 1212px;'>
+  <div id="chart_div1" style='width: 45%; float: left; border: 5px solid #43459d; border-radius: 5px; margin-left: auto; margin-right: auto;'></div>
+
+  <?php
+$Query = "
+SELECT Temperature, RecordedWhen
+FROM coldroomtemperatures
+WHERE ColdRoomSensorNumber = 2
+ORDER BY RecordedWhen";
+
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+$ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+$counter = 1;
+?>
+<script>
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBackgroundColor);
+
+function drawBackgroundColor() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('timeofday', 'X');
+      data.addColumn('number', 'Sensor 2');
+      
+
+      data.addRows([
+        [[0, 0, 0], 0]
+          <?php foreach ($ReturnableResult as $temps){
+            $date = $temps['RecordedWhen'];
+            $old_date_timestamp = strtotime($date);
+            $new_date = date('H, i, s', $old_date_timestamp);
+         print(', [['.$new_date.'], '.$temps['Temperature'].']');   
+         $counter++;
+        }?> 
+        
+      ]);
+      
+      var options = {
+        hAxis: {
+          title: 'Tijd'
+        },
+        vAxis: {
+          title: 'Temperatuur'
+        },
+        series: {
+            0: { color: '#040404' },
+          },
+        backgroundColor: '#0277bd'
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div2'));
+      chart.draw(data, options);
+    }
+</script>
+
+
+  <div id="chart_div2" style='width: 45%; float: left; border: 5px solid #43459d; border-radius: 5px; margin-left: auto; margin-right: auto;'></div>
+
+  <?php
+$Query = "
+SELECT Temperature, RecordedWhen
+FROM coldroomtemperatures
+WHERE ColdRoomSensorNumber = 3
+ORDER BY RecordedWhen";
+
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+$ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+$counter = 1;
+?>
+<script>
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBackgroundColor);
+
+function drawBackgroundColor() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('timeofday', 'X');
+      data.addColumn('number', 'Sensor 3');
+      
+
+      data.addRows([
+        [[0, 0, 0], 0]
+          <?php foreach ($ReturnableResult as $temps){
+            $date = $temps['RecordedWhen'];
+            $old_date_timestamp = strtotime($date);
+            $new_date = date('H, i, s', $old_date_timestamp);
+         print(', [['.$new_date.'], '.$temps['Temperature'].']');   
+         $counter++;
+        }?> 
+        
+      ]);
+      
+      var options = {
+        hAxis: {
+          title: 'Tijd'
+        },
+        vAxis: {
+          title: 'Temperatuur'
+        },
+        series: {
+            0: { color: '#040404' },
+          },
+        backgroundColor: '#0277bd'
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div3'));
+      chart.draw(data, options);
+    }
+</script>
+
+
+  <div id="chart_div3" style='width: 45%; float: left; border: 5px solid #43459d; border-radius: 5px; margin-left: auto; margin-right: auto;'></div>
+
+  <?php
+$Query = "
+SELECT Temperature, RecordedWhen
+FROM coldroomtemperatures
+WHERE ColdRoomSensorNumber = 4
+ORDER BY RecordedWhen";
+
+$Statement = mysqli_prepare($Connection, $Query);
+mysqli_stmt_execute($Statement);
+$ReturnableResult = mysqli_stmt_get_result($Statement);
+$ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+$counter = 1;
+?>
+<script>
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBackgroundColor);
+
+function drawBackgroundColor() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('timeofday', 'X');
+      data.addColumn('number', 'Sensor 4');
+      
+
+      data.addRows([
+         [[0, 0, 0], 0]
+          <?php foreach ($ReturnableResult as $temps){
+            $date = $temps['RecordedWhen'];
+            $old_date_timestamp = strtotime($date);
+            $new_date = date('H, i, s', $old_date_timestamp);
+         print(', [['.$new_date.'], '.$temps['Temperature'].']');   
+         $counter++;
+        }?> 
+        
+      ]);
+      
+      var options = {
+        hAxis: {
+          title: 'Tijd'
+        },
+        
+        vAxis: {
+          title: 'Temperatuur'
+        },
+        series: {
+            0: { color: '#040404' },
+          },
+        backgroundColor: '#0277bd'
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div4'));
+      chart.draw(data, options);
+    }
+</script>
+
+
+  <div id="chart_div4" style='width: 45%; float: left; border: 5px solid #43459d; border-radius: 5px; margin-left: auto; margin-right: auto;'></div>
+  </div>
+</div>
+<?php } ?>
+    <div style="height: 50%; width: 70%; margin-top: 330px; margin-left: auto; margin-right: auto; margin-top: 550px;">
         
 <?php
 include "connect.php";

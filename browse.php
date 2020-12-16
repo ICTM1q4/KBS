@@ -282,7 +282,9 @@ if (isset($amount)) {
                     $Query = "
                     SELECT COUNT(WOL.stockitemid) amount
                     FROM weborderline WOL
-                    WHERE WOL.StockItemID = ?;";
+                    JOIN weborder WO ON WO.OrderID = WOL.OrderID
+                    WHERE WOL.StockItemID = ?
+                    AND WO.Payment = 0;;";
             
                     $Statement = mysqli_prepare($Connection, $Query);
                     mysqli_stmt_bind_param($Statement, "s", $row['StockItemID']);

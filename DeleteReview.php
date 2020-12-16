@@ -14,7 +14,7 @@ $Query = "
     mysqli_stmt_bind_param($Statement, "ii", $CustomerID, $Product);
     mysqli_stmt_execute($Statement);
     $ReturnableResult = mysqli_stmt_get_result($Statement);
-    $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+    
 
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             $position = strrpos($actual_link, "/");
