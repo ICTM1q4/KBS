@@ -134,7 +134,7 @@
 <div class="signup-form">
     <form action="DatabaseSignup.php" method="post" style="width: 500px; margin-left: -50px;">
         <h2> Registreren</h2>
-        <p class="hint-text">Maak een nieuw account aan</p>
+        <p class="hint-text">Maak een nieuw account aan <br> Wachtwoord moet minimaal 10 tekens bevatten, waarvan er 1 een cijfer, hoofdletter en speciaal teken moet zijn</p>
         <div class="form-group">
             <input type="Text" class="form-control" name="Username" placeholder="Gebruikersnaam" required="required">
         </div>

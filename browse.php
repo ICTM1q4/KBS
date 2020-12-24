@@ -245,7 +245,7 @@ if (isset($amount)) {
                     <?php $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
                     <div id="StockItemFrameRight">
                         <div class="CenterPriceLeftChild">
-                            <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", $row["SellPrice"]); ?></h1>
+                            <h1 class="StockItemPriceText"><?php print sprintf("€ %0.2f", number_format($row["SellPrice"], 2)); ?></h1>
                             <h6>Inclusief BTW </h6>
                             <div style="margin-top: 30px;">
                             <form action="AddWishList.php" style="margin-bottom: 5px; margin-right: 20px;">

@@ -26,7 +26,7 @@
     $number       = preg_match('@[0-9]@', $gebruikersWachtwoord);
     $specialChars = preg_match('@[^\w]@', $gebruikersWachtwoord);
     
-    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruikersWachtwoord) < 8) {
+    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($gebruikersWachtwoord) < 10) {
         print("<script>window.location = 'Signup.php?registreer=fout'</script>");
     } 
  
