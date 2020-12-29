@@ -120,8 +120,8 @@
                                 </button> 
                             </form>
                         </td>
-                        <?php
-                        print("<td><p style='color: white;'>€". number_format(($row['SellPrice'] * $row['Amount']),2). "</p></td>"); //artikelprijs
+                        <?php  
+                        print("<td><p style='color: white;'>". sprintf("€%0.2f", number_format($row["SellPrice"] * $row['Amount'], 2)) . "</p></td>"); //artikelprijs
                         ?> 
                         <td>
                             <form action="Delete.php" method="post"> 
@@ -170,7 +170,7 @@
                     
                         <p style="margin-bottom: 0px;">
                         
-                            <?php print ("€".number_format($totaal,2));?>
+                            <?php print sprintf("€%0.2f", number_format($totaal, 2));?>
                         </p>
                     </td>
                     <td>

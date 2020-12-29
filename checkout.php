@@ -26,7 +26,7 @@
             if (isset($_POST["price"])){
                 if ($_POST["price"] != "0.00"){
                     $totaalprijs = $_POST["price"];
-                    print("<p style='color: white; font-family: Calibri; margin: auto; text-align: center; font-size: 150%;'>Totaalprijs van de bestelling is: €$totaalprijs</p>");
+                    print("<p style='color: white; font-family: Calibri; margin: auto; text-align: center; font-size: 150%;'>Totaalprijs van de bestelling is: " sprintf("€%0.2f", number_format($totaalprijs, 2)); "</p>");
                 }
                 else if ( $_POST["price"] == "0.00"){
                     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";

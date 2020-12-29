@@ -62,7 +62,7 @@ $Product = mysqli_fetch_all($Product, MYSQLI_ASSOC);
             <form action="order.php" method='post'>
                 <div style="height: 350px; width: 100%; background-color: rgba(255,255,255,0.3); color: white; border: 10px rgba(255,255,255,0.00) solid; border-radius: 5px;">
                 <h1 style=''><span><?php print($new_date); ?></span><span style='font-size: 15px;'><?php print(' '.'    Bestelling Nr. '.$row['OrderID']); ?></span></h1>
-                    <p><?php print("Totaalprijs is: €" . $row['TotalPrice']); ?></p>
+                    <p><?php print("Totaalprijs is: " . sprintf("€%0.2f", number_format($row['TotalPrice'], 2))); ?></p>
                     <table style='height: 50px;'>
                     <tr>
                         <?php foreach ($ReturnableResult as $R){

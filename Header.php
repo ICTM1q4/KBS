@@ -6,7 +6,7 @@ include "connect.php";
 
 <!DOCTYPE html>
 <html lang="nl">
-
+<?php setlocale(LC_ALL, 'nld_nld'); ?>
 <head>
     <meta charset="UTF-8">
     <title>NerdyGagdets</title>
