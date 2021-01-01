@@ -255,7 +255,8 @@ $Query = "
 SELECT Temperature, RecordedWhen
 FROM coldroomtemperatures
 WHERE ColdRoomSensorNumber = 1
-ORDER BY RecordedWhen";
+ORDER BY RecordedWhen
+LIMIT 144";
 
 $Statement = mysqli_prepare($Connection, $Query);
 mysqli_stmt_execute($Statement);
@@ -311,7 +312,8 @@ $Query = "
 SELECT Temperature, RecordedWhen
 FROM coldroomtemperatures
 WHERE ColdRoomSensorNumber = 2
-ORDER BY RecordedWhen";
+ORDER BY RecordedWhen
+LIMIT 144";
 
 $Statement = mysqli_prepare($Connection, $Query);
 mysqli_stmt_execute($Statement);
@@ -367,7 +369,8 @@ $Query = "
 SELECT Temperature, RecordedWhen
 FROM coldroomtemperatures
 WHERE ColdRoomSensorNumber = 3
-ORDER BY RecordedWhen";
+ORDER BY RecordedWhen
+LIMIT 144";
 
 $Statement = mysqli_prepare($Connection, $Query);
 mysqli_stmt_execute($Statement);
@@ -423,7 +426,8 @@ $Query = "
 SELECT Temperature, RecordedWhen
 FROM coldroomtemperatures
 WHERE ColdRoomSensorNumber = 4
-ORDER BY RecordedWhen";
+ORDER BY RecordedWhen
+LIMIT 144";
 
 $Statement = mysqli_prepare($Connection, $Query);
 mysqli_stmt_execute($Statement);

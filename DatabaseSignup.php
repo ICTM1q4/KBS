@@ -50,7 +50,8 @@
 
 //INSERT DATA INTO DATABASE
     $gebruikersWachtwoord = hash("SHA256", $gebruikersWachtwoord);
-    $Query = "INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,Email,Phonenumber)
+    $Query = "
+    INSERT INTO webcustomer (firstname,lastname,username,password,address,zipcode,Email,Phonenumber)
     VALUES (?,?,?,?,?,?,?,?);";
     $Statement = mysqli_prepare($Connection, $Query);
     mysqli_stmt_bind_param($Statement, "ssssssss", $gebruikersFirstNaam, $gebruikersLastNaam, $gebruikersNaam, $gebruikersWachtwoord, $gebruikersAddress, $gebruikersZipcode, $gebruikersEmail, $gebruikersPhone); 

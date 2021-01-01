@@ -2,7 +2,7 @@
 
 include "connect.php";
 
-$date = '2020-12-16 ';
+$date = '2020-12-25 ';
 $sensor = 1;
 $uur = 0;
 $minuut = 0;
