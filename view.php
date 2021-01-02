@@ -649,7 +649,7 @@ $Query = "
                 </ul>
                 </div>
                 <label for="beschrijving" style="color: white; margin-top: 25px;">Tips/Tops:</label>
-            <textarea type="text" maxlength="300" name="beschrijving" id="beschrijving" style="width: 100%; height: 200px; margin-top: 0px;"> </textarea>
+            <textarea type="text" maxlength="256" name="beschrijving" id="beschrijving" style="width: 100%; height: 200px; margin-top: 0px;"> </textarea>
             <input type="hidden" name="Product" value="<?php print($_GET['id']); ?>">
             <input type="submit" value="Versturen" style="margin-top: 10px; width: 18%; margin-left: 41%; margin-right: 41%; height: 3em; background-color: #85bf31; color: white; border: #85bf31 solid 1px;">
             </form>
