@@ -134,12 +134,14 @@
 <div class="signup-form">
     <form action="DatabaseSignup.php" method="post" style="width: 500px; margin-left: -50px;">
         <h2> Registreren</h2>
-        <p class="hint-text">Maak een nieuw account aan <br> Wachtwoord moet minimaal 10 tekens bevatten, waarvan er 1 een cijfer, hoofdletter en speciaal teken moet zijn</p>
+        <p class="hint-text">Maak een nieuw account aan <br>
+            </p>
         <div class="form-group">
             <input type="Text" class="form-control" name="Username" placeholder="Gebruikersnaam" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="Password" placeholder="Wachtwoord" required="required">
+            <input type="password" class="form-control" name="Password" placeholder="Wachtwoord" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}" required="required"
+            title="Bevat minimaal 1 nummer, 1 kleine en 1 grote letter en een lengte van 10 karakters">
         </div>
         <div class="form-group">
             <input type="password" class="form-control" name="confirm_password" placeholder="Herhaal wachtwoord" required="required">
