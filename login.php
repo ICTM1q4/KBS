@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel='stylesheet' href='CSS/style.css'>
 </head>
+
     <style>
 
         body {
@@ -122,6 +123,7 @@
 <header style="color: white; font-family: Calibri;">
     <?php
         include __DIR__ . "/Header.php";
+        
     ?>
 </header>
 
@@ -137,19 +139,27 @@
             <h2 style="font-size: ">Inloggen</h2>
             <?php if(isset($_GET["Login"])){
                 if ($_GET["Login"] == "fout"){
-                    ?> <p style="color: rgb(200,0,0)"> Wachtwoord of Username klopt niet </p><?php
+                    ?> <p style="color: rgb(200,0,0)"> Wachtwoord of Username klopt niet </p><?php 
                 }
             }
             
             
             
             ?>
+            <?php 
+            $ww1 = '';
+            $naam1 = '';
+            
+            if (isset($_SESSION['ww1'])){$ww1 = $_SESSION['ww1'];}
+            if (isset($_SESSION['naam1'])){$naam1 = $_SESSION['naam1'];}
+            ?>
+            
             <p class="hint-text"></p>
             <div class="form-group">
-                <input type="Text" class="form-control" name="Username" placeholder="Gebruikersnaam" required="required">
+                <input type="Text" class="form-control" name="Username" value="<?php print($naam1);?>" placeholder="Gebruikersnaam" required="required" >
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="Password" placeholder="Wachtwoord" required="required">
+                <input type="password" class="form-control" name="Password" value="<?php print($ww1);?>" placeholder="Wachtwoord" required="required" >
             </div>
 
             <div class="form-group">
@@ -158,7 +168,7 @@
     </div>
 
     <div class="text-center" style="color: white">
-        Heb je nog geen account? 
+        Heb je nog geen account?  
         <a href="Signup.php">
             Meld je hier aan
         </a>

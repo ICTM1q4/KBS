@@ -1,6 +1,6 @@
 <?php
     include "connect.php";
-
+    session_start();
 //PREPARE ALL VARIABLES
     $gebruikersNaam = "";
     $gebruikersWachtwoord = "";
@@ -9,7 +9,13 @@
     if (isset($_POST["Username"]) && isset($_POST["Password"])){
         $gebruikersNaam = $_POST["Username"];
         $gebruikersWachtwoord = $_POST["Password"];
+        $_SESSION['naam1'] = $_POST["Username"];
+        $_SESSION['ww1']  = $_POST["Password"];
+        
     }
+    
+    
+    
 
 //CONVERT PASSWORD TO HASH
     $gebruikersWachtwoord = hash("SHA256", $gebruikersWachtwoord);
@@ -26,12 +32,12 @@
     mysqli_stmt_execute($Statement);
     $ReturnableResult = mysqli_stmt_get_result($Statement);
     $ReturnableResult = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
-
+    
 //FOR EVERY ROW IN THE RESULT, CHECK IF INPUT IS SAME AS DATA IN DATABASE AND SAVE IN SESSION
     foreach ($ReturnableResult as $ReturnableResult){
         if ($ReturnableResult["username"] == $gebruikersNaam && $ReturnableResult["password"] == $gebruikersWachtwoord ){
             print("Welkom ".$ReturnableResult['firstname']. $ReturnableResult['lastname'].", je bent zojuist ingelogd!");
-            session_start();
+            
             $_SESSION["Naam"] = $gebruikersNaam;
             $_SESSION["Customer"] = $ReturnableResult['CustomerID'];
             $Query = "
@@ -58,15 +64,18 @@
             }
 //GO BACK
             $_SESSION["loggedin"] = "ja";
+            print('wut1');
             echo "<script>window.location = 'login.php?Login=goed'</script>";
             break;
         }
 
 //IF INPUT IS INCORRECT, GO BACK AND GIVE ERROR
-        else if ($ReturnableResult["username"] != $gebruikersNaam && $ReturnableResult != $gebruikersWachtwoord ){
-            echo "<script>window.location = 'login.php?Login=fout'</script>"; 
+        else {
+            
+            echo "<script>window.location = 'login.php?Login=fout&naam1=" . $gebruikersNaam . "'</script>"; 
         }
     }
+    echo "<script>window.location = 'login.php?Login=fout&naam1=" . $gebruikersNaam . "'</script>"; 
 
 
 
