@@ -144,7 +144,7 @@
             title="Bevat minimaal 1 nummer, 1 kleine en 1 grote letter en een lengte van 10 karakters">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Herhaal wachtwoord" required="required">
+            <input type="password" class="form-control" name="confirm_password" placeholder="Herhaal wachtwoord" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}" required="required">
         </div>
         <div class="form-group">
             <div class="row">
