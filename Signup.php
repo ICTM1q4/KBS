@@ -137,36 +137,38 @@
         <p class="hint-text">Maak een nieuw account aan <br>
             </p>
         <div class="form-group">
-            <input type="Text" class="form-control" name="Username" placeholder="Gebruikersnaam" required="required">
+            <input type="Text" class="form-control" name="Username" placeholder="Gebruikersnaam*" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="Password" placeholder="Wachtwoord" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}" required="required"
+            <input type="password" class="form-control" name="Password" placeholder="Wachtwoord*" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}" required="required"
             title="Bevat minimaal 1 nummer, 1 kleine en 1 grote letter en een lengte van 10 karakters">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Herhaal wachtwoord" required="required">
+            <input type="password" class="form-control" name="confirm_password" placeholder="Herhaal wachtwoord*" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}" required="required">
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-xs-6" style="margin-left:15px;"><input type="text" class="form-control" name="firstname" placeholder="Voornaam" required="required">
+                <div class="col-xs-6" style="margin-left:15px;"><input type="text" class="form-control" name="firstname" placeholder="Voornaam*" required="required">
                 </div>
-                <div class="col-xs-6"><input type="text" class="form-control" name="lastname" placeholder="Achternaam" required="required">
+                <div class="col-xs-6"><input type="text" class="form-control" name="lastname" placeholder="Achternaam*" required="required">
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+            <input type="email" class="form-control" name="email" placeholder="Email*" required="required">
         </div>
         <div class="form-group">
-            <input type="Text" class="form-control" name="address" placeholder="Adres" required="required">
+            <input type="Text" class="form-control" name="address" placeholder="Adres*" required="required">
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-xs-6" style="margin-left:15px;">
-                    <input type="text" class="form-control" name="zipcode" placeholder="Postcode" required="required">
+                    <input type="text" class="form-control" name="zipcode" placeholder="Postcode*" pattern="[0-9]{4}[A-Za-z]{2}" required="required"
+                    title="4 cijfers, 2 letters. bijv. 1234ab.">
                 </div>
                 <div class="col-xs-6">
-                    <input type="number" class="form-control" name="phonenumber" placeholder="Telefoonnummer">
+                    <input type="number" class="form-control" name="phonenumber" placeholder="Telefoonnummer" pattern=".{8,}"
+                    title="telefoonnummer te kort">
                 </div>
             </div>
             <?php if(isset($_GET["registreer"])){
