@@ -125,7 +125,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            <div class="QuantityText"><?php print $Result['QuantityOnHand']; ?></div>
         </div>
 
         <div id="StockItemDescription" style="color: white;">

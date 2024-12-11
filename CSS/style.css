@@ -349,6 +349,7 @@ input{
 }
 .QuantityText {
   position: absolute;
+  color: white;
   left: 310px;
   bottom: 0;
 }
@@ -356,9 +357,9 @@ input{
   float: right;
   text-align: right;
   position: absolute;
-  top: 0;
+  top: 30px;
   right: 0;
-  height: 300px;
+  width: 200px
 }
 
 .StockItemNameViewSize {
@@ -375,6 +376,11 @@ input{
   top: 40%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+.StockItemPrice{
+  float: right;
+  max-width: 20%;
+  margin: -100px;
 }
 #StockItemDescription {
   background-color: rgba(35, 40, 47, 0.8);
@@ -567,6 +573,16 @@ ul#ul-class-price li {
 .StockItemPriceText:hover {
   text-decoration: none;
 }
+.StockItemInfo{
+  font-family: vortice-concept, sans-serif;
+  color: white;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 15px;
+  float: left;
+  width: 70%;
+}
 .StockItemID {
   font-family: vortice-concept, sans-serif;
   color: white;
@@ -574,6 +590,9 @@ ul#ul-class-price li {
   text-transform: uppercase;
   font-weight: bold;
   margin-top: 15px;
+  float: inline-start;
+  display: contents;
+  width: 80%;
 }
 .StockItemName {
   font-family: pt-sans, sans-serif;
@@ -581,6 +600,7 @@ ul#ul-class-price li {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: bold;
+  width: 80%;
 }
 .StockItemComments {
   font-family: pt-sans, sans-serif;
